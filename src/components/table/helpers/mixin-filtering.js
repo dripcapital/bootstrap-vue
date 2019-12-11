@@ -2,7 +2,15 @@ import cloneDeep from '../../../utils/clone-deep'
 import looseEqual from '../../../utils/loose-equal'
 import { concat } from '../../../utils/array'
 import { isFunction, isString, isRegExp } from '../../../utils/inspect'
+import { toInteger } from '../../../utils/number'
+import { escapeRegExp } from '../../../utils/string'
+import { warn } from '../../../utils/warn'
 import stringifyRecordValues from './stringify-record-values'
+
+const DEBOUNCE_DEPRECATED_MSG =
+  'Prop "filter-debounce" is deprecated. Use the debounce feature of "<b-form-input>" instead.'
+
+const RX_SPACES = /[\s\uFEFF\xA0]+/g
 
 export default {
   props: {
@@ -24,6 +32,7 @@ export default {
     },
     filterDebounce: {
       type: [Number, String],
+      deprecated: DEBOUNCE_DEPRECATED_MSG,
       default: 0,
       validator: val => /^\d+/.test(String(val))
     }
@@ -45,7 +54,12 @@ export default {
       return this.filterIncludedFields ? concat(this.filterIncludedFields).filter(Boolean) : null
     },
     computedFilterDebounce() {
-      return parseInt(this.filterDebounce, 10) || 0
+      const ms = toInteger(this.filterDebounce) || 0
+      /* istanbul ignore next */
+      if (ms > 0) {
+        warn(DEBOUNCE_DEPRECATED_MSG, 'BTable')
+      }
+      return ms
     },
     localFiltering() {
       return this.hasProvider ? !!this.noProviderFiltering : true
@@ -96,21 +110,18 @@ export default {
       // We need a deep watcher in case the user passes
       // an object when using `filter-function`
       deep: true,
-      handler(newFilter, oldFilter) {
+      handler(newCriteria, oldCriteria) {
         const timeout = this.computedFilterDebounce
-        if (this.$_filterTimer) {
-          clearTimeout(this.$_filterTimer)
-          this.$_filterTimer = null
-        }
-        if (timeout) {
+        clearTimeout(this.$_filterTimer)
+        this.$_filterTimer = null
+        if (timeout && timeout > 0) {
           // If we have a debounce time, delay the update of `localFilter`
           this.$_filterTimer = setTimeout(() => {
-            this.$_filterTimer = null
-            this.localFilter = this.filterSanitize(this.filter)
+            this.localFilter = this.filterSanitize(newCriteria)
           }, timeout)
         } else {
           // Otherwise, immediately update `localFilter` with `newFilter` value
-          this.localFilter = this.filterSanitize(newFilter)
+          this.localFilter = this.filterSanitize(newCriteria)
         }
       }
     },
@@ -154,12 +165,9 @@ export default {
       this.isFiltered = Boolean(this.localFilter)
     })
   },
-  beforeDestroy() {
-    /* istanbul ignore next */
-    if (this.$_filterTimer) {
-      clearTimeout(this.$_filterTimer)
-      this.$_filterTimer = null
-    }
+  beforeDestroy() /* istanbul ignore next */ {
+    clearTimeout(this.$_filterTimer)
+    this.$_filterTimer = null
   },
   methods: {
     filterSanitize(criteria) {
@@ -215,17 +223,15 @@ export default {
         return null
       }
 
-      // Build the regexp needed for filtering
-      let regexp = criteria
-      if (isString(regexp)) {
-        // Escape special `RegExp` characters in the string and convert contiguous
-        // whitespace to `\s+` matches
-        const pattern = criteria
-          .replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')
-          .replace(/[\s\uFEFF\xA0]+/g, '\\s+')
-        // Build the `RegExp` (no need for global flag, as we only need
+      // Build the RegExp needed for filtering
+      let regExp = criteria
+      if (isString(regExp)) {
+        // Escape special RegExp characters in the string and convert contiguous
+        // whitespace to \s+ matches
+        const pattern = escapeRegExp(criteria).replace(RX_SPACES, '\\s+')
+        // Build the RegExp (no need for global flag, as we only need
         // to find the value once in the string)
-        regexp = new RegExp(`.*${pattern}.*`, 'i')
+        regExp = new RegExp(`.*${pattern}.*`, 'i')
       }
 
       // Generate the wrapped filter test function to use
@@ -241,9 +247,10 @@ export default {
         //
         // Generated function returns true if the criteria matches part of
         // the serialized data, otherwise false
+        //
         // We set `lastIndex = 0` on the `RegExp` in case someone specifies the `/g` global flag
-        regexp.lastIndex = 0
-        return regexp.test(
+        regExp.lastIndex = 0
+        return regExp.test(
           stringifyRecordValues(
             item,
             this.computedFilterIgnored,

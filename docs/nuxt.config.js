@@ -88,8 +88,8 @@ renderer.heading = function(text, level, raw, slugger) {
     ANCHOR_LINK_HEADING_LEVELS.indexOf(level) !== -1
       ? `<a class="anchorjs-link" href="#${link}" aria-label="Anchor"></a>`
       : ''
-
-  return `<h${level} id="${link}">${getTextMarkup(text + anchor)}</h${level}>\n`
+  const attrs = `id="${link}" class="bv-no-focus-ring"`
+  return `<h${level} ${attrs}>${getTextMarkup(text + anchor)}</h${level}>\n`
 }
 
 // Convert lead-in blockquote paragraphs to true bootstrap docs leads
@@ -212,7 +212,8 @@ module.exports = {
 
   plugins: ['~/plugins/bootstrap-vue.js', '~/plugins/play.js', '~/plugins/docs.js'],
 
-  modules: ['@nuxtjs/pwa', '@nuxtjs/google-analytics'],
+  buildModules: ['@nuxtjs/google-analytics'],
+  modules: ['@nuxtjs/pwa'],
 
   'google-analytics': {
     id: 'UA-89526435-1',

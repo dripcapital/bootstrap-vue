@@ -1,4 +1,5 @@
 import getScopId from '../../utils/get-scope-id'
+import identity from '../../utils/identity'
 import looseEqual from '../../utils/loose-equal'
 import { concat } from '../../utils/array'
 import { getComponentConfig } from '../../utils/config'
@@ -6,7 +7,7 @@ import { isBrowser } from '../../utils/env'
 import {
   isFunction,
   isNumber,
-  isObject,
+  isPlainObject,
   isString,
   isUndefined,
   isUndefinedOrNull
@@ -39,6 +40,7 @@ const delayShowRE = /^ds\d+$/i
 const delayHideRE = /^dh\d+$/i
 const offsetRE = /^o-?\d+$/i
 const variantRE = /^v-.+$/i
+const spacesRE = /\s+/
 
 // Build a Tooltip config based on bindings (if any)
 // Arguments and modifiers take precedence over passed value config object
@@ -71,7 +73,7 @@ const parseBindings = (bindings, vnode) => /* istanbul ignore next: not easy to 
   } else if (isFunction(bindings.value)) {
     // Title generator function
     config.title = bindings.value
-  } else if (isObject(bindings.value)) {
+  } else if (isPlainObject(bindings.value)) {
     // Value is config object, so merge
     config = { ...config, ...bindings.value }
   }
@@ -84,10 +86,10 @@ const parseBindings = (bindings, vnode) => /* istanbul ignore next: not easy to 
   }
 
   // Normalize delay
-  if (!isObject(config.delay)) {
+  if (!isPlainObject(config.delay)) {
     config.delay = {
-      show: config.delay,
-      hide: config.delay
+      show: parseInt(config.delay, 10) || 0,
+      hide: parseInt(config.delay, 10) || 0
     }
   }
 
@@ -139,11 +141,11 @@ const parseBindings = (bindings, vnode) => /* istanbul ignore next: not easy to 
 
   // Parse current config object trigger
   concat(config.trigger || '')
-    .filter(Boolean)
+    .filter(identity)
     .join(' ')
     .trim()
     .toLowerCase()
-    .split(/\s+/)
+    .split(spacesRE)
     .forEach(trigger => {
       if (validTriggers[trigger]) {
         selectedTriggers[trigger] = true
@@ -193,7 +195,7 @@ const applyTooltip = (el, bindings, vnode) => {
       // Before showing the tooltip, we update the title if it is a function
       if (isFunction(config.title)) {
         el[BV_TOOLTIP].updateData({
-          title: config.title()
+          title: config.title(el)
         })
       }
     })
@@ -225,7 +227,7 @@ const applyTooltip = (el, bindings, vnode) => {
       // We only pass data properties that have changed
       if (data[prop] !== oldData[prop]) {
         // if title is a function, we execute it here
-        newData[prop] = prop === 'title' && isFunction(data[prop]) ? data[prop]() : data[prop]
+        newData[prop] = prop === 'title' && isFunction(data[prop]) ? data[prop](el) : data[prop]
       }
     })
     el[BV_TOOLTIP].updateData(newData)

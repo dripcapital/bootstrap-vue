@@ -85,6 +85,19 @@ export default deepFreeze({
     placeholder: 'No file chosen',
     dropPlaceholder: 'Drop files here'
   },
+  BFormTag: {
+    removeLabel: 'Remove tag',
+    variant: 'secondary'
+  },
+  BFormTags: {
+    addButtonText: 'Add',
+    addButtonVariant: 'outline-secondary',
+    duplicateTagText: 'Duplicate tag(s)',
+    invalidTagText: 'Invalid tag(s)',
+    placeholder: 'Add tag...',
+    tagRemoveLabel: 'Remove tag',
+    tagVariant: 'secondary'
+  },
   BFormText: {
     textVariant: 'muted'
   },
@@ -152,7 +165,7 @@ export default deepFreeze({
     variant: null
   },
   BTable: {
-    selectedVariant: 'primary',
+    selectedVariant: 'active',
     headVariant: null,
     footVariant: null
   },

@@ -14,6 +14,7 @@ import {
 } from '../../utils/dom'
 import { isBrowser, hasTouchSupport, hasPointerEventSupport } from '../../utils/env'
 import { isUndefined } from '../../utils/inspect'
+import { toInteger } from '../../utils/number'
 import idMixin from '../../mixins/id'
 import normalizeSlotMixin from '../../mixins/normalize-slot'
 
@@ -159,7 +160,7 @@ export const BCarousel = /*#__PURE__*/ Vue.extend({
       transitionEndEvent: null,
       slides: [],
       direction: null,
-      isPaused: !(parseInt(this.interval, 10) > 0),
+      isPaused: !(toInteger(this.interval) > 0),
       // Touch event handling values
       touchStartX: 0,
       touchDeltaX: 0
@@ -173,7 +174,7 @@ export const BCarousel = /*#__PURE__*/ Vue.extend({
   watch: {
     value(newVal, oldVal) {
       if (newVal !== oldVal) {
-        this.setSlide(parseInt(newVal, 10) || 0)
+        this.setSlide(toInteger(newVal) || 0)
       }
     },
     interval(newVal, oldVal) {
@@ -209,7 +210,7 @@ export const BCarousel = /*#__PURE__*/ Vue.extend({
     this._animationTimeout = null
     this._touchTimeout = null
     // Set initial paused state
-    this.isPaused = !(parseInt(this.interval, 10) > 0)
+    this.isPaused = !(toInteger(this.interval) > 0)
   },
   mounted() {
     // Cache current browser transitionend event name
@@ -498,19 +499,36 @@ export const BCarousel = /*#__PURE__*/ Vue.extend({
     // Prev and next controls
     let controls = h()
     if (this.controls) {
+      const prevHandler = evt => {
+        /* istanbul ignore next */
+        if (!this.isSliding) {
+          this.handleClick(evt, this.prev)
+        } else {
+          evt.preventDefault()
+        }
+      }
+      const nextHandler = evt => {
+        /* istanbul ignore next */
+        if (!this.isSliding) {
+          this.handleClick(evt, this.next)
+        } else {
+          evt.preventDefault()
+        }
+      }
       controls = [
         h(
           'a',
           {
             class: ['carousel-control-prev'],
-            attrs: { href: '#', role: 'button', 'aria-controls': this.safeId('__BV_inner_') },
+            attrs: {
+              href: '#',
+              role: 'button',
+              'aria-controls': this.safeId('__BV_inner_'),
+              'aria-disabled': this.isSliding ? 'true' : null
+            },
             on: {
-              click: evt => {
-                this.handleClick(evt, this.prev)
-              },
-              keydown: evt => {
-                this.handleClick(evt, this.prev)
-              }
+              click: prevHandler,
+              keydown: prevHandler
             }
           },
           [
@@ -522,14 +540,15 @@ export const BCarousel = /*#__PURE__*/ Vue.extend({
           'a',
           {
             class: ['carousel-control-next'],
-            attrs: { href: '#', role: 'button', 'aria-controls': this.safeId('__BV_inner_') },
+            attrs: {
+              href: '#',
+              role: 'button',
+              'aria-controls': this.safeId('__BV_inner_'),
+              'aria-disabled': this.isSliding ? 'true' : null
+            },
             on: {
-              click: evt => {
-                this.handleClick(evt, this.next)
-              },
-              keydown: evt => {
-                this.handleClick(evt, this.next)
-              }
+              click: nextHandler,
+              keydown: nextHandler
             }
           },
           [

@@ -19,16 +19,50 @@ export const BTbody = /*#__PURE__*/ Vue.extend({
   inheritAttrs: false,
   provide() {
     return {
-      bvTableTbody: this
+      bvTableRowGroup: this
     }
   },
   inject: {
     bvTable: {
-      default: null
+      // Sniffed by <b-tr> / <b-td> / <b-th>
+      default() /* istanbul ignore next */ {
+        return {}
+      }
     }
   },
   props,
   computed: {
+    isTbody() {
+      // Sniffed by <b-tr> / <b-td> / <b-th>
+      return true
+    },
+    isDark() {
+      // Sniffed by <b-tr> / <b-td> / <b-th>
+      return this.bvTable.dark
+    },
+    isStacked() {
+      // Sniffed by <b-tr> / <b-td> / <b-th>
+      return this.bvTable.isStacked
+    },
+    isResponsive() {
+      // Sniffed by <b-tr> / <b-td> / <b-th>
+      return this.bvTable.isResponsive
+    },
+    isStickyHeader() {
+      // Sniffed by <b-tr> / <b-td> / <b-th>
+      // Sticky headers are only supported in thead
+      return false
+    },
+    hasStickyHeader() {
+      // Sniffed by <b-tr> / <b-td> / <b-th>
+      // Needed to handle header background classes, due to lack of
+      // background color inheritance with Bootstrap v4 table CSS
+      return !this.isStacked && this.bvTable.stickyHeader
+    },
+    tableVariant() /* istanbul ignore next: Not currently sniffed in tests */ {
+      // Sniffed by <b-tr> / <b-td> / <b-th>
+      return this.bvTable.tableVariant
+    },
     isTransitionGroup() {
       return this.tbodyTransitionProps || this.tbodyTransitionHandlers
     },
@@ -37,21 +71,25 @@ export const BTbody = /*#__PURE__*/ Vue.extend({
     },
     tbodyProps() {
       return this.tbodyTransitionProps ? { ...this.tbodyTransitionProps, tag: 'tbody' } : {}
-    },
-    tbodyListeners() {
-      const handlers = this.tbodyTransitionHandlers || {}
-      return { ...this.$listeners, ...handlers }
     }
   },
   render(h) {
+    const data = {
+      props: this.tbodyProps,
+      attrs: this.tbodyAttrs
+    }
+    if (this.isTransitionGroup) {
+      // We use native listeners if a transition group
+      // for any delegated events
+      data.on = this.tbodyTransitionHandlers || {}
+      data.nativeOn = this.$listeners || {}
+    } else {
+      // Otherwise we place any listeners on the tbody element
+      data.on = this.$listeners || {}
+    }
     return h(
       this.isTransitionGroup ? 'transition-group' : 'tbody',
-      {
-        props: this.tbodyProps,
-        attrs: this.tbodyAttrs,
-        // Pass down any listeners
-        on: this.tbodyListeners
-      },
+      data,
       this.normalizeSlot('default', {})
     )
   }

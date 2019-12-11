@@ -1,10 +1,6 @@
-import KeyCodes from '../../../utils/key-codes'
 import get from '../../../utils/get'
-import toString from '../../../utils/to-string'
-import { arrayIncludes } from '../../../utils/array'
 import { isFunction, isString, isUndefinedOrNull } from '../../../utils/inspect'
-import filterEvent from './filter-event'
-import textSelectionActive from './text-selection-active'
+import { toString } from '../../../utils/string'
 import { BTr } from '../tr'
 import { BTd } from '../td'
 import { BTh } from '../th'
@@ -14,7 +10,15 @@ const detailsSlotName = 'row-details'
 export default {
   props: {
     tbodyTrClass: {
-      type: [String, Array, Function],
+      type: [String, Array, Object, Function],
+      default: null
+    },
+    tbodyTrAttr: {
+      type: [Object, Function],
+      default: null
+    },
+    detailsTdClass: {
+      type: [String, Array, Object],
       default: null
     }
   },
@@ -65,98 +69,22 @@ export default {
         }
       }
     },
-    rowEvtFactory(handler, item, rowIndex) {
-      // Return a row event handler
-      return evt => {
-        // If table is busy (via provider) then don't propagate
-        if (this.stopIfBusy && this.stopIfBusy(evt)) {
-          return
-        }
-        // Otherwise call the handler
-        handler(evt, item, rowIndex)
+    // Row event handlers
+    rowHovered(evt) {
+      // `mouseenter` handler (non-bubbling)
+      // `this.tbodyRowEvtStopped` from tbody mixin
+      if (!this.tbodyRowEvtStopped(evt)) {
+        // `this.emitTbodyRowEvent` from tbody mixin
+        this.emitTbodyRowEvent('row-hovered', evt)
       }
     },
-    // Row event handlers (will be wrapped by the above rowEvtFactory function)
-    tbodyRowKeydown(evt, item, rowIndex) {
-      // Keypress handler
-      const keyCode = evt.keyCode
-      const target = evt.target
-      // `this.$refs.itemRow`s is most likely an array of `BTr` components, but it
-      // could be regular `tr` elements, so we map to the `tr` elements just in case
-      const trs = (this.$refs.itemRows || []).map(tr => tr.$el || tr)
-      if (!(target && target.tagName === 'TR' && target === document.activeElement)) {
-        // Ignore if not the active tr element
-        return
-      } else if (target.tabIndex !== 0) {
-        // Ignore if not focusable
-        /* istanbul ignore next */
-        return
-      } else if (trs.length === 0) {
-        // No item rows
-        /* istanbul ignore next */
-        return
+    rowUnhovered(evt) {
+      // `mouseleave` handler (non-bubbling)
+      // `this.tbodyRowEvtStopped` from tbody mixin
+      if (!this.tbodyRowEvtStopped(evt)) {
+        // `this.emitTbodyRowEvent` from tbody mixin
+        this.emitTbodyRowEvent('row-unhovered', evt)
       }
-      const index = trs.indexOf(target)
-      if (keyCode === KeyCodes.ENTER || keyCode === KeyCodes.SPACE) {
-        // We also allow enter/space to trigger a click (when row is focused)
-        evt.stopPropagation()
-        evt.preventDefault()
-        // We translate to a row-clicked event
-        this.rowClicked(evt, item, rowIndex)
-      } else if (
-        arrayIncludes([KeyCodes.UP, KeyCodes.DOWN, KeyCodes.HOME, KeyCodes.END], keyCode)
-      ) {
-        // Keyboard navigation of rows
-        evt.stopPropagation()
-        evt.preventDefault()
-        const shift = evt.shiftKey
-        if (keyCode === KeyCodes.HOME || (shift && keyCode === KeyCodes.UP)) {
-          // Focus first row
-          trs[0].focus()
-        } else if (keyCode === KeyCodes.END || (shift && keyCode === KeyCodes.DOWN)) {
-          // Focus last row
-          trs[trs.length - 1].focus()
-        } else if (keyCode === KeyCodes.UP && index > 0) {
-          // Focus previous row
-          trs[index - 1].focus()
-        } else if (keyCode === KeyCodes.DOWN && index < trs.length - 1) {
-          // Focus next row
-          trs[index + 1].focus()
-        }
-      }
-    },
-    rowClicked(evt, item, index) {
-      if (filterEvent(evt)) {
-        // clicked on a non-disabled control so ignore
-        return
-      } else if (textSelectionActive(this.$el)) {
-        // User is selecting text, so ignore
-        /* istanbul ignore next: JSDOM doesn't support getSelection() */
-        return
-      }
-      this.$emit('row-clicked', item, index, evt)
-    },
-    middleMouseRowClicked(evt, item, index) {
-      if (evt.which === 2) {
-        this.$emit('row-middle-clicked', item, index, evt)
-      }
-    },
-    rowDblClicked(evt, item, index) {
-      if (filterEvent(evt)) {
-        // clicked on a non-disabled control so ignore
-        /* istanbul ignore next: event filtering already tested via click handler */
-        return
-      }
-      this.$emit('row-dblclicked', item, index, evt)
-    },
-    rowHovered(evt, item, index) {
-      this.$emit('row-hovered', item, index, evt)
-    },
-    rowUnhovered(evt, item, index) {
-      this.$emit('row-unhovered', item, index, evt)
-    },
-    rowContextmenu(evt, item, index) {
-      this.$emit('row-contextmenu', item, index, evt)
     },
     // Render helpers
     renderTbodyRowCell(field, colIndex, item, rowIndex) {
@@ -165,6 +93,22 @@ export default {
       const hasDetailsSlot = this.hasNormalizedSlot(detailsSlotName)
       const formatted = this.getFormattedValue(item, field)
       const key = field.key
+      const stickyColumn =
+        !this.isStacked && (this.isResponsive || this.stickyHeader) && field.stickyColumn
+      // We only uses the helper components for sticky columns to
+      // improve performance of BTable/BTableLite by reducing the
+      // total number of vue instances created during render
+      const cellTag = stickyColumn
+        ? field.isRowHeader
+          ? BTh
+          : BTd
+        : field.isRowHeader
+          ? 'th'
+          : 'td'
+      const cellVariant =
+        item._cellVariants && item._cellVariants[key]
+          ? item._cellVariants[key]
+          : field.variant || null
       const data = {
         // For the Vue key, we concatenate the column index and
         // field key (as field keys could be duplicated)
@@ -172,19 +116,31 @@ export default {
         //   So we could change this to: `row-${rowIndex}-cell-${key}`
         key: `row-${rowIndex}-cell-${colIndex}-${key}`,
         class: [field.class ? field.class : '', this.getTdValues(item, key, field.tdClass, '')],
-        props: {
-          stackedHeading: this.isStacked ? field.label : null,
-          stickyColumn: field.stickyColumn,
-          variant:
-            item._cellVariants && item._cellVariants[key]
-              ? item._cellVariants[key]
-              : field.variant || null
-        },
+        props: {},
         attrs: {
           'aria-colindex': String(colIndex + 1),
           ...(field.isRowHeader
             ? this.getThValues(item, key, field.thAttr, 'row', {})
             : this.getTdValues(item, key, field.tdAttr, {}))
+        }
+      }
+      if (stickyColumn) {
+        // We are using the helper BTd or BTh
+        data.props = {
+          stackedHeading: this.isStacked ? field.label : null,
+          stickyColumn: true,
+          variant: cellVariant
+        }
+      } else {
+        // Using native TD or TH element, so we need to
+        // add in the attributes and variant class
+        data.attrs['data-label'] =
+          this.isStacked && !isUndefinedOrNull(field.label) ? toString(field.label) : null
+        data.attrs.role = field.isRowHeader ? 'rowheader' : 'cell'
+        data.attrs.scope = field.isRowHeader ? 'row' : null
+        // Add in the variant class
+        if (cellVariant) {
+          data.class.push(`${this.dark ? 'bg' : 'table'}-${cellVariant}`)
         }
       }
       const slotScope = {
@@ -196,9 +152,12 @@ export default {
         toggleDetails: this.toggleDetailsFactory(hasDetailsSlot, item),
         detailsShowing: Boolean(item._showDetails)
       }
-      if (this.selectedRows) {
-        // Add in rowSelected scope property if selectable rows supported
+      // If table supports selectable mode, then add in the following scope
+      // this.supportsSelectableRows will be undefined if mixin isn't loaded
+      if (this.supportsSelectableRows) {
         slotScope.rowSelected = this.isRowSelected(rowIndex)
+        slotScope.selectRow = () => this.selectRow(rowIndex)
+        slotScope.unselectRow = () => this.unselectRow(rowIndex)
       }
       // The new `v-slot` syntax doesn't like a slot name starting with
       // a square bracket and if using in-document HTML templates, the
@@ -215,7 +174,7 @@ export default {
         $childNodes = [h('div', {}, [$childNodes])]
       }
       // Render either a td or th cell
-      return h(field.isRowHeader ? BTh : BTd, data, [$childNodes])
+      return h(cellTag, data, [$childNodes])
     },
     renderTbodyRow(item, rowIndex) {
       // Renders an item's row (or rows if details supported)
@@ -223,8 +182,8 @@ export default {
       const fields = this.computedFields
       const tableStriped = this.striped
       const hasDetailsSlot = this.hasNormalizedSlot(detailsSlotName)
-      const rowShowDetails = Boolean(item._showDetails && hasDetailsSlot)
-      const hasRowClickHandler = this.$listeners['row-clicked'] || this.isSelectable
+      const rowShowDetails = item._showDetails && hasDetailsSlot
+      const hasRowClickHandler = this.$listeners['row-clicked'] || this.hasSelectableRowClick
 
       // We can return more than one TR if rowDetails enabled
       const $rows = []
@@ -250,23 +209,24 @@ export default {
       // rows index within the tbody.
       // See: https://github.com/bootstrap-vue/bootstrap-vue/issues/2410
       const primaryKey = this.primaryKey
-      const hasPkValue = primaryKey && !isUndefinedOrNull(item[primaryKey])
-      const rowKey = hasPkValue ? toString(item[primaryKey]) : String(rowIndex)
+      const primaryKeyValue = toString(get(item, primaryKey)) || null
+      const rowKey = primaryKeyValue || toString(rowIndex)
 
       // If primary key is provided, use it to generate a unique ID on each tbody > tr
       // In the format of '{tableId}__row_{primaryKeyValue}'
-      const rowId = hasPkValue ? this.safeId(`_row_${item[primaryKey]}`) : null
-
-      const evtFactory = this.rowEvtFactory
-      const handlers = {}
-      if (hasRowClickHandler) {
-        handlers.click = evtFactory(this.rowClicked, item, rowIndex)
-        handlers.keydown = evtFactory(this.tbodyRowKeydown, item, rowIndex)
-      }
+      const rowId = primaryKeyValue ? this.safeId(`_row_${primaryKeyValue}`) : null
 
       // Selectable classes and attributes
       const selectableClasses = this.selectableRowClasses ? this.selectableRowClasses(rowIndex) : {}
       const selectableAttrs = this.selectableRowAttrs ? this.selectableRowAttrs(rowIndex) : {}
+
+      // Additional classes and attributes
+      const userTrClasses = isFunction(this.tbodyTrClass)
+        ? this.tbodyTrClass(item, 'row')
+        : this.tbodyTrClass
+      const userTrAttrs = isFunction(this.tbodyTrAttr)
+        ? this.tbodyTrAttr(item, 'row')
+        : this.tbodyTrAttr
 
       // Add the item row
       $rows.push(
@@ -276,39 +236,23 @@ export default {
             key: `__b-table-row-${rowKey}__`,
             ref: 'itemRows',
             refInFor: true,
-            class: [
-              isFunction(this.tbodyTrClass) ? this.tbodyTrClass(item, 'row') : this.tbodyTrClass,
-              selectableClasses,
-              rowShowDetails ? 'b-table-has-details' : ''
-            ],
+            class: [userTrClasses, selectableClasses, rowShowDetails ? 'b-table-has-details' : ''],
             props: { variant: item._rowVariant || null },
             attrs: {
               id: rowId,
+              ...userTrAttrs,
+              // Users cannot override the following attributes
               tabindex: hasRowClickHandler ? '0' : null,
-              'data-pk': rowId ? String(item[primaryKey]) : null,
-              // Should this be `aria-details` instead?
+              'data-pk': primaryKeyValue || null,
               'aria-details': detailsId,
               'aria-owns': detailsId,
               'aria-rowindex': ariaRowIndex,
               ...selectableAttrs
             },
             on: {
-              ...handlers,
-              // TODO:
-              //   Instantiate the following handlers only if we have registered
-              //   listeners i.e. `this.$listeners['row-middle-clicked']`, etc.
-              //
-              //   Could make all of this (including the above click/key handlers)
-              //   the result of a factory function and/or make it a delegated event
-              //   handler on the tbody (if we store the row index as a data-attribute
-              //   on the TR as we can lookup the item data from the computedItems array
-              //   or it could be a hidden prop (via attrs) on BTr instance)
-              auxclick: evtFactory(this.middleMouseRowClicked, item, rowIndex),
-              contextmenu: evtFactory(this.rowContextmenu, item, rowIndex),
-              // Note: These events are not accessibility friendly!
-              dblclick: evtFactory(this.rowDblClicked, item, rowIndex),
-              mouseenter: evtFactory(this.rowHovered, item, rowIndex),
-              mouseleave: evtFactory(this.rowUnhovered, item, rowIndex)
+              // Note: These events are not A11Y friendly!
+              mouseenter: this.rowHovered,
+              mouseleave: this.rowUnhovered
             }
           },
           $tds
@@ -323,16 +267,24 @@ export default {
           fields: fields,
           toggleDetails: this.toggleDetailsFactory(hasDetailsSlot, item)
         }
+        // If table supports selectable mode, then add in the following scope
+        // this.supportsSelectableRows will be undefined if mixin isn't loaded
+        if (this.supportsSelectableRows) {
+          detailsScope.rowSelected = this.isRowSelected(rowIndex)
+          detailsScope.selectRow = () => this.selectRow(rowIndex)
+          detailsScope.unselectRow = () => this.unselectRow(rowIndex)
+        }
 
         // Render the details slot in a TD
-        const $details = h(BTd, { props: { colspan: fields.length } }, [
+        const $details = h(BTd, { props: { colspan: fields.length }, class: this.detailsTdClass }, [
           this.normalizeSlot(detailsSlotName, detailsScope)
         ])
 
         // Add a hidden row to keep table row striping consistent when details showing
+        // Only added if the table is striped
         if (tableStriped) {
           $rows.push(
-            // We don't use `BTr` here as we dont need the extra functionality
+            // We don't use `BTr` here as we don't need the extra functionality
             h('tr', {
               key: `__b-table-details-stripe__${rowKey}`,
               staticClass: 'd-none',
@@ -342,19 +294,26 @@ export default {
         }
 
         // Add the actual details row
+        const userDetailsTrClasses = isFunction(this.tbodyTrClass)
+          ? this.tbodyTrClass(item, detailsSlotName)
+          : this.tbodyTrClass
+        const userDetailsTrAttrs = isFunction(this.tbodyTrAttr)
+          ? this.tbodyTrAttr(item, detailsSlotName)
+          : this.tbodyTrAttr
         $rows.push(
           h(
             BTr,
             {
               key: `__b-table-details__${rowKey}`,
               staticClass: 'b-table-details',
-              class: [
-                isFunction(this.tbodyTrClass)
-                  ? this.tbodyTrClass(item, detailsSlotName)
-                  : this.tbodyTrClass
-              ],
+              class: [userDetailsTrClasses],
               props: { variant: item._rowVariant || null },
-              attrs: { id: detailsId, tabindex: '-1' }
+              attrs: {
+                ...userDetailsTrAttrs,
+                // Users cannot override the following attributes
+                id: detailsId,
+                tabindex: '-1'
+              }
             },
             [$details]
           )

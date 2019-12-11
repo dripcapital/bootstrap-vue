@@ -32,10 +32,11 @@ export default {
       // Heading
       h(AnchoredHeading, { props: { id: 'component-reference' } }, 'Component reference'),
       // Component reference information
-      ...this.meta.components.map(({ component, events, rootEventListeners, slots, aliases }) =>
-        h(Componentdoc, {
-          props: { component, events, rootEventListeners, slots, aliases }
-        })
+      ...this.meta.components.map(
+        ({ component, events, rootEventListeners, slots, aliases, props: propsMeta, version }) =>
+          h(Componentdoc, {
+            props: { component, events, rootEventListeners, slots, aliases, propsMeta, version }
+          })
       ),
       // Component importing information
       h(Importdoc, { props: { meta: this.meta } })

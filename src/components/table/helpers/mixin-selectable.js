@@ -1,3 +1,4 @@
+import identity from '../../../utils/identity'
 import looseEqual from '../../../utils/loose-equal'
 import range from '../../../utils/range'
 import { isArray, arrayIncludes } from '../../../utils/array'
@@ -19,6 +20,11 @@ export default {
     selectedVariant: {
       type: String,
       default: () => getComponentConfig('BTable', 'selectedVariant')
+    },
+    noSelectOnClick: {
+      // Disable use of click handlers for row selection
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -31,12 +37,18 @@ export default {
     isSelectable() {
       return this.selectable && this.selectMode
     },
+    hasSelectableRowClick() {
+      return this.isSelectable && !this.noSelectOnClick
+    },
+    supportsSelectableRows() {
+      return true
+    },
     selectableHasSelection() {
       return (
         this.isSelectable &&
         this.selectedRows &&
         this.selectedRows.length > 0 &&
-        this.selectedRows.some(Boolean)
+        this.selectedRows.some(identity)
       )
     },
     selectableIsMultiSelect() {
@@ -46,11 +58,15 @@ export default {
       return {
         'b-table-selectable': this.isSelectable,
         [`b-table-select-${this.selectMode}`]: this.isSelectable,
-        'b-table-selecting': this.selectableHasSelection
+        'b-table-selecting': this.selectableHasSelection,
+        'b-table-selectable-no-click': this.isSelectable && !this.hasSelectableRowClick
       }
     },
     selectableTableAttrs() {
       return {
+        // TODO:
+        //   Should this attribute not be included when no-select-on-click is set
+        //   since this attribute implies keyboard navigation?
         'aria-multiselectable': !this.isSelectable
           ? null
           : this.selectableIsMultiSelect
@@ -82,6 +98,10 @@ export default {
     selectMode(newVal, oldVal) {
       this.clearSelected()
     },
+    hasSelectableRowClick(newVal, oldVal) {
+      this.clearSelected()
+      this.setSelectionHandlers(!newVal)
+    },
     selectedRows(selectedRows, oldVal) {
       if (this.isSelectable && !looseEqual(selectedRows, oldVal)) {
         const items = []
@@ -96,7 +116,7 @@ export default {
     }
   },
   beforeMount() {
-    // Set up handlers
+    // Set up handlers if needed
     if (this.isSelectable) {
       this.setSelectionHandlers(true)
     }
@@ -136,7 +156,7 @@ export default {
     },
     isRowSelected(index) {
       // Determine if a row is selected (indexed based on `computedItems`)
-      return Boolean(isNumber(index) && this.selectedRows[index])
+      return !!(isNumber(index) && this.selectedRows[index])
     },
     clearSelected() {
       // Clear any active selected row(s)
@@ -161,7 +181,7 @@ export default {
       }
     },
     setSelectionHandlers(on) {
-      const method = on ? '$on' : '$off'
+      const method = on && !this.noSelectOnClick ? '$on' : '$off'
       // Handle row-clicked event
       this[method]('row-clicked', this.selectionHandler)
       // Clear selection on filter, pagination, and sort changes
@@ -170,11 +190,9 @@ export default {
     },
     selectionHandler(item, index, evt) {
       /* istanbul ignore if: should never happen */
-      if (!this.isSelectable) {
+      if (!this.isSelectable || this.noSelectOnClick) {
         // Don't do anything if table is not in selectable mode
-        /* istanbul ignore next: should never happen */
         this.clearSelected()
-        /* istanbul ignore next: should never happen */
         return
       }
       const selectMode = this.selectMode

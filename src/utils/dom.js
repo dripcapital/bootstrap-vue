@@ -53,10 +53,10 @@ export const MutationObs =
 export const parseEventOptions = options => {
   /* istanbul ignore else: can't test in JSDOM, as it supports passive */
   if (hasPassiveEventSupport) {
-    return isObject(options) ? options : { useCapture: Boolean(options || false) }
+    return isObject(options) ? options : { useCapture: !!options || false }
   } else {
     // Need to translate to actual Boolean value
-    return Boolean(isObject(options) ? options.useCapture : options)
+    return !!(isObject(options) ? options.useCapture : options)
   }
 }
 
@@ -74,7 +74,10 @@ export const eventOff = (el, evtName, handler, options) => {
   }
 }
 
-// Determine if an element is an HTML Element
+// Remove a node from DOM
+export const removeNode = el => el && el.parentNode && el.parentNode.removeChild(el)
+
+// Determine if an element is an HTML element
 export const isElement = el => Boolean(el && el.nodeType === Node.ELEMENT_NODE)
 
 // Determine if an HTML element is visible - Faster than CSS check
@@ -96,7 +99,7 @@ export const isVisible = el => {
 
 // Determine if an element is disabled
 export const isDisabled = el =>
-  !isElement(el) || el.disabled || Boolean(getAttr(el, 'disabled')) || hasClass(el, 'disabled')
+  !isElement(el) || el.disabled || hasAttr(el, 'disabled') || hasClass(el, 'disabled')
 
 // Cause/wait-for an element to reflow it's content (adjusting it's height/width)
 export const reflow = el => {
@@ -122,13 +125,16 @@ export const matches = (el, selector) => {
 }
 
 // Finds closest element matching selector. Returns `null` if not found
-export const closest = (selector, root) => {
+export const closest = (selector, root, includeRoot = false) => {
   if (!isElement(root)) {
     return null
   }
   const el = closestEl.call(root, selector)
-  // Emulate jQuery closest and return `null` if match is the passed in element (root)
-  return el === root ? null : el
+
+  // Native closest behaviour when `includeRoot` is truthy,
+  // else emulate jQuery closest and return `null` if match is
+  // the passed in root element when `includeRoot` is falsey
+  return includeRoot ? el : el === root ? null : el
 }
 
 // Returns true if the parent element contains the child element
