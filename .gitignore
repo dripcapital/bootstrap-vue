@@ -6,7 +6,6 @@
 .nuxt/
 .vscode/
 coverage/
-dist/
 docs-dist/
 esm/
 es/
