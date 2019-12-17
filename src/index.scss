@@ -4,9 +4,9 @@
 // mixins to be imported first
 
 // Include variables and utilities first
+@import "./custom.scss";
 @import "variables";
 @import "utilities";
 
 // Include custom SCSS for components
 @import "components/index";
-@import "./custom.scss";
