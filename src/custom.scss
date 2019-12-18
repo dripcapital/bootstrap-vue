@@ -1,5 +1,8 @@
-// custom varibales for drip capital
+
+@import "../../bootstrap/scss/functions";
 $theme-colors: (
-  "primary": "#26ac75",
-  "secondary": "#3b356a",
+  "primary": #26ac75,
+  "secondary": #3b356a,
 );
+@import "../../bootstrap/scss/variables";
+@import "../../bootstrap/scss/bootstrap.scss"
