@@ -10,7 +10,7 @@ import normalizeSlotMixin from '../mixins/normalize-slot'
 // BTransporterSingle/BTransporterTargetSingle:
 //
 // Single root node portaling of content, which retains parent/child hierarchy
-// Unlike Portal-Vue where portaled content is no longer a descendent of it's
+// Unlike Portal-Vue where portaled content is no longer a descendent of its
 // intended parent components
 //
 // Private components for use by Tooltips, Popovers and Modals
@@ -95,11 +95,13 @@ export const BTransporterSingle = /*#__PURE__*/ Vue.extend({
     this.mountTarget()
   },
   updated() {
-    // Placed in a nextTick to ensure that children have completed
-    // updating before rendering in the target
-    this.$nextTick(() => {
-      this.updateTarget()
-    })
+    // We need to make sure that all children have completed updating
+    // before rendering in the target
+    // `vue-simple-portal` has the this in a `$nextTick()`,
+    // while `portal-vue` doesn't
+    // Just trying to see if the `$nextTick()` delay is required or not
+    // Since all slots in Vue 2.6.x are always functions
+    this.updateTarget()
   },
   beforeDestroy() {
     this.unmountTarget()
