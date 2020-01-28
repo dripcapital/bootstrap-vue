@@ -71,9 +71,10 @@ like the
 ## Containers `<b-container>`
 
 Containers (`<b-container>`) are the most basic layout element in Bootstrap. Choose from a
-responsive, fixed-width container (meaning its max-width changes at each breakpoint) by default, or
-fluid-width (meaning it's 100% wide all the time) by setting 'fluid' prop, or responsive containers
-where the container is fluid up until a specific breakpoint (requires Bootstrap CSS `v4.4+`).
+responsive, fixed-width container (meaning its `max-width` changes at each breakpoint) by default,
+or fluid-width (meaning it's 100% wide all the time) by setting 'fluid' prop, or responsive
+containers where the container is fluid up until a specific breakpoint (requires Bootstrap CSS
+`v4.4+`).
 
 While containers can be nested, most layouts do not require a nested container.
 
@@ -700,5 +701,41 @@ You can control the number of columns at each breakpoint level via the following
 
 <!-- b-grid-row-cols-breakpoints.vue -->
 ```
+
+## Utilities for layout
+
+For faster mobile-friendly and responsive development, Bootstrap includes dozens of
+[utility classes](/docs/reference/utility-classes) for showing, hiding, aligning, and spacing
+content.
+
+### Changing `display`
+
+Use Bootstrap's [display utilities](/docs/reference/utility-classes) for responsively toggling
+common values of the `display` property. Mix it with the grid system, content, or components to show
+or hide them across specific viewports.
+
+### Flexbox options
+
+Bootstrap 4 is built with flexbox, but not every element’s `display` has been changed to
+`display: flex` as this would add many unnecessary overrides and unexpectedly change key browser
+behaviors. Most of the components are built with flexbox enabled.
+
+Should you need to add `display: flex` to an element, do so with `.d-flex` or one of the responsive
+variants (e.g., `.d-sm-flex`). You’ll need this class or `display` value to allow the use of the
+extra [flexbox utilities](/docs/reference/utility-classes) for sizing, alignment, spacing, and more.
+
+### Margin and padding
+
+Use the `margin` and `padding` [spacing utilities](/docs/reference/utility-classes) to control how
+elements and components are spaced and sized. Bootstrap 4 includes a five-level scale for spacing
+utilities, based on a `1rem` value default SASS `$spacer` variable. Choose values for all viewports
+(e.g., `.mr-3` for `margin-right: 1rem`), or pick responsive variants to target specific viewports
+(e.g., `.mr-md-3` for `margin-right: 1rem` starting at the `md` breakpoint).
+
+### Toggle `visibility`
+
+When toggling `display` isn’t needed, you can toggle the `visibility` of an element with the
+[visibility utility classes](/docs/reference/utility-classes). Invisible elements will still affect
+the layout of the page, but are visually hidden from visitors.
 
 <!-- Component reference added automatically from component package.json -->

@@ -3,7 +3,7 @@
 > Lightweight custom tagged input form control, with options for customized interface rendering,
 > duplicate tag detection and optional tag validation.
 
-Tags are arrays of short strings, used in various ways such as assinging categories. Use the default
+Tags are arrays of short strings, used in various ways such as assigning categories. Use the default
 user interface, or create your own custom interface via the use of the default scoped slot.
 
 The tagged input was added in BootstrapVue release `v2.2.0`.
@@ -239,9 +239,9 @@ not validated.
 
 ### Detecting new, invalid, and duplicate tags
 
-The event `new-tags` will be emitted whenever new tags are entered into the new tag input element,
+The event `tag-state` will be emitted whenever new tags are entered into the new tag input element,
 tags that do not pass validation, or duplicate tags are detected. The event handler will receive
-three arrays as it's arguments:
+three arrays as its arguments:
 
 - `validTags` (tags that pass validation)
 - `invalidTags` (tags that do not pass validation)
@@ -252,10 +252,10 @@ considered part of a tag), or when the user attempts to add a tag (i.e. via <kbd
 clicking the **Add** button, or entering a separator). The three arrays will be empty when the user
 clears the new tag input element (or contains just spaces).
 
-If you are providing your own feedback for duplicate and invalid tags (via the use of the `new-tags`
-event) outside of the `<b-form-tags>` component, you can disable the built in duplicate and invalid
-messages by setting the props `duplicate-tag-text` and `invalid-tag-text` (respectively) to either
-an empty string (`''`) or `null`.
+If you are providing your own feedback for duplicate and invalid tags (via the use of the
+`tag-state` event) outside of the `<b-form-tags>` component, you can disable the built in duplicate
+and invalid messages by setting the props `duplicate-tag-text` and `invalid-tag-text` (respectively)
+to either an empty string (`''`) or `null`.
 
 ```html
 <template>
@@ -320,6 +320,7 @@ The default slot scope properties are as follows:
 | ------------------ | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `tags`             | Array                    | Array of current tag strings                                                                                                                           |
 | `inputAttrs`       | Object                   | Object of attributes to apply to the new tag input element via `v-bind="inputAttrs"`. See below for details                                            |
+| `inputType`        | String                   | <span class="badge badge-secondary">v2.3.0+</span> Type of input to render (normalized version of prop `input-type`)                                   |
 | `inputHandlers`    | Object                   | Object of event handlers to apply to the new tag input element via `v-on="inputHandlers"`. See below for details                                       |
 | `removeTag`        | Function                 | Method to remove a tag. Accepts one argument which is the tag value to remove                                                                          |
 | `addTag`           | Function                 | Method to add a new tag. Assumes the tag is the value of the input, but optionally accepts one argument which is the tag value to be added             |
@@ -501,27 +502,27 @@ of tags:
       <!-- prop `add-on-change` is needed to enable adding tags vie the `change` event -->
       <b-form-tags v-model="value" size="lg" add-on-change no-outer-focus class="mb-2">
         <template v-slot="{ tags, inputAttrs, inputHandlers, disabled, removeTag }">
-        <ul v-if="tags.length > 0" class="list-inline d-inline-block mb-2">
-          <li v-for="tag in tags" :key="tag" class="list-inline-item">
-            <b-form-tag
-              @remove="removeTag(tag)"
-              :title="tag"
-              :disabled="disabled"
-              variant="info"
-            >{{ tag }}</b-form-tag>
-          </li>
-        </ul>
-        <b-form-select
-          v-bind="inputAttrs"
-          v-on="inputHandlers"
-          :disabled="disabled || availableOptions.length === 0"
-          :options="availableOptions"
-        >
-          <template v-slot:first>
-            <!-- This is required to prevent bugs with Safari -->
-            <option disabled value="">Choose a tag...</option>
-          </template>
-        </b-form-select>
+          <ul v-if="tags.length > 0" class="list-inline d-inline-block mb-2">
+            <li v-for="tag in tags" :key="tag" class="list-inline-item">
+              <b-form-tag
+                @remove="removeTag(tag)"
+                :title="tag"
+                :disabled="disabled"
+                variant="info"
+              >{{ tag }}</b-form-tag>
+            </li>
+          </ul>
+          <b-form-select
+            v-bind="inputAttrs"
+            v-on="inputHandlers"
+            :disabled="disabled || availableOptions.length === 0"
+            :options="availableOptions"
+          >
+            <template v-slot:first>
+              <!-- This is required to prevent bugs with Safari -->
+              <option disabled value="">Choose a tag...</option>
+            </template>
+          </b-form-select>
         </template>
       </b-form-tags>
     </b-form-group>
@@ -532,13 +533,13 @@ of tags:
   export default {
     data() {
       return {
-        allOptions: ['Apple', 'Orange', 'Banana', 'Lime', 'Peach', 'Chocolate', 'Strawberry'],
+        options: ['Apple', 'Orange', 'Banana', 'Lime', 'Peach', 'Chocolate', 'Strawberry'],
         value: []
       }
     },
     computed: {
       availableOptions() {
-        return this.allOptions.filter(opt => this.value.indexOf(opt) === -1)
+        return this.options.filter(opt => this.value.indexOf(opt) === -1)
       }
     }
   }
@@ -655,6 +656,111 @@ default slot's scope.
 </script>
 
 <!-- form-tags-custom-components-advanced.vue -->
+```
+
+The following is an example of using the `<b-dropdown>` component for choosing or searching from a
+pre-defined set of tags:
+
+```html
+<template>
+  <div>
+    <b-form-group label="Tagged input using dropdown">
+      <b-form-tags v-model="value" no-outer-focus class="mb-2">
+        <template v-slot="{ tags, disabled, addTag, removeTag }">
+          <ul v-if="tags.length > 0" class="list-inline d-inline-block mb-2">
+            <li v-for="tag in tags" :key="tag" class="list-inline-item">
+              <b-form-tag
+                @remove="removeTag(tag)"
+                :title="tag"
+                :disabled="disabled"
+                variant="info"
+              >{{ tag }}</b-form-tag>
+            </li>
+          </ul>
+
+          <b-dropdown size="sm" variant="outline-secondary" block menu-class="w-100">
+            <template v-slot:button-content>
+              <b-icon icon="tag-fill"></b-icon> Choose tags
+            </template>
+            <b-dropdown-form @submit.stop.prevent="() => {}">
+              <b-form-group
+                label-for="tag-search-input"
+                label="Search tags"
+                label-cols-md="auto"
+                class="mb-0"
+                label-size="sm"
+                :description="searchDesc"
+                :disabled="disabled"
+              >
+                <b-form-input
+                  v-model="search"
+                  id="tag-search-input"
+                  type="search"
+                  size="sm"
+                  autocomplete="off"
+                 ></b-form-input>
+              </b-form-group>
+            </b-dropdown-form>
+            <b-dropdown-divider></b-dropdown-divider>
+            <b-dropdown-item-button
+              v-for="option in availableOptions"
+              :key="option"
+              @click="onOptionClick({ option, addTag })"
+            >
+              {{ option }}
+            </b-dropdown-item-button>
+            <b-dropdown-text v-if="availableOptions.length === 0">
+              There are no tags available to select
+            </b-dropdown-text>
+          </b-dropdown>
+        </template>
+      </b-form-tags>
+    </b-form-group>
+  </div>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        options: ['Apple', 'Orange', 'Banana', 'Lime', 'Peach', 'Chocolate', 'Strawberry'],
+        search: '',
+        value: []
+      }
+    },
+    computed: {
+      criteria() {
+        // Compute the search criteria
+        return this.search.trim().toLowerCase()
+      },
+      availableOptions() {
+        const criteria = this.criteria
+        // Filter out already selected options
+        const options = this.options.filter(opt => this.value.indexOf(opt) === -1)
+        if (criteria) {
+          // Show only options that match criteria
+          return options.filter(opt => opt.toLowerCase().indexOf(criteria) > -1);
+        }
+        // Show all options available
+        return options
+      },
+      searchDesc() {
+        if (this.criteria && this.availableOptions.length === 0) {
+          return 'There are no tags matching your search criteria'
+        }
+        return ''
+      }
+    },
+    methods: {
+      onOptionClick({ option, addTag }) {
+        addTag(option)
+        this.search = ''
+      }
+    }
+  }
+</script>
+
+<!-- b-form-tags-dropdown-example.vue -->
 ```
 
 ### Creating wrapper components

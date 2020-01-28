@@ -75,7 +75,7 @@ rendered and a console warning will be issued.
 **Caveats with input types:**
 
 - Not all browsers support all input types, nor do some types render in the same format across
-  browser types/versions.
+  browser types/versions. Refer to [caniuse.com](https://caniuse.com/#search=input).
 - Browsers that do not support a particular type will fall back to a `text` input type (even though
   the rendered `type` attribute markup shows the requested type).
 - No testing is performed to see if the requested input type is supported by the browser.
@@ -84,7 +84,7 @@ rendered and a console warning will be issued.
   separate inputs.
 - `date` and `time` inputs are native browser types, and are not a custom date/time picker.
 - For date and time style inputs, where supported, the displayed value in the GUI may be different
-  than what is returned by it's value (i.e. ordering of year-month-date).
+  than what is returned by its value (i.e. ordering of year-month-date).
 - Regardless of input type, the value is **always** returned as a string representation.
 - `v-model.lazy` is not supported by `<b-form-input>` (nor any custom Vue component). Use the `lazy`
   prop instead.

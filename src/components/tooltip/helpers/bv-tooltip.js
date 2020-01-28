@@ -88,6 +88,8 @@ const templateData = {
   // Arrow of Tooltip/popover will try and stay away from
   // the edge of tooltip/popover edge by this many pixels
   arrowPadding: 6,
+  // Interactive state (Boolean)
+  interactive: true,
   // Disabled state (Boolean)
   disabled: false,
   // ID to use for tooltip/popover
@@ -162,7 +164,8 @@ export const BVTooltip = /*#__PURE__*/ Vue.extend({
         content: this.content,
         variant: this.variant,
         customClass: this.customClass,
-        noFade: this.noFade
+        noFade: this.noFade,
+        interactive: this.interactive
       }
     }
   },
@@ -346,7 +349,7 @@ export const BVTooltip = /*#__PURE__*/ Vue.extend({
       // So that the template updates accordingly
       const $tip = this.$_tip
       if ($tip) {
-        const props = ['title', 'content', 'variant', 'customClass', 'noFade']
+        const props = ['title', 'content', 'variant', 'customClass', 'noFade', 'interactive']
         // Only update the values if they have changed
         props.forEach(prop => {
           if ($tip[prop] !== this[prop]) {
@@ -731,7 +734,7 @@ export const BVTooltip = /*#__PURE__*/ Vue.extend({
       if (!target || !this.$root || !this.isDropdown) {
         return
       }
-      // We can listen for dropdown shown events on it's instance
+      // We can listen for dropdown shown events on its instance
       // TODO:
       //   We could grab the ID from the dropdown, and listen for
       //   $root events for that particular dropdown id
