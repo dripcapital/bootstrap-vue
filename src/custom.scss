@@ -1,8 +1,7 @@
-
-@import "../../bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/functions";
 $theme-colors: (
   "primary": #26ac75,
-  "secondary": #3b356a,
+  "secondary": #3b356a
 );
-@import "../../bootstrap/scss/variables";
-@import "../../bootstrap/scss/bootstrap.scss"
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
