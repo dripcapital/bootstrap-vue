@@ -62,11 +62,11 @@
 
           <b-col tag="section" cols="12" md="8" order-md="1">
             <h1 class="mb-3 text-center text-md-left bd-text-purple-bright">
-              Bootstrap<span class="text-vue-green">Vue</span>
+              <span class="text-vue-green">Drip's </span>Bootstrap<span class="text-vue-green">Vue</span>
             </h1>
 
             <p class="lead">
-              With <span class="font-weight-bolder">BootstrapVue</span> you can build responsive,
+              With <span class="font-weight-bolder">DRIP's BootstrapVue</span> you can build responsive,
               mobile-first, and ARIA accessible projects on the web using
               <span class="text-muted font-weight-bolder">Vue.js</span> and the world's most popular
               front-end CSS library &mdash;
