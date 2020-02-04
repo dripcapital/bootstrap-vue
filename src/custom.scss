@@ -1,4 +1,4 @@
-@import "../node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/functions";
 $theme-colors: (
   "primary": #26ac75,
   "secondary": #3b356a,
@@ -7,5 +7,5 @@ $theme-colors: (
   "warning": #ffc400,
   "info": #00aaff
 );
-@import "../node_modules/bootstrap/scss/variables";
-@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/bootstrap.scss";
