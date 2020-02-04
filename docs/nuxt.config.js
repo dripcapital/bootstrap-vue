@@ -192,7 +192,7 @@ module.exports = {
       name: 'BootstrapVue',
       short_name: 'BootstrapVue',
       description: 'Quickly integrate Bootstrap v4 components with Vue.js',
-      theme_color: '#563d7c'
+      theme_color: '#322d59'
     },
     meta: {
       // `ogHost` is required for `og:image` to be populated
