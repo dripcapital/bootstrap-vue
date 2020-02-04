@@ -1,4 +1,20 @@
 /*! BootstrapVue Docs Additional Styles and overrides */
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600");
+@import url("https://fonts.googleapis.com/css?family=Lato");
+$montserrat: "Montserrat", sans-serif;
+$lato: "Lato", sans-serif;
+html,
+body {
+  font-family: $lato;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $montserrat;
+}
 
 .nuxt-progress {
   position: fixed;
