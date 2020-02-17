@@ -7,6 +7,8 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600");
+@import url("https://fonts.googleapis.com/css?family=Lato");
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -10136,6 +10138,68 @@ input[type="color"].form-control:disabled {
   height: calc(1.5em + 0.5rem + 2px);
   padding: 0 0.5rem;
   border-radius: 0.2rem;
+}
+
+label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.13px;
+  color: #707070;
+  text-transform: uppercase;
+}
+
+.form-control {
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.125rem 0.25rem;
+  color: #2b2b2b;
+  font-weight: bold;
+  background-color: rgba(224, 231, 255, 0.2);
+  border: 1px solid #e0e7ff;
+  min-height: 2.67rem;
+  box-shadow: none;
+  border-radius: 5px;
+  text-indent: 0.75rem;
+  font-family: "Lato", sans-serif;
+}
+
+.form-control::-webkit-input-placeholder {
+  font-weight: normal;
+}
+
+.form-control::-moz-placeholder {
+  font-weight: normal;
+}
+
+.form-control:-ms-input-placeholder {
+  font-weight: normal;
+}
+
+.form-control::-ms-input-placeholder {
+  font-weight: normal;
+}
+
+.form-control::placeholder {
+  font-weight: normal;
+}
+
+.form-control:disabled {
+  border-color: #f6f7f8;
+  background-color: #f6f7f8;
+}
+
+.form-control.is-valid {
+  background-color: rgba(40, 167, 69, 0.1);
+}
+
+.form-control:focus {
+  box-shadow: none !important;
+  border: 1px solid #e0e7ff;
+  background-color: #fff;
+}
+
+.form-control.is-invalid {
+  background-color: rgba(220, 53, 69, 0.1);
 }
 
 .was-validated .input-group .custom-range:valid, .input-group .custom-range.is-valid {
