@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-git config --global user.email vuebootstrap@gmail.com
-git config --global user.name BootstrapVue
-
 # Generate the docs
 yarn docs-gen
 
