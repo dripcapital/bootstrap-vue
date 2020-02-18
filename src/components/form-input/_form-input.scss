@@ -231,7 +231,6 @@ label {
   font-weight: bold;
   background-color: rgba($dc-input-border-color, 0.2);
   border: 1px solid $dc-input-border-color;
-  min-height: 2.67rem;
   box-shadow: none;
   border-radius: 5px;
   text-indent: 0.75rem;
@@ -254,6 +253,14 @@ label {
   &.is-invalid {
     background-color: rgba($form-feedback-invalid-color, 0.1);
   }
+}
+.form-control-sm {
+  height: $input-height-sm;
+  padding: ($input-padding-y-sm / 2) ($input-padding-x-sm / 2);
+}
+.form-control-lg {
+  height: $input-height-lg;
+  padding: ($input-padding-y-sm / 2) ($input-padding-x-sm / 2);
 }
 @include bv-custom-range-validation-state("valid", $form-feedback-valid-color);
 @include bv-custom-range-validation-state("invalid", $form-feedback-invalid-color);
