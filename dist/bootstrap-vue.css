@@ -11855,15 +11855,6 @@ label {
   background-color: #343a40;
 }
 
-html,
-body {
-  font-family: "Lato", sans-serif;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Montserrat", sans-serif;
-}
-
 .b-icon.bi {
   display: inline-block;
   overflow: visible;
@@ -11877,5 +11868,14 @@ h1, h2, h3, h4, h5, h6 {
 .input-group-text .b-icon.bi {
   font-size: 125%;
   vertical-align: text-bottom;
+}
+
+html,
+body {
+  font-family: "Lato", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Montserrat", sans-serif;
 }
 /*# sourceMappingURL=bootstrap-vue.css.map */
