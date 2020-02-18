@@ -10156,7 +10156,6 @@ label {
   font-weight: bold;
   background-color: rgba(224, 231, 255, 0.2);
   border: 1px solid #e0e7ff;
-  min-height: 2.67rem;
   box-shadow: none;
   border-radius: 5px;
   text-indent: 0.75rem;
@@ -10200,6 +10199,16 @@ label {
 
 .form-control.is-invalid {
   background-color: rgba(220, 53, 69, 0.1);
+}
+
+.form-control-sm {
+  height: calc(1.5em + 0.5rem + 2px);
+  padding: 0.125rem 0.25rem;
+}
+
+.form-control-lg {
+  height: calc(1.5em + 1rem + 2px);
+  padding: 0.125rem 0.25rem;
 }
 
 .was-validated .input-group .custom-range:valid, .input-group .custom-range.is-valid {
