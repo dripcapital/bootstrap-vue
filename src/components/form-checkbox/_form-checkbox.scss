@@ -1,5 +1,5 @@
 // Adds control sizing to bootstrap custom checkbox/switch inputs
-
+@import "../../common";
 .custom-checkbox.b-custom-control-lg,
 .input-group-lg .custom-checkbox {
   font-size: $font-size-lg;
@@ -82,6 +82,12 @@
     &::after {
       transform: translateX($b-custom-switch-width-lg - $b-custom-control-indicator-size-lg);
     }
+  }
+}
+.custom-control-input:checked ~ .custom-control-label {
+  &::before {
+    border-color: $primary;
+    background-color: $primary;
   }
 }
 
