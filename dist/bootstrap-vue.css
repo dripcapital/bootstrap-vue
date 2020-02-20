@@ -9,8 +9,6 @@
  */
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,600");
 @import url("https://fonts.googleapis.com/css?family=Lato");
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600");
-@import url("https://fonts.googleapis.com/css?family=Lato");
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -9912,8 +9910,8 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .custom-control-input:checked ~ .custom-control-label::before {
-  border-color: #007bff;
-  background-color: #007bff;
+  border-color: #26ac75;
+  background-color: #26ac75;
 }
 
 .custom-switch.b-custom-control-sm,
