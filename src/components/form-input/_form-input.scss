@@ -1,6 +1,7 @@
 // Temporary fix for cssnano bug: https://github.com/cssnano/cssnano/issues/712
 // By moving center to last value in `background-position` property
 // See: https://github.com/bootstrap-vue/bootstrap-vue/issues/2599
+@import "../../common";
 @if $enable-validation-icons {
   .form-control {
     .was-validated &:invalid,
