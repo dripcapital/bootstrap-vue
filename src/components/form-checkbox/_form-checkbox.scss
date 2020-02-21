@@ -128,7 +128,41 @@
     }
   }
 }
-.custom-checkbox label {
-  text-transform: initial;
-  font-weight: normal;
+.custom-checkbox {
+  .custom-control-label {
+    text-transform: initial;
+    font-weight: normal;
+
+    &::before {
+      border-radius: 0.1rem !important;
+      border-width: 2px;
+    }
+  }
+  .custom-control-input {
+    &:not(.is-invalid) {
+      &:focus {
+        ~ .custom-control-label {
+          &::before {
+            box-shadow: 0 0 0 0.15rem rgba($primary, 0.2);
+          }
+        }
+        &:not(:checked) {
+          ~ .custom-control-label {
+            &::before {
+              border-color: rgba($primary, 0.5);
+            }
+          }
+        }
+      }
+      &:not(:disabled):active {
+        ~ .custom-control-label {
+          &::before {
+            color: #fff;
+            background-color: rgba($primary, 0.5);
+            border-color: rgba($primary, 0.5);
+          }
+        }
+      }
+    }
+  }
 }
