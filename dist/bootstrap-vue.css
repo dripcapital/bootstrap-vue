@@ -6836,22 +6836,6 @@ button.bg-dark:focus {
   padding-top: 100%;
 }
 
-.embed-responsive-21by9::before {
-  padding-top: 42.857143%;
-}
-
-.embed-responsive-16by9::before {
-  padding-top: 56.25%;
-}
-
-.embed-responsive-4by3::before {
-  padding-top: 75%;
-}
-
-.embed-responsive-1by1::before {
-  padding-top: 100%;
-}
-
 .flex-row {
   flex-direction: row !important;
 }
@@ -9925,6 +9909,11 @@ a.text-dark:hover, a.text-dark:focus {
   transform: translateX(0.9375rem);
 }
 
+.custom-control-input:checked ~ .custom-control-label::before {
+  border-color: #26ac75;
+  background-color: #26ac75;
+}
+
 .custom-switch.b-custom-control-sm,
 .input-group-sm .custom-switch {
   padding-left: 1.96875rem;
@@ -10142,7 +10131,6 @@ input[type="color"].form-control:disabled {
 
 label {
   font-family: "Montserrat", sans-serif;
-  font-size: 12px;
   font-weight: 600;
   letter-spacing: 1.13px;
   color: #707070;
