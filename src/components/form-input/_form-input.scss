@@ -1,6 +1,7 @@
 // Temporary fix for cssnano bug: https://github.com/cssnano/cssnano/issues/712
 // By moving center to last value in `background-position` property
 // See: https://github.com/bootstrap-vue/bootstrap-vue/issues/2599
+@import "../../common";
 @if $enable-validation-icons {
   .form-control {
     .was-validated &:invalid,
@@ -213,5 +214,53 @@ input[type="color"].form-control:disabled {
   }
 }
 
+// Bootstrap Vue does not containe text format
+label {
+  font-family: $montserrat;
+  //font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.13px;
+  color: #707070;
+  text-transform: uppercase;
+}
+.form-control {
+  height: $input-height;
+  // We use the smaller padding to make the color block larger
+  padding: ($input-padding-y-sm / 2) ($input-padding-x-sm / 2);
+  color: $dc-input-color;
+  font-weight: bold;
+  background-color: rgba($dc-input-border-color, 0.2);
+  border: 1px solid $dc-input-border-color;
+  box-shadow: none;
+  border-radius: 5px;
+  text-indent: 0.75rem;
+  font-family: $lato;
+  &::placeholder {
+    font-weight: normal;
+  }
+  &:disabled {
+    border-color: $dc-input-disabled-color;
+    background-color: $dc-input-disabled-color;
+  }
+  &.is-valid {
+    background-color: rgba($form-feedback-valid-color, 0.1);
+  }
+  &:focus {
+    box-shadow: none !important;
+    border: 1px solid #e0e7ff;
+    background-color: #fff;
+  }
+  &.is-invalid {
+    background-color: rgba($form-feedback-invalid-color, 0.1);
+  }
+}
+.form-control-sm {
+  height: $input-height-sm;
+  padding: ($input-padding-y-sm / 2) ($input-padding-x-sm / 2);
+}
+.form-control-lg {
+  height: $input-height-lg;
+  padding: ($input-padding-y-sm / 2) ($input-padding-x-sm / 2);
+}
 @include bv-custom-range-validation-state("valid", $form-feedback-valid-color);
 @include bv-custom-range-validation-state("invalid", $form-feedback-invalid-color);

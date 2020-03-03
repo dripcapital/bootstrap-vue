@@ -6,6 +6,7 @@
 @import "node_modules/bootstrap/scss/functions";
 @import "node_modules/bootstrap/scss/variables";
 @import "node_modules/bootstrap/scss/mixins";
-
+//
 // Import BootstrapVue custom SCSS
 @import "../src/index.scss";
+@import "../src/font_family.scss";
