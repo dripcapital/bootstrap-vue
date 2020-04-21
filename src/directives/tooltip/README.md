@@ -3,6 +3,8 @@
 > Documentation and examples for adding custom BootstrapVue tooltips, using Bootstrap v4 CSS for
 > styling and animations. Tooltips can be triggered by hovering, focusing, or clicking an element
 
+## Overview
+
 Use the `v-b-tooltip` directive on any element or component where you would like a tooltip to
 appear.
 
@@ -13,8 +15,6 @@ appear.
 
 <!-- b-tooltip.vue -->
 ```
-
-## Overview
 
 Things to know when using the tooltip directive:
 
@@ -36,52 +36,52 @@ Twelve options are available for positioning: `top`, `topleft`, `topright`, `rig
 The default position is `top`. Positioning is relative to the trigger element.
 
 <div class="bd-example bd-example-tooltip-static">
-  <div class="tooltip bs-tooltip-top bs-tooltip-top-docs" role="tooltip">
+  <div class="tooltip b-tooltip bs-tooltip-top bs-tooltip-top-docs" role="tooltip">
     <div class="arrow" style="left: calc(50% - 6px)"></div>
     <div class="tooltip-inner">Tooltip on the top</div>
   </div>
-  <div class="tooltip bs-tooltip-top bs-tooltip-top-docs" role="tooltip">
-    <div class="arrow" style="right: 6px"></div>
+  <div class="tooltip b-tooltip bs-tooltip-top bs-tooltip-top-docs" role="tooltip">
+    <div class="arrow" style="right: 0px"></div>
     <div class="tooltip-inner">Tooltip on the topleft</div>
   </div>
-  <div class="tooltip bs-tooltip-top bs-tooltip-top-docs" role="tooltip">
-    <div class="arrow" style="left: 6px"></div>
+  <div class="tooltip b-tooltip bs-tooltip-top bs-tooltip-top-docs" role="tooltip">
+    <div class="arrow" style="left: 0px"></div>
     <div class="tooltip-inner">Tooltip on the topright</div>
   </div>
-  <div class="tooltip bs-tooltip-right bs-tooltip-right-docs" role="tooltip">
-    <div class="arrow" style="top: calc(50% - 5px)"></div>
+  <div class="tooltip b-tooltip bs-tooltip-right bs-tooltip-right-docs" role="tooltip">
+    <div class="arrow" style="top: 5px"></div>
     <div class="tooltip-inner">Tooltip on the right</div>
   </div>
-  <div class="tooltip bs-tooltip-right bs-tooltip-right-docs" role="tooltip">
-    <div class="arrow" style="bottom: 4px"></div>
+  <div class="tooltip b-tooltip bs-tooltip-right bs-tooltip-right-docs" role="tooltip">
+    <div class="arrow" style="bottom: 0px"></div>
     <div class="tooltip-inner">Tooltip on the righttop</div>
   </div>
-  <div class="tooltip bs-tooltip-right bs-tooltip-right-docs" role="tooltip">
-    <div class="arrow" style="top: 4px"></div>
+  <div class="tooltip b-tooltip bs-tooltip-right bs-tooltip-right-docs" role="tooltip">
+    <div class="arrow" style="top: 0px"></div>
     <div class="tooltip-inner">Tooltip on the rightbottom</div>
   </div>
-  <div class="tooltip bs-tooltip-bottom bs-tooltip-bottom-docs" role="tooltip">
+  <div class="tooltip b-tooltip bs-tooltip-bottom bs-tooltip-bottom-docs" role="tooltip">
     <div class="arrow" style="left: calc(50% - 6px)"></div>
     <div class="tooltip-inner">Tooltip on the bottom</div>
   </div>
-  <div class="tooltip bs-tooltip-bottom bs-tooltip-bottom-docs" role="tooltip">
-    <div class="arrow" style="right: 6px"></div>
+  <div class="tooltip b-tooltip bs-tooltip-bottom bs-tooltip-bottom-docs" role="tooltip">
+    <div class="arrow" style="right: 0px"></div>
     <div class="tooltip-inner">Tooltip on the bottomleft</div>
   </div>
-  <div class="tooltip bs-tooltip-bottom bs-tooltip-bottom-docs" role="tooltip">
-    <div class="arrow" style="left: 6px"></div>
+  <div class="tooltip b-tooltip bs-tooltip-bottom bs-tooltip-bottom-docs" role="tooltip">
+    <div class="arrow" style="left: 0px"></div>
     <div class="tooltip-inner">Tooltip on the bottomright</div>
   </div>
-  <div class="tooltip bs-tooltip-left bs-tooltip-left-docs" role="tooltip">
-    <div class="arrow" style="top: calc(50% - 5px)"></div>
+  <div class="tooltip b-tooltip bs-tooltip-left bs-tooltip-left-docs" role="tooltip">
+    <div class="arrow" style="top: 5px"></div>
     <div class="tooltip-inner">Tooltip on the left</div>
   </div>
-  <div class="tooltip bs-tooltip-left bs-tooltip-left-docs" role="tooltip">
-    <div class="arrow" style="bottom: 4px"></div>
+  <div class="tooltip b-tooltip bs-tooltip-left bs-tooltip-left-docs" role="tooltip">
+    <div class="arrow" style="bottom: 0px"></div>
     <div class="tooltip-inner">Tooltip on the lefttop</div>
   </div>
-  <div class="tooltip bs-tooltip-left bs-tooltip-left-docs" role="tooltip">
-    <div class="arrow" style="top: 4px"></div>
+  <div class="tooltip b-tooltip bs-tooltip-left bs-tooltip-left-docs" role="tooltip">
+    <div class="arrow" style="top: 0px"></div>
     <div class="tooltip-inner">Tooltip on the leftbottom</div>
   </div>
 </div>
@@ -103,6 +103,30 @@ The default position is `top`. Positioning is relative to the trigger element.
       </b-col>
       <b-col md="3" class="py-3">
         <b-button v-b-tooltip.hover.bottom="'Tooltip!'" variant="primary">Bottom</b-button>
+      </b-col>
+      <b-col md="3" class="py-3">
+        <b-button v-b-tooltip.hover.topright="'Tooltip!'" variant="primary">Top right</b-button>
+      </b-col>
+      <b-col md="3" class="py-3">
+        <b-button v-b-tooltip.hover.topleft="'Tooltip!'" variant="primary">Top left</b-button>
+      </b-col>
+      <b-col md="3" class="py-3">
+        <b-button v-b-tooltip.hover.bottomright="'Tooltip!'" variant="primary">Bottom right</b-button>
+      </b-col>
+      <b-col md="3" class="py-3">
+        <b-button v-b-tooltip.hover.bottomleft="'Tooltip!'" variant="primary">Bottom left</b-button>
+      </b-col>
+      <b-col md="3" class="py-3">
+        <b-button v-b-tooltip.hover.lefttop="'Tooltip!'" variant="primary">Left top</b-button>
+      </b-col>
+      <b-col md="3" class="py-3">
+        <b-button v-b-tooltip.hover.leftbottom="'Tooltip!'" variant="primary">Left bottom</b-button>
+      </b-col>
+      <b-col md="3" class="py-3">
+        <b-button v-b-tooltip.hover.righttop="'Tooltip!'" variant="primary">Right top</b-button>
+      </b-col>
+      <b-col md="3" class="py-3">
+        <b-button v-b-tooltip.hover.rightbottom="'Tooltip!'" variant="primary">Right bottom</b-button>
       </b-col>
     </b-row>
   </b-container>
@@ -170,6 +194,25 @@ override the `pointer-events` on the disabled element.
 </div>
 
 <!-- disabled-trigger-element.vue -->
+```
+
+### Caveats with `focus` trigger on `<button>` elements
+
+For proper cross-browser and cross-platform behavior when using only the `focus` trigger, you must
+use an element that renders the `<a>` tag, not the `<button>` tag, and you also must include a
+`tabindex="0"` attribute.
+
+The following will generate an `<a>` that looks like a button:
+
+```html
+<b-button
+  href="#"
+  tabindex="0"
+  v-b-tooltip.focus
+  title="Tooltip title"
+>
+  Link button with tooltip directive
+</b-button>
 ```
 
 ### Dismiss on next click

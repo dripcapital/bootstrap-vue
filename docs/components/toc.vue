@@ -49,7 +49,7 @@
 import { offsetTop, scrollTo } from '~/utils'
 
 export default {
-  name: 'BDVToc',
+  name: 'BVToc',
   data() {
     return {
       toc: {},

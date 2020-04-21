@@ -30,9 +30,6 @@ export { icons }
 const referenceContext = require.context('~/markdown/reference', true, /meta.json/)
 export const reference = importAll(referenceContext)
 
-const miscContext = require.context('~/markdown/misc', true, /meta.json/)
-export const misc = importAll(miscContext)
-
 export const nav = [
   {
     title: 'Getting started',
@@ -43,40 +40,34 @@ export const nav = [
     title: 'Components',
     base: 'components/',
     pages: components,
-    description: 'BootstrapVue components and component group plugins'
+    description: 'BootstrapVue components and component group plugins.'
   },
   {
     title: 'Directives',
     base: 'directives/',
     pages: directives,
-    description: 'BootstrapVue directives and directive group plugins'
+    description: 'BootstrapVue directives and directive group plugins.'
   },
   {
     title: 'Icons',
     base: 'icons',
-    new: true,
     version: '2.3.0',
-    description: 'BootstrapVue icons'
+    description: 'BootstrapVue icons.'
   },
   {
     title: 'Reference',
     base: 'reference/',
     pages: reference,
-    description: 'BootstrapVue and Bootstrap reference documentation'
-  },
-  {
-    title: 'Misc',
-    base: 'misc/',
-    pages: misc,
-    description: 'BootstrapVue changelog, settings, and miscellaneous additional resources'
+    description: 'BootstrapVue and Bootstrap reference, and additional resources documentation.'
   }
 ]
 
 export const bootstrapVersion = parseVersion(dependencies.bootstrap)
-export const nuxtVersion = parseVersion(devDependencies.nuxt)
-export const portalVueVersion = parseVersion(dependencies['portal-vue'])
-export const vueVersion = parseVersion(devDependencies.vue)
 export const bootstrapIconsVersion = parseFullVersion(devDependencies['bootstrap-icons'])
+export const popperVersion = parseVersion(dependencies['popper.js'])
+export const portalVueVersion = parseVersion(dependencies['portal-vue'])
+export const nuxtVersion = parseVersion(devDependencies.nuxt)
+export const vueVersion = parseVersion(devDependencies.vue)
 export const defaultConfig = DEFAULT_CONFIG
 export const bvDescription = description
 

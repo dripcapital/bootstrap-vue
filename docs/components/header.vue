@@ -29,42 +29,44 @@
     </b-navbar-brand>
 
     <div class="navbar-nav-scroll">
-      <b-navbar-nav is-nav class="bd-navbar-nav flex-row">
+      <b-navbar-nav class="bd-navbar-nav flex-row">
         <b-nav-item to="/docs" active-class="active" exact>Docs</b-nav-item>
         <b-nav-item to="/docs/components" active-class="active">Components</b-nav-item>
         <b-nav-item to="/docs/directives" active-class="active">Directives</b-nav-item>
         <b-nav-item to="/docs/icons" active-class="active">Icons</b-nav-item>
         <b-nav-item to="/docs/reference" active-class="active">Reference</b-nav-item>
-        <b-nav-item to="/docs/misc" active-class="active">Misc</b-nav-item>
+        <!-- TODO: Uncomment when we have themes
+        <b-nav-item to="/themes" active-class="active">Themes</b-nav-item>
+        -->
         <b-nav-item to="/play" active-class="active">Play</b-nav-item>
       </b-navbar-nav>
     </div>
 
     <b-navbar-nav class="flex-row ml-md-auto d-none d-md-flex">
       <b-nav-item-dropdown
-        :text="isDev ? (isLocal ? 'Local Copy' : (isPR ? `Pull #${isPR}` : 'Development')) : `v${version}`"
+        :text="dropdownText"
         toggle-class="mr-md-2"
         right
       >
-        <template v-if="isDev || isLocal || isPR">
-          <b-dropdown-item v-if="isLocal" active href="/">
+        <template v-if="isPR || isDev || isLocal">
+          <b-dropdown-item v-if="isPR" active href="/">
+            Pull Request {{ prId ? '#' + prId : '- ' + branchName }}
+          </b-dropdown-item>
+          <b-dropdown-item v-else-if="isLocal" active href="/">
             Local copy
           </b-dropdown-item>
-          <b-dropdown-item v-else-if="isPR" active href="/">
-            Pull Request #{{ isPR }}
-          </b-dropdown-item>
-          <b-dropdown-item :active="!isLocal && !isPR" href="https://bootstrap-vue.netlify.com" rel="nofollow">
+          <b-dropdown-item :active="isDev" :href="devURL" rel="nofollow">
             Development
           </b-dropdown-item>
-          <b-dropdown-item href="https://bootstrap-vue.js.org">
+          <b-dropdown-item :href="prodURL">
             Latest (v{{ version }})
           </b-dropdown-item>
         </template>
         <template v-else>
-          <b-dropdown-item active href="https://bootstrap-vue.js.org">
+          <b-dropdown-item active :href="prodURL">
             Latest (v{{ version }})
           </b-dropdown-item>
-          <b-dropdown-item href="https://bootstrap-vue.netlify.com" rel="nofollow">
+          <b-dropdown-item :href="devURL" rel="nofollow">
             Development
           </b-dropdown-item>
         </template>
@@ -176,21 +178,62 @@
 import { version } from '~/content'
 
 export default {
-  name: 'BVDHeader',
+  name: 'BVHeader',
   data() {
     return {
       version,
-      isDev: false,
-      isLocal: false,
-      isPR: false
+      isLocal: false
+    }
+  },
+  computed: {
+    prodURL() {
+      return 'https://bootstrap-vue.org/'
+    },
+    devURL() {
+      if (this.isNetlify) {
+        return 'https://bootstrap-vue.netlify.app/'
+      }
+      return 'https://dev.bootstrap-vue.org/'
+    },
+    isNetlify() {
+      return Boolean(process.env.NETLIFY)
+    },
+    isZeitNow() {
+      return Boolean(process.env.ZEIT_NOW)
+    },
+    branchName() {
+      return this.isZeitNow ? process.env.ZEIT_BRANCH || '' : ''
+    },
+    isDev() {
+      // In our case, `production` is the dev branch preview (Netlify)
+      return (
+        (this.isNetlify && process.env.NETLIFY_CONTEXT === 'production') ||
+        (this.isZeitNow && this.branchName === 'dev')
+      )
+    },
+    isPR() {
+      return (
+        (this.isNetlify && process.env.PULL_REQUEST && process.env.REVIEW_ID) ||
+        (this.isZeitNow && !this.isDev && this.branchName !== 'master')
+      )
+    },
+    prId() {
+      return this.isPR ? process.env.REVIEW_ID : ''
+    },
+    dropdownText() {
+      if (this.isPR) {
+        return this.prId ? `Pull #${this.prId}` : 'Pull Request'
+      } else if (this.isLocal) {
+        return 'Local Copy'
+      } else if (this.isDev) {
+        return 'Development'
+      }
+      return `v${version}`
     }
   },
   mounted() {
     const host = window.location.host || ''
     this.isLocal = host === 'localhost' || host === '127.0.0.1'
-    this.isDev = host !== 'bootstrap-vue.js.org'
-    const matches = host.match(/^deploy-preview-(\d+)--bootstrap-vue\.netlify\.com$/i)
-    this.isPR = matches && matches[1]
   }
 }
 </script>
