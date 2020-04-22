@@ -3,7 +3,6 @@
 .vscode/
 coverage/
 docs-dist/
-dist/
 esm/
 node_modules/
 *.iml
