@@ -1,5 +1,5 @@
 /*!
- * BootstrapVueIcons 2.12.0
+ * BootstrapVueIcons 2.13.0
  *
  * @link https://bootstrap-vue.org
  * @source https://github.com/bootstrap-vue/bootstrap-vue
