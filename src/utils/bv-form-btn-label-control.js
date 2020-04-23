@@ -173,9 +173,11 @@ export const BVFormBtnLabelControl = /*#__PURE__*/ Vue.extend({
         ref: 'toggle',
         staticClass: 'btn',
         class: {
-          [`btn-${buttonVariant}`]: buttonOnly,
+          [`btn-${buttonVariant}`]: state === null,
           [`btn-${size}`]: !!size,
           'h-auto': !buttonOnly,
+          [`btn-danger`]: state === false,
+          [`btn-success`]: state === true,
           // `dropdown-toggle` is needed for proper
           // corner rounding in button only mode
           'dropdown-toggle': buttonOnly,

@@ -67,7 +67,12 @@
   &.is-invalid > .btn {
     color: $form-feedback-invalid-color;
   }
-
+  &.b-form-datepicker > .btn {
+    color: $white;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    margin-right: 0.25rem;
+  }
   > .dropdown-menu {
     padding: 0.5rem;
   }
