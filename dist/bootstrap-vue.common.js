@@ -1,5 +1,5 @@
 /*!
- * BootstrapVue 2.13.1
+ * BootstrapVue 2.13.2
  *
  * @link https://bootstrap-vue.org
  * @source https://github.com/bootstrap-vue/bootstrap-vue
@@ -11298,7 +11298,7 @@ var BVFormBtnLabelControl = /*#__PURE__*/Vue.extend({
     var $button = h('button', {
       ref: 'toggle',
       staticClass: 'btn',
-      class: (_class = {}, _defineProperty(_class, "btn-".concat(buttonVariant), buttonOnly), _defineProperty(_class, "btn-".concat(size), !!size), _defineProperty(_class, 'h-auto', !buttonOnly), _defineProperty(_class, 'dropdown-toggle', buttonOnly), _defineProperty(_class, 'dropdown-toggle-no-caret', buttonOnly), _class),
+      class: (_class = {}, _defineProperty(_class, "btn-".concat(buttonVariant), state === null), _defineProperty(_class, "btn-".concat(size), !!size), _defineProperty(_class, 'h-auto', !buttonOnly), _defineProperty(_class, "btn-danger", state === false), _defineProperty(_class, "btn-success", state === true), _defineProperty(_class, 'dropdown-toggle', buttonOnly), _defineProperty(_class, 'dropdown-toggle-no-caret', buttonOnly), _class),
       attrs: {
         id: idButton,
         type: 'button',
