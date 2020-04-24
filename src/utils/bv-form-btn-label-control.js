@@ -315,7 +315,7 @@ export const BVFormBtnLabelControl = /*#__PURE__*/ Vue.extend({
           'aria-required': required ? 'true' : null
         }
       },
-      [$button, $hidden, $menu, $label]
+      [$label, $hidden, $button, $menu]
     )
   }
 })

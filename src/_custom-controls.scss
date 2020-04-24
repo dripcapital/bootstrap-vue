@@ -69,14 +69,12 @@
   }
   &.b-form-datepicker > .btn {
     color: $white;
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
-    margin-right: 0.25rem;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
   }
   > .dropdown-menu {
     padding: 0.5rem;
   }
-
   > label {
     outline: 0;
     padding-left: 0.25rem;
@@ -98,7 +96,9 @@
       min-height: calc(#{$input-height-lg} - #{$input-height-border});
     }
   }
-
+  &.b-form-datepicker > label {
+    padding-left: 0.75rem;
+  }
   // Disabled and read-only styling
   &[aria-disabled="true"],
   &[aria-readonly="true"] {
