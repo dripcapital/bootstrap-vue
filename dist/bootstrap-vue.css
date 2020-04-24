@@ -9825,9 +9825,8 @@ a.text-dark:hover, a.text-dark:focus {
 
 .b-form-btn-label-control.b-form-datepicker > .btn {
   color: #fff;
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
-  margin-right: 0.25rem;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
 }
 
 .b-form-btn-label-control > .dropdown-menu {
@@ -9849,6 +9848,10 @@ a.text-dark:hover, a.text-dark:focus {
 
 .b-form-btn-label-control > label.form-control-lg {
   min-height: calc(calc(1.5em + 1rem + 2px) - 2px);
+}
+
+.b-form-btn-label-control.b-form-datepicker > label {
+  padding-left: 0.75rem;
 }
 
 .b-form-btn-label-control[aria-disabled="true"], .b-form-btn-label-control[aria-readonly="true"] {

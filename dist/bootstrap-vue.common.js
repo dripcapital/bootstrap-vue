@@ -1,5 +1,5 @@
 /*!
- * BootstrapVue 2.13.2
+ * BootstrapVue 2.13.3
  *
  * @link https://bootstrap-vue.org
  * @source https://github.com/bootstrap-vue/bootstrap-vue
@@ -11410,7 +11410,7 @@ var BVFormBtnLabelControl = /*#__PURE__*/Vue.extend({
         'aria-invalid': state === false || required && !value ? 'true' : null,
         'aria-required': required ? 'true' : null
       }
-    }, [$button, $hidden, $menu, $label]);
+    }, [$label, $hidden, $button, $menu]);
   }
 });
 
