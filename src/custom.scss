@@ -3,12 +3,14 @@ $secondary: #3b356a;
 $danger: #e57373;
 $success: #26ac75;
 $warning: #ffc400;
+$alert: #dd2c09;
 $info: #00aaff;
 
 $theme-colors: (
   "primary": $primary,
   "secondary": $secondary,
   "danger": $danger,
+  "alert": $alert,
   "success": $success,
   "warning": $warning,
   "info": $info
