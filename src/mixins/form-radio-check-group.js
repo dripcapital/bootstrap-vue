@@ -1,4 +1,5 @@
 import { htmlOrText } from '../utils/html'
+import looseEqual from '../utils/loose-equal'
 import normalizeSlotMixin from './normalize-slot'
 import { BFormCheckbox } from '../components/form-checkbox/form-checkbox'
 import { BFormRadio } from '../components/form-radio/form-radio'
@@ -70,19 +71,21 @@ export default {
     checked(newVal) {
       this.localChecked = newVal
     },
-    localChecked(newVal) {
-      this.$emit('input', newVal)
+    localChecked(newVal, oldVal) {
+      if (!looseEqual(newVal, oldVal)) {
+        this.$emit('input', newVal)
+      }
     }
   },
   render(h) {
-    const inputs = this.formOptions.map((option, idx) => {
-      const uid = `_BV_option_${idx}_`
+    const $inputs = this.formOptions.map((option, index) => {
+      const key = `BV_option_${index}`
+
       return h(
         this.isRadioGroup ? BFormRadio : BFormCheckbox,
         {
-          key: uid,
           props: {
-            id: this.safeId(uid),
+            id: this.safeId(key),
             value: option.value,
             // Individual radios or checks can be disabled in a group
             disabled: option.disabled || false
@@ -90,11 +93,13 @@ export default {
             // name: this.groupName,
             // form: this.form || null,
             // required: Boolean(this.name && this.required)
-          }
+          },
+          key
         },
         [h('span', { domProps: htmlOrText(option.html, option.text) })]
       )
     })
+
     return h(
       'div',
       {
@@ -102,14 +107,13 @@ export default {
         attrs: {
           id: this.safeId(),
           role: this.isRadioGroup ? 'radiogroup' : 'group',
-          // Tabindex to allow group to be focused
-          // if needed by screen readers
+          // Add `tabindex="-1"` to allow group to be focused if needed by screen readers
           tabindex: '-1',
           'aria-required': this.required ? 'true' : null,
           'aria-invalid': this.computedAriaInvalid
         }
       },
-      [this.normalizeSlot('first'), inputs, this.normalizeSlot('default')]
+      [this.normalizeSlot('first'), $inputs, this.normalizeSlot('default')]
     )
   }
 }

@@ -1,7 +1,8 @@
 import Vue from '../../utils/vue'
 import { getComponentConfig } from '../../utils/config'
-import { isVisible } from '../../utils/dom'
+import { attemptFocus, isVisible } from '../../utils/dom'
 import { isUndefinedOrNull } from '../../utils/inspect'
+import { mathCeil, mathMax } from '../../utils/math'
 import { toInteger } from '../../utils/number'
 import paginationMixin from '../../mixins/pagination'
 
@@ -34,10 +35,10 @@ const props = {
 // --- Helper functions ---
 
 // Sanitize the provided per page number (converting to a number)
-const sanitizePerPage = val => Math.max(toInteger(val) || DEFAULT_PER_PAGE, 1)
+const sanitizePerPage = val => mathMax(toInteger(val) || DEFAULT_PER_PAGE, 1)
 
 // Sanitize the provided total rows number (converting to a number)
-const sanitizeTotalRows = val => Math.max(toInteger(val) || DEFAULT_TOTAL_ROWS, 0)
+const sanitizeTotalRows = val => mathMax(toInteger(val) || DEFAULT_TOTAL_ROWS, 0)
 
 // The render function is brought in via the `paginationMixin`
 // @vue/component
@@ -47,7 +48,7 @@ export const BPagination = /*#__PURE__*/ Vue.extend({
   props,
   computed: {
     numberOfPages() {
-      const result = Math.ceil(sanitizeTotalRows(this.totalRows) / sanitizePerPage(this.perPage))
+      const result = mathCeil(sanitizeTotalRows(this.totalRows) / sanitizePerPage(this.perPage))
       return result < 1 ? 1 : result
     },
     pageSizeNumberOfPages() {
@@ -115,8 +116,8 @@ export const BPagination = /*#__PURE__*/ Vue.extend({
       this.$nextTick(() => {
         // Keep the current button focused if possible
         const target = evt.target
-        if (isVisible(target) && this.$el.contains(target) && target.focus) {
-          target.focus()
+        if (isVisible(target) && this.$el.contains(target)) {
+          attemptFocus(target)
         } else {
           this.focusCurrent()
         }

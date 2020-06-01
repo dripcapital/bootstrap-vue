@@ -1,18 +1,24 @@
 import Vue from '../../utils/vue'
+import attrsMixin from '../../mixins/attrs'
+import listenersMixin from '../../mixins/listeners'
 import normalizeSlotMixin from '../../mixins/normalize-slot'
 
 export const props = {
   headVariant: {
     // Also sniffed by <b-tr> / <b-td> / <b-th>
-    type: String, // supported values: 'lite', 'dark', or null
+    type: String, // Supported values: 'lite', 'dark', or null
     default: null
   }
 }
 
+// TODO:
+//   In Bootstrap v5, we won't need "sniffing" as table element variants properly inherit
+//   to the child elements, so this can be converted to a functional component
 // @vue/component
 export const BThead = /*#__PURE__*/ Vue.extend({
   name: 'BThead',
-  mixins: [normalizeSlotMixin],
+  // Mixin order is important!
+  mixins: [attrsMixin, listenersMixin, normalizeSlotMixin],
   inheritAttrs: false,
   provide() {
     return {
@@ -67,7 +73,7 @@ export const BThead = /*#__PURE__*/ Vue.extend({
       return [this.headVariant ? `thead-${this.headVariant}` : null]
     },
     theadAttrs() {
-      return { role: 'rowgroup', ...this.$attrs }
+      return { role: 'rowgroup', ...this.bvAttrs }
     }
   },
   render(h) {
@@ -77,7 +83,7 @@ export const BThead = /*#__PURE__*/ Vue.extend({
         class: this.theadClasses,
         attrs: this.theadAttrs,
         // Pass down any native listeners
-        on: this.$listeners
+        on: this.bvListeners
       },
       this.normalizeSlot('default')
     )

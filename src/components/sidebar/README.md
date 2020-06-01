@@ -12,7 +12,8 @@ You can place almost any content inside the `<b-sidebar>`
 [vertical navs](/docs/components/nav#vertical-variation).
 
 The component supports a header and built in close button, of which you can optionally disable and
-provide your own header (if needed), and can be easily toggled with our `v-b-toggle` directive.
+provide your own header (if needed), and can be easily toggled with our
+[`v-b-toggle` directive](/docs/directives/toggle).
 
 The component has minimal default styling, which provides you with great flexibility in laying out
 the content of the sidebar.
@@ -269,26 +270,51 @@ Add a basic backdrop when the side bar is open via the `backdrop` prop. When set
 sidebar will show an opaque backdrop. Clicking on the backdrop will close the sidebar, unless the
 `no-close-on-backdrop` prop is set to `true`.
 
+Optionally (as of BootstrapVue v2.15.0+) you can use the `backdrop-variant` prop to control the
+theme color variant of the backdrop. The default backdrop variant is `dark`.
+
 ```html
 <template>
   <div>
     <b-button v-b-toggle.sidebar-backdrop>Toggle Sidebar</b-button>
+
     <b-sidebar
       id="sidebar-backdrop"
       title="Sidebar with backdrop"
+      :backdrop-variant="variant"
       backdrop
       shadow
     >
       <div class="px-3 py-2">
-        <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-          in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-        </p>
-        <b-img src="https://picsum.photos/500/500/?image=54" fluid thumbnail></b-img>
+        <b-form-group label="Backdrop variant" label-for="backdrop-variant">
+          <b-form-select id="backdrop-variant" v-model="variant" :options="variants"></b-form-select>
+        </b-form-group>
       </div>
     </b-sidebar>
   </div>
 </template>
+
+<script>
+  export default {
+    data() {
+      return {
+        variant: 'dark',
+        variants: [
+          'transparent',
+          'white',
+          'light',
+          'dark',
+          'primary',
+          'secondary',
+          'success',
+          'danger',
+          'warning',
+          'info',
+        ]
+      }
+    }
+  }
+</script>
 
 <!-- b-sidebar-backdrop.vue -->
 ```
@@ -302,9 +328,9 @@ elements outside of the sidebar.
 
 ### `v-b-toggle` directive
 
-Using the `v-b-toggle` directive is the prefered method for _opening_ the sidebar, as it
-automatically handles applying the `aria-controls` and `aria-expanded` accessibility attributes on
-the trigger element.
+Using the [`v-b-toggle` directive](/docs/directive/toggle) is the preferred method for _opening_ the
+sidebar, as it automatically handles applying the `aria-controls` and `aria-expanded` accessibility
+attributes on the trigger element.
 
 The majority of examples on this page use the `v-b-toggle` directive.
 
@@ -369,5 +395,6 @@ to the [theming documentation](/docs/reference/theming) for additional details.
 
 ## See also
 
+- [`v-b-toggle` directive](/docs/directives/toggle)
 - [`<b-collapse>` component](/docs/components/collapse)
 - [`<b-button-close>` component](/docs/components/button#comp-ref-b-button-close)

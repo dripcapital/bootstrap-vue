@@ -6,7 +6,7 @@ import { deepFreeze } from './object'
 //
 // The global config SHALL NOT be used to set defaults for Boolean props, as the props
 // would loose their semantic meaning, and force people writing 3rd party components to
-// explicity set a true or false value using the v-bind syntax on boolean props
+// explicitly set a true or false value using the v-bind syntax on boolean props
 //
 // Supported config values (depending on the prop's supported type(s)):
 // `String`, `Array`, `Object`, `null` or `undefined`
@@ -183,6 +183,9 @@ export default deepFreeze({
     borderVariant: undefined,
     textVariant: undefined
   },
+  BLink: {
+    routerComponentName: undefined
+  },
   BListGroupItem: {
     variant: undefined
   },
@@ -238,7 +241,8 @@ export default deepFreeze({
     textVariant: 'dark',
     shadow: false,
     width: undefined,
-    tag: 'div'
+    tag: 'div',
+    backdropVariant: 'dark'
   },
   BTable: {
     selectedVariant: 'active',

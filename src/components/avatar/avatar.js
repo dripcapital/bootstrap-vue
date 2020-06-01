@@ -1,10 +1,12 @@
 import Vue from '../../utils/vue'
-import pluckProps from '../../utils/pluck-props'
 import { getComponentConfig } from '../../utils/config'
-import { isNumber, isString } from '../../utils/inspect'
+import { isNumber, isString, isUndefinedOrNull } from '../../utils/inspect'
 import { toFloat } from '../../utils/number'
+import { omit } from '../../utils/object'
+import { pluckProps } from '../../utils/props'
+import { isLink } from '../../utils/router'
 import { BButton } from '../button/button'
-import { BLink } from '../link/link'
+import { BLink, props as BLinkProps } from '../link/link'
 import { BIcon } from '../../icons/icon'
 import { BIconPersonFill } from '../../icons/icons'
 import normalizeSlotMixin from '../../mixins/normalize-slot'
@@ -25,52 +27,7 @@ const DEFAULT_SIZES = {
 }
 
 // --- Props ---
-const linkProps = {
-  href: {
-    type: String
-    // default: null
-  },
-  to: {
-    type: [String, Object]
-    // default: null
-  },
-  append: {
-    type: Boolean,
-    default: false
-  },
-  replace: {
-    type: Boolean,
-    default: false
-  },
-  disabled: {
-    type: Boolean,
-    default: false
-  },
-  rel: {
-    type: String
-    // default: null
-  },
-  target: {
-    type: String
-    // default: null
-  },
-  activeClass: {
-    type: String
-    // default: null
-  },
-  exact: {
-    type: Boolean,
-    default: false
-  },
-  exactActiveClass: {
-    type: String
-    // default: null
-  },
-  noPrefetch: {
-    type: Boolean,
-    default: false
-  }
-}
+const linkProps = omit(BLinkProps, ['active', 'event', 'routerTag'])
 
 const props = {
   src: {
@@ -141,11 +98,15 @@ const props = {
 }
 
 // --- Utility methods ---
-const computeSize = value => {
+export const computeSize = value => {
   // Default to `md` size when `null`, or parse to
   // number when value is a float-like string
   value =
-    value === null ? 'md' : isString(value) && RX_NUMBER.test(value) ? toFloat(value, 0) : value
+    isUndefinedOrNull(value) || value === ''
+      ? 'md'
+      : isString(value) && RX_NUMBER.test(value)
+        ? toFloat(value, 0)
+        : value
   // Convert all numbers to pixel values
   // Handle default sizes when `sm`, `md` or `lg`
   // Or use value as is
@@ -157,6 +118,9 @@ const computeSize = value => {
 export const BAvatar = /*#__PURE__*/ Vue.extend({
   name: NAME,
   mixins: [normalizeSlotMixin],
+  inject: {
+    bvAvatarGroup: { default: null }
+  },
   props,
   data() {
     return {
@@ -165,11 +129,31 @@ export const BAvatar = /*#__PURE__*/ Vue.extend({
   },
   computed: {
     computedSize() {
-      return computeSize(this.size)
+      // Always use the avatar group size
+      return computeSize(this.bvAvatarGroup ? this.bvAvatarGroup.size : this.size)
     },
-    fontSize() {
+    computedVariant() {
+      // Prefer avatar-group variant if provided
+      const avatarGroup = this.bvAvatarGroup
+      return avatarGroup && avatarGroup.variant ? avatarGroup.variant : this.variant
+    },
+    computedRounded() {
+      const avatarGroup = this.bvAvatarGroup
+      const square = avatarGroup && avatarGroup.square ? true : this.square
+      const rounded = avatarGroup && avatarGroup.rounded ? avatarGroup.rounded : this.rounded
+      return square ? '0' : rounded === '' ? true : rounded || 'circle'
+    },
+    fontStyle() {
+      let fontSize = this.computedSize
+      fontSize = fontSize ? `calc(${fontSize} * ${FONT_SIZE_SCALE})` : null
+      return fontSize ? { fontSize } : {}
+    },
+    marginStyle() {
+      const avatarGroup = this.bvAvatarGroup
+      const overlapScale = avatarGroup ? avatarGroup.overlapScale : 0
       const size = this.computedSize
-      return size ? `calc(${size} * ${FONT_SIZE_SCALE})` : null
+      const value = size && overlapScale ? `calc(${size} * -${overlapScale})` : null
+      return value ? { marginLeft: value, marginRight: value } : {}
     },
     badgeStyle() {
       const { computedSize: size, badgeTop, badgeLeft, badgeOffset } = this
@@ -201,23 +185,23 @@ export const BAvatar = /*#__PURE__*/ Vue.extend({
   },
   render(h) {
     const {
-      variant,
+      computedVariant: variant,
       disabled,
-      square,
+      computedRounded: rounded,
       icon,
       localSrc: src,
       text,
-      fontSize,
+      fontStyle,
+      marginStyle,
       computedSize: size,
-      button: isButton,
+      button,
       buttonType: type,
       badge,
       badgeVariant,
       badgeStyle
     } = this
-    const isBLink = !isButton && (this.href || this.to)
-    const tag = isButton ? BButton : isBLink ? BLink : 'span'
-    const rounded = square ? false : this.rounded === '' ? true : this.rounded || 'circle'
+    const link = !button && isLink(this)
+    const tag = button ? BButton : link ? BLink : 'span'
     const alt = this.alt || null
     const ariaLabel = this.ariaLabel || null
 
@@ -231,13 +215,14 @@ export const BAvatar = /*#__PURE__*/ Vue.extend({
         attrs: { src, alt },
         on: { error: this.onImgError }
       })
+      $content = h('span', { staticClass: 'b-avatar-img' }, [$content])
     } else if (icon) {
       $content = h(BIcon, {
         props: { icon },
         attrs: { 'aria-hidden': 'true', alt }
       })
     } else if (text) {
-      $content = h('span', { staticClass: 'b-avatar-text', style: { fontSize } }, [h('span', text)])
+      $content = h('span', { staticClass: 'b-avatar-text', style: fontStyle }, [h('span', text)])
     } else {
       // Fallback default avatar content
       $content = h(BIconPersonFill, { attrs: { 'aria-hidden': 'true', alt } })
@@ -262,18 +247,17 @@ export const BAvatar = /*#__PURE__*/ Vue.extend({
       staticClass: CLASS_NAME,
       class: {
         // We use badge styles for theme variants when not rendering `BButton`
-        [`badge-${variant}`]: !isButton && variant,
+        [`badge-${variant}`]: !button && variant,
         // Rounding/Square
         rounded: rounded === true,
-        'rounded-0': square,
         [`rounded-${rounded}`]: rounded && rounded !== true,
         // Other classes
         disabled
       },
-      style: { width: size, height: size },
+      style: { width: size, height: size, ...marginStyle },
       attrs: { 'aria-label': ariaLabel || null },
-      props: isButton ? { variant, disabled, type } : isBLink ? pluckProps(linkProps, this) : {},
-      on: isBLink || isButton ? { click: this.onClick } : {}
+      props: button ? { variant, disabled, type } : link ? pluckProps(linkProps, this) : {},
+      on: button || link ? { click: this.onClick } : {}
     }
 
     return h(tag, componentData, [$content, $badge])

@@ -76,7 +76,7 @@ describe('utils/config', () => {
     // TODO: getConfig will return default config instead of empty object
     expect(getConfig()).toEqual({})
 
-    // Try a conponent config
+    // Try a component config
     setConfig(testConfig)
     expect(getConfig()).toEqual(testConfig)
     expect(getConfig()).not.toBe(testConfig)
@@ -104,10 +104,10 @@ describe('utils/config', () => {
   })
 
   it('config via Vue.use(BootstrapVue) works', async () => {
+    const localVue = createLocalVue()
     const testConfig = {
       BAlert: { variant: 'foobar' }
     }
-    const localVue = createLocalVue()
 
     expect(getConfig()).toEqual({})
 
@@ -120,10 +120,10 @@ describe('utils/config', () => {
   })
 
   it('config via Vue.use(ComponentPlugin) works', async () => {
+    const localVue = createLocalVue()
     const testConfig = {
       BAlert: { variant: 'foobar' }
     }
-    const localVue = createLocalVue()
 
     expect(getConfig()).toEqual({})
 
@@ -136,10 +136,10 @@ describe('utils/config', () => {
   })
 
   it('config via Vue.use(BVConfig) works', async () => {
+    const localVue = createLocalVue()
     const testConfig = {
       BAlert: { variant: 'foobar' }
     }
-    const localVue = createLocalVue()
 
     expect(getConfig()).toEqual({})
 

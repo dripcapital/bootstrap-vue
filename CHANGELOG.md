@@ -548,6 +548,169 @@ guidelines.
   ([#4156](https://github.com/bootstrap-vue/bootstrap-vue/issues/4156))
   ([c9715a8](https://github.com/bootstrap-vue/bootstrap-vue/commit/c9715a89b1d693974dff8db7e24f97cdf908ff99))
 
+<a name="2.15.0"></a>
+
+## [v2.15.0](https://github.com/bootstrap-vue/bootstrap-vue/compare/v2.14.0...v2.15.0)
+
+Released: 2020-05-22
+
+### Features v2.15.0
+
+- **css:** update Bootstrap to v4.5.0
+  ([#5395](https://github.com/bootstrap-vue/bootstrap-vue/issues/5395))
+  ([ba7a55e](https://github.com/bootstrap-vue/bootstrap-vue/commit/ba7a55ea094049fd1e3ae492a5a95196252b1da9))
+- **icons:** upgrade to Bootstrap Icons 1.0.0-alpha4
+  ([#5420](https://github.com/bootstrap-vue/bootstrap-vue/issues/5420))
+  ([3208309](https://github.com/bootstrap-vue/bootstrap-vue/commit/3208309c649b4cce73c68643d7c911237a713ebc))
+- **b-sidebar:** add prop `backdrop-variant`
+  ([#5411](https://github.com/bootstrap-vue/bootstrap-vue/issues/5411))
+  ([4b0c163](https://github.com/bootstrap-vue/bootstrap-vue/commit/4b0c163156b6ac5be6c1b0a2801d7c169c87cb49))
+- **b-link:** add support 3rd party router links such as Gridsome's `<g-link>` (closes
+  [#2627](https://github.com/bootstrap-vue/bootstrap-vue/issues/2627))
+  ([#5358](https://github.com/bootstrap-vue/bootstrap-vue/issues/5358))
+  ([6d29e1c](https://github.com/bootstrap-vue/bootstrap-vue/commit/6d29e1cff6c4fd42b3f60f86bd017d8601de3956))
+- **b-navbar-toggle:** add `disabled` prop
+  ([#5397](https://github.com/bootstrap-vue/bootstrap-vue/issues/5397))
+  ([0b7082b](https://github.com/bootstrap-vue/bootstrap-vue/commit/0b7082b792ee49847ba7c99c61758c0d9fd6d222))
+- **v-b-toggle:** check for target ID via `href` if a link
+  ([#5398](https://github.com/bootstrap-vue/bootstrap-vue/issues/5398))
+  ([33e39b0](https://github.com/bootstrap-vue/bootstrap-vue/commit/33e39b007225ba86a0c84a66e3ee60b9d2f01fed))
+- **types:** create declarations for `<b-calendar>` and `<b-time>` context event objects (closes
+  [#5366](https://github.com/bootstrap-vue/bootstrap-vue/issues/5366))
+  ([#5374](https://github.com/bootstrap-vue/bootstrap-vue/issues/5374))
+  ([8f3ca30](https://github.com/bootstrap-vue/bootstrap-vue/commit/8f3ca30e4d51b5e97f9c4f301c31254a8b060980))
+- support `<nuxt-link>`'s `prefetch` property (closes
+  [#5125](https://github.com/bootstrap-vue/bootstrap-vue/issues/5125))
+  ([#5355](https://github.com/bootstrap-vue/bootstrap-vue/issues/5355))
+  ([b9416cb](https://github.com/bootstrap-vue/bootstrap-vue/commit/b9416cb3824d680e297347af61a934b1536224de))
+
+### Bug Fixes v2.15.0
+
+- **v-b-toggle:** don't check for evt.defaultPrevened (closes
+  [#5391](https://github.com/bootstrap-vue/bootstrap-vue/issues/5391))
+  ([#5396](https://github.com/bootstrap-vue/bootstrap-vue/issues/5396))
+  ([a1543b2](https://github.com/bootstrap-vue/bootstrap-vue/commit/a1543b297040ea593306ec55d7de5f1e2e776bce))
+- **b-link:** default new `<nuxt-link>` prop `prefetch` to `null` for true tri-state prop
+  ([#5357](https://github.com/bootstrap-vue/bootstrap-vue/issues/5357))
+  ([3f41c91](https://github.com/bootstrap-vue/bootstrap-vue/commit/3f41c91961c29988ba13ca11f4dc8f81810e761f))
+- ensure all intervals/timeouts/observers are cleared when component is destroyed
+  ([#5362](https://github.com/bootstrap-vue/bootstrap-vue/issues/5362))
+  ([064cdf4](https://github.com/bootstrap-vue/bootstrap-vue/commit/064cdf4f7e7c6b779c1bd689a6d300efdf81bc0d))
+- properly handle HTML props render order (closes
+  [#5363](https://github.com/bootstrap-vue/bootstrap-vue/issues/5363))
+  ([#5365](https://github.com/bootstrap-vue/bootstrap-vue/issues/5365))
+  ([844ecda](https://github.com/bootstrap-vue/bootstrap-vue/commit/844ecda654a2db50d9b84c193f1ab031e291d024))
+- fix docs CodeSandbox integration
+  ([#5381](https://github.com/bootstrap-vue/bootstrap-vue/issues/5381))
+  ([a948846](https://github.com/bootstrap-vue/bootstrap-vue/commit/a948846400c37fca0fa3ed673b1c4684fc6f69e1))
+
+<a name="2.14.0"></a>
+
+## [v2.14.0](https://github.com/bootstrap-vue/bootstrap-vue/compare/v2.13.1...v2.14.0)
+
+Released: 2020-05-12
+
+### Features v2.14.0
+
+- **b-avatar-group:** new helper component `<b-avatar-group>`
+  ([#5272](https://github.com/bootstrap-vue/bootstrap-vue/issues/5272))
+  ([c84faae](https://github.com/bootstrap-vue/bootstrap-vue/commit/c84faaebe18bbf652583d6c302447e931a4ab741))
+- **b-nav-item-dropdown:** improve default handling of dropdown toggle link (closes
+  [#3942](https://github.com/bootstrap-vue/bootstrap-vue/issues/3942))
+  ([#5344](https://github.com/bootstrap-vue/bootstrap-vue/issues/5344))
+  ([62c6105](https://github.com/bootstrap-vue/bootstrap-vue/commit/62c6105e25bc4590f9e2fa92069b77ccbc17fac6))
+- **v-b-toggle:** support specifying target ID via directive argument, and array of target IDs via
+  directive value (closes [#4834](https://github.com/bootstrap-vue/bootstrap-vue/issues/4834))
+  ([#5336](https://github.com/bootstrap-vue/bootstrap-vue/issues/5336))
+  ([260ef72](https://github.com/bootstrap-vue/bootstrap-vue/commit/260ef7259e46d343823767374322db0ae3a74803))
+
+### Bug Fixes v2.14.0
+
+- **b-modal:** remove `role="document"` from `.modal-content`
+  ([#5345](https://github.com/bootstrap-vue/bootstrap-vue/issues/5345))
+  ([0c2b406](https://github.com/bootstrap-vue/bootstrap-vue/commit/0c2b406e8dadc274e8433d3a4c414e799d0fa228))
+- **perf:** avoid useless re-renders of component on parent update
+  ([#4825](https://github.com/bootstrap-vue/bootstrap-vue/issues/4825))
+  ([2cb3fe0](https://github.com/bootstrap-vue/bootstrap-vue/commit/2cb3fe0fa822a8284e023ccf71f8e451f124016a))
+
+### Other v2.14.0
+
+- dev dependency upgrades
+- docs updates
+- upgrade to vue test utils 1.0.x
+
+<a name="2.13.1"></a>
+
+## [v2.13.1](https://github.com/bootstrap-vue/bootstrap-vue/compare/v2.13.0...v2.13.1)
+
+Released: 2020-05-05
+
+### Bug Fixes v2.13.1
+
+- **b-table, b-table-lite, b-table-simple:** handle head/foot variant for sticky columns (fixes
+  [#5278](https://github.com/bootstrap-vue/bootstrap-vue/issues/5278))
+  ([#5279](https://github.com/bootstrap-vue/bootstrap-vue/issues/5279))
+  ([53e309e](https://github.com/bootstrap-vue/bootstrap-vue/commit/53e309e947b4710fcf8d989cc9ef0f31c58487ae))
+
+### Other v2.13.1
+
+- documentation updates
+- dev dependency updates
+
+<a name="2.13.0"></a>
+
+## [v2.13.0](https://github.com/bootstrap-vue/bootstrap-vue/compare/v2.12.0...v2.13.0)
+
+Released: 2020-04-27
+
+### Features v2.13.0
+
+- **b-calendar, b-form-datepicker:** relax `YYYY-MM-DD` string parsing (closes
+  [#5232](https://github.com/bootstrap-vue/bootstrap-vue/issues/5232))
+  ([#5242](https://github.com/bootstrap-vue/bootstrap-vue/issues/5242))
+  ([f362802](https://github.com/bootstrap-vue/bootstrap-vue/commit/f362802b2794f0e5d294bbb004d91ccd623a1e25))
+- **b-form-rating:** add `show-value-max` prop to show possible max rating when `show-value` is
+  `true` ([#5200](https://github.com/bootstrap-vue/bootstrap-vue/issues/5200))
+  ([e9d54e6](https://github.com/bootstrap-vue/bootstrap-vue/commit/e9d54e6c6a736b2a4f9dbf232dd2b20afa0e990c))
+- **b-overlay:** add support for overlay `click` event (closes
+  [#5243](https://github.com/bootstrap-vue/bootstrap-vue/issues/5243))
+  ([#5248](https://github.com/bootstrap-vue/bootstrap-vue/issues/5248))
+  ([582560f](https://github.com/bootstrap-vue/bootstrap-vue/commit/582560ff97690ab1e5c1f609d76804b7b3daa104))
+
+### Bug Fixes v2.13.0
+
+- **b-avatar:** set `align-items: center` for default slot content (fixes:
+  [#5205](https://github.com/bootstrap-vue/bootstrap-vue/issues/5205))
+  ([#5207](https://github.com/bootstrap-vue/bootstrap-vue/issues/5207))
+  ([c4981fd](https://github.com/bootstrap-vue/bootstrap-vue/commit/c4981fd098253840a37e731331de65b0e732fc79))
+- **b-calendar, b-form-datepicker:** minor adjustments to styling and example updates
+  ([#5211](https://github.com/bootstrap-vue/bootstrap-vue/issues/5211))
+  ([f0d8ffe](https://github.com/bootstrap-vue/bootstrap-vue/commit/f0d8ffe4253079939008108fe86529a2f69553f1))
+- **b-form-datepicker, b-form-timepicker:** fix menu padding in button only mode (fixes
+  [#5251](https://github.com/bootstrap-vue/bootstrap-vue/issues/5251))
+  ([#5252](https://github.com/bootstrap-vue/bootstrap-vue/issues/5252))
+  ([d57a643](https://github.com/bootstrap-vue/bootstrap-vue/commit/d57a643f0c6b5e805a42a3387fb0db4443bfc01f))
+- **b-form-datepicker, b-form-timepicker:** adjust scss to support input-groups
+  ([#5231](https://github.com/bootstrap-vue/bootstrap-vue/issues/5231))
+  ([7b1adc4](https://github.com/bootstrap-vue/bootstrap-vue/commit/7b1adc460f11c2ee54466fe0d204579f3f6f1bd2))
+- **b-form-datepicker, b-form-timepicker:** prevent duplicate validation icons (fixes
+  [#5237](https://github.com/bootstrap-vue/bootstrap-vue/issues/5237))
+  ([#5238](https://github.com/bootstrap-vue/bootstrap-vue/issues/5238))
+  ([6354e6e](https://github.com/bootstrap-vue/bootstrap-vue/commit/6354e6eb90b93e668c2794b3b4c2117a7cfc0ab0))
+- **types:** update table field definition types to include sticky column (fixes
+  [#5263](https://github.com/bootstrap-vue/bootstrap-vue/issues/5263))
+  ([#5265](https://github.com/bootstrap-vue/bootstrap-vue/issues/5265))
+  ([20eb3ac](https://github.com/bootstrap-vue/bootstrap-vue/commit/20eb3ac9e22ddbcc41d1f1aa923871007abe0dc0))
+- handle nested form options normalization
+  ([#5247](https://github.com/bootstrap-vue/bootstrap-vue/issues/5247))
+  ([0c57ffe](https://github.com/bootstrap-vue/bootstrap-vue/commit/0c57ffe31c946475498fa3554b8b4aba4e9d19df))
+
+### Other v2.13.0
+
+- dev dependencies updates
+- documentation updates
+- new docs domain [`https://bootstrap-vue.org/`](https://bootstrap-vue.org/)
+
 <a name="2.12.0"></a>
 
 ## [v2.12.0](https://github.com/bootstrap-vue/bootstrap-vue/compare/v2.11.0...v2.12.0)

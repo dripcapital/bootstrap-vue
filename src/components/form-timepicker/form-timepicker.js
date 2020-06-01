@@ -1,6 +1,7 @@
 import Vue from '../../utils/vue'
 import { BVFormBtnLabelControl, dropdownProps } from '../../utils/bv-form-btn-label-control'
 import { getComponentConfig } from '../../utils/config'
+import { attemptBlur, attemptFocus } from '../../utils/dom'
 import { isUndefinedOrNull } from '../../utils/inspect'
 import idMixin from '../../mixins/id'
 import { BButton } from '../button/button'
@@ -261,16 +262,12 @@ export const BFormTimepicker = /*#__PURE__*/ Vue.extend({
     // Public methods
     focus() {
       if (!this.disabled) {
-        try {
-          this.$refs.control.focus()
-        } catch {}
+        attemptFocus(this.$refs.control)
       }
     },
     blur() {
       if (!this.disabled) {
-        try {
-          this.$refs.control.blur()
-        } catch {}
+        attemptBlur(this.$refs.control)
       }
     },
     // Private methods
@@ -313,9 +310,7 @@ export const BFormTimepicker = /*#__PURE__*/ Vue.extend({
     },
     onShown() {
       this.$nextTick(() => {
-        try {
-          this.$refs.time.focus()
-        } catch {}
+        attemptFocus(this.$refs.time)
         this.$emit('shown')
       })
     },
@@ -357,7 +352,7 @@ export const BFormTimepicker = /*#__PURE__*/ Vue.extend({
 
     if (this.resetButton) {
       if ($footer.length > 0) {
-        // Add a "spacer" betwen buttons ('&nbsp;')
+        // Add a "spacer" between buttons ('&nbsp;')
         $footer.push(h('span', '\u00a0'))
       }
       const label = this.labelResetButton
@@ -377,7 +372,7 @@ export const BFormTimepicker = /*#__PURE__*/ Vue.extend({
 
     if (!this.noCloseButton) {
       if ($footer.length > 0) {
-        // Add a "spacer" betwen buttons ('&nbsp;')
+        // Add a "spacer" between buttons ('&nbsp;')
         $footer.push(h('span', '\u00a0'))
       }
       const label = this.labelCloseButton

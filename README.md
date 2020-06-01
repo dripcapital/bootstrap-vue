@@ -35,7 +35,7 @@
   <br>
 
 <p align="center">
-  BootstrapVue, with over 40 available plugins, more than 80 custom components, and over 530 icons,
+  BootstrapVue, with over 40 available plugins, more than 80 custom components, and over 670 icons,
   provides one of the most comprehensive implementations of the Bootstrap v4 component and grid
   system for Vue.js, complete with extensive and automated WAI-ARIA accessibility markup.
 </p>
@@ -46,7 +46,7 @@
     <img src="https://flat.badgen.net/npm/v/bootstrap-vue" alt="Current version">
   </a>
   <a href="https://getbootstrap.com/docs">
-    <img src="https://flat.badgen.net/badge/bootstrap/4.3.x/563d7c" alt="Bootstrap version">
+    <img src="https://flat.badgen.net/badge/bootstrap/4.5.x/563d7c" alt="Bootstrap version">
   </a>
   <a href="https://vuejs.org">
     <img src="https://flat.badgen.net/badge/vue.js/2.6.x/4fc08d" alt="Vue.js version">
@@ -119,6 +119,12 @@ Thank you to all our backers! 🙏
 This project exists thanks to all the people who contribute. [[Contribute]](CONTRIBUTING.md).
 
 <a href="https://github.com/bootstrap-vue/bootstrap-vue/graphs/contributors"><img src="https://opencollective.com/bootstrap-vue/contributors.svg?width=890"></a>
+
+<h2 align="center">Partners</h2>
+
+<p align="center">
+  <a href="https://vercel.com/?utm_source=bootstrapvue" target="_blank" rel="noopener"><img src="https://github.com/bootstrap-vue/bootstrap-vue/raw/master/static/powered-by-vercel.svg" width="175" alt="Powered by Vercel"></a>
+</p>
 
 <h2 align="center">License</h2>
 

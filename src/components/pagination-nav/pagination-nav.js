@@ -1,19 +1,26 @@
 import Vue from '../../utils/vue'
 import looseEqual from '../../utils/loose-equal'
 import { getComponentConfig } from '../../utils/config'
-import { requestAF } from '../../utils/dom'
+import { attemptBlur, requestAF } from '../../utils/dom'
 import { isBrowser } from '../../utils/env'
 import { isArray, isUndefined, isFunction, isObject } from '../../utils/inspect'
+import { mathMax } from '../../utils/math'
 import { toInteger } from '../../utils/number'
+import { omit } from '../../utils/object'
+import { pluckProps } from '../../utils/props'
 import { computeHref, parseQuery } from '../../utils/router'
 import { toString } from '../../utils/string'
 import { warn } from '../../utils/warn'
 import paginationMixin from '../../mixins/pagination'
+import { props as BLinkProps } from '../link/link'
+
+// --- Constants ---
 
 const NAME = 'BPaginationNav'
 
-// Sanitize the provided number of pages (converting to a number)
-export const sanitizeNumberOfPages = value => Math.max(toInteger(value, 0), 1)
+// --- Props ---
+
+const linkProps = omit(BLinkProps, ['event', 'routerTag'])
 
 const props = {
   size: {
@@ -58,26 +65,15 @@ const props = {
     type: Boolean,
     default: false
   },
-  // router-link specific props
-  activeClass: {
-    type: String
-    // default: undefined
-  },
-  exact: {
-    type: Boolean,
-    default: false
-  },
-  exactActiveClass: {
-    type: String
-    // default: undefined
-  },
-  // nuxt-link specific prop(s)
-  noPrefetch: {
-    type: Boolean,
-    default: false
-  }
+  ...linkProps
 }
 
+// --- Utility methods ---
+
+// Sanitize the provided number of pages (converting to a number)
+export const sanitizeNumberOfPages = value => mathMax(toInteger(value, 0), 1)
+
+// --- Main component ---
 // The render function is brought in via the pagination mixin
 // @vue/component
 export const BPaginationNav = /*#__PURE__*/ Vue.extend({
@@ -146,13 +142,11 @@ export const BPaginationNav = /*#__PURE__*/ Vue.extend({
         this.$emit('change', pageNum)
       })
       this.$nextTick(() => {
-        // Done in a nextTick() to ensure rendering complete
-        try {
-          // Emulate native link click page reloading behaviour by blurring the
-          // paginator and returning focus to the document
-          const target = evt.currentTarget || evt.target
-          target.blur()
-        } catch (e) {}
+        // Emulate native link click page reloading behaviour by blurring the
+        // paginator and returning focus to the document
+        // Done in a `nextTick()` to ensure rendering complete
+        const target = evt.currentTarget || evt.target
+        attemptBlur(target)
       })
     },
     getPageInfo(pageNum) {
@@ -191,20 +185,8 @@ export const BPaginationNav = /*#__PURE__*/ Vue.extend({
       return info.link
     },
     linkProps(pageNum) {
+      const props = pluckProps(linkProps, this)
       const link = this.makeLink(pageNum)
-      const props = {
-        target: this.target || null,
-        rel: this.rel || null,
-        disabled: this.disabled,
-        // The following props are only used if BLink detects router
-        exact: this.exact,
-        activeClass: this.activeClass,
-        exactActiveClass: this.exactActiveClass,
-        append: this.append,
-        replace: this.replace,
-        // nuxt-link specific prop
-        noPrefetch: this.noPrefetch
-      }
       if (this.useRouter || isObject(link)) {
         props.to = link
       } else {
