@@ -1,8 +1,7 @@
-import SectionToc from '~/components/section-toc.vue'
-import docsMixin from '~/plugins/docs-mixin'
-
+// Add redirect from old URL to new one
+// @vue/component
 export default {
-  name: 'BVDocsMiscIndex',
-  mixins: [docsMixin],
-  extends: SectionToc
+  fetch({ redirect }) {
+    redirect('/docs/reference')
+  }
 }

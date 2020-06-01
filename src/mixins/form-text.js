@@ -26,16 +26,16 @@ export default {
       default: false
     },
     autocomplete: {
-      type: String,
-      default: null
+      type: String
+      // default: null
     },
     placeholder: {
-      type: String,
-      default: null
+      type: String
+      // default: null
     },
     formatter: {
-      type: Function,
-      default: null
+      type: Function
+      // default: null
     },
     lazyFormatter: {
       type: Boolean,
@@ -67,10 +67,6 @@ export default {
     }
   },
   computed: {
-    computedDebounce() {
-      // Ensure we have a positive number equal to or greater than 0
-      return Math.max(toInteger(this.debounce) || 0, 0)
-    },
     computedClass() {
       return [
         {
@@ -98,6 +94,13 @@ export default {
       }
       // Most likely a string value (which could be the string 'true')
       return this.ariaInvalid
+    },
+    computedDebounce() {
+      // Ensure we have a positive number equal to or greater than 0
+      return Math.max(toInteger(this.debounce, 0), 0)
+    },
+    hasFormatter() {
+      return isFunction(this.formatter)
     }
   },
   watch: {
@@ -132,7 +135,7 @@ export default {
     },
     formatValue(value, evt, force = false) {
       value = toString(value)
-      if ((!this.lazyFormatter || force) && isFunction(this.formatter)) {
+      if (this.hasFormatter && (!this.lazyFormatter || force)) {
         value = this.formatter(value, evt)
       }
       return value
@@ -144,14 +147,12 @@ export default {
       }
       // Emulate `.number` modifier behaviour
       if (this.number) {
-        const number = toFloat(value)
-        value = isNaN(number) ? value : number
+        value = toFloat(value, value)
       }
       return value
     },
     updateValue(value, force = false) {
       const lazy = this.lazy
-      const ms = this.computedDebounce
       if (lazy && !force) {
         return
       }
@@ -162,18 +163,34 @@ export default {
           this.vModelValue = value
           this.$emit('update', value)
         }
-        if (ms > 0 && !lazy && !force) {
-          // Change/Blur/Force will not be debounced
-          this.$_inputDebounceTimer = setTimeout(doUpdate, ms)
+        const debounce = this.computedDebounce
+        // Only debounce the value update when a value greater than `0`
+        // is set and we are not in lazy mode or this is a forced update
+        if (debounce > 0 && !lazy && !force) {
+          this.$_inputDebounceTimer = setTimeout(doUpdate, debounce)
         } else {
           // Immediately update the v-model
           doUpdate()
+        }
+      } else if (this.hasFormatter) {
+        // When the `vModelValue` hasn't changed but the actual input value
+        // is out of sync, make sure to change it to the given one
+        // Usually caused by browser autocomplete and how it triggers the
+        // change or input event, or depending on the formatter function
+        // https://github.com/bootstrap-vue/bootstrap-vue/issues/2657
+        // https://github.com/bootstrap-vue/bootstrap-vue/issues/3498
+        /* istanbul ignore next: hard to test */
+        const $input = this.$refs.input
+        /* istanbul ignore if: hard to test out of sync value */
+        if ($input && value !== $input.value) {
+          $input.value = value
         }
       }
     },
     onInput(evt) {
       // `evt.target.composing` is set by Vue
       // https://github.com/vuejs/vue/blob/dev/src/platforms/web/runtime/directives/model.js
+      // TODO: Is this needed now with the latest Vue?
       /* istanbul ignore if: hard to test composition events */
       if (evt.target.composing) {
         return
@@ -192,12 +209,6 @@ export default {
       this.$emit('input', formattedValue)
     },
     onChange(evt) {
-      // `evt.target.composing` is set by Vue
-      // https://github.com/vuejs/vue/blob/dev/src/platforms/web/runtime/directives/model.js
-      /* istanbul ignore if: hard to test composition events */
-      if (evt.target.composing) {
-        return
-      }
       const value = evt.target.value
       const formattedValue = this.formatValue(value, evt)
       // Exit when the `formatter` function strictly returned `false`

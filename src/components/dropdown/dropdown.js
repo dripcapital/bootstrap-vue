@@ -2,7 +2,6 @@ import Vue from '../../utils/vue'
 import { arrayIncludes } from '../../utils/array'
 import { stripTags } from '../../utils/html'
 import { getComponentConfig } from '../../utils/config'
-import { HTMLElement } from '../../utils/safe-types'
 import idMixin from '../../mixins/id'
 import dropdownMixin from '../../mixins/dropdown'
 import normalizeSlotMixin from '../../mixins/normalize-slot'
@@ -11,10 +10,15 @@ import { BButton } from '../button/button'
 const NAME = 'BDropdown'
 
 export const props = {
-  toggleText: {
-    // This really should be toggleLabel
+  text: {
+    // Button label
     type: String,
-    default: () => getComponentConfig(NAME, 'toggleText')
+    default: ''
+  },
+  html: {
+    // Button label
+    type: String
+    // default: undefined
   },
   size: {
     type: String,
@@ -29,16 +33,21 @@ export const props = {
     default: false
   },
   menuClass: {
-    type: [String, Array, Object],
-    default: null
+    type: [String, Array, Object]
+    // default: null
   },
   toggleTag: {
     type: String,
     default: 'button'
   },
+  toggleText: {
+    // This really should be toggleLabel
+    type: String,
+    default: () => getComponentConfig(NAME, 'toggleText')
+  },
   toggleClass: {
-    type: [String, Array, Object],
-    default: null
+    type: [String, Array, Object]
+    // default: null
   },
   noCaret: {
     type: Boolean,
@@ -61,23 +70,22 @@ export const props = {
     default: () => getComponentConfig(NAME, 'splitVariant')
   },
   splitClass: {
-    type: [String, Array, Object],
-    default: null
+    type: [String, Array, Object]
+    // default: null
   },
   splitButtonType: {
     type: String,
     default: 'button',
     validator: value => arrayIncludes(['button', 'submit', 'reset'], value)
   },
+  lazy: {
+    // If true, only render menu contents when open
+    type: Boolean,
+    default: false
+  },
   role: {
     type: String,
     default: 'menu'
-  },
-  boundary: {
-    // String: `scrollParent`, `window` or `viewport`
-    // HTMLElement: HTML Element reference
-    type: [String, HTMLElement],
-    default: 'scrollParent'
   }
 }
 
@@ -153,7 +161,7 @@ export const BDropdown = /*#__PURE__*/ Vue.extend({
             id: this.safeId('_BV_button_')
           },
           on: {
-            click: this.click
+            click: this.onSplitClick
           }
         },
         [buttonContent]
@@ -178,8 +186,9 @@ export const BDropdown = /*#__PURE__*/ Vue.extend({
           'aria-expanded': this.visible ? 'true' : 'false'
         },
         on: {
-          click: this.toggle, // click
-          keydown: this.toggle // enter, space, down
+          mousedown: this.onMousedown,
+          click: this.toggle,
+          keydown: this.toggle // Handle ENTER, SPACE and DOWN
         }
       },
       [this.split ? h('span', { class: ['sr-only'] }, [this.toggleText]) : buttonContent]
@@ -196,7 +205,7 @@ export const BDropdown = /*#__PURE__*/ Vue.extend({
           'aria-labelledby': this.safeId(this.split ? '_BV_button_' : '_BV_toggle_')
         },
         on: {
-          keydown: this.onKeydown // up, down, esc
+          keydown: this.onKeydown // Handle UP, DOWN and ESC
         }
       },
       !this.lazy || this.visible ? this.normalizeSlot('default', { hide: this.hide }) : [h()]

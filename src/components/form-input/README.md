@@ -94,7 +94,15 @@ rendered and a console warning will be issued.
 - Older version of Firefox may not support `readonly` for `range` type inputs.
 - Input types that do not support `min`, `max` and `step` (i.e. `text`, `password`, `tel`, `email`,
   `url`, etc) will silently ignore these values (although they will still be rendered on the input
-  markup) iv values are provided.
+  markup) if values are provided.
+
+**Caveats with predictive text entry and IME composition entry:**
+
+- When using predictive text auto-suggested words, the `v-model` will not update until the
+  auto-suggested word is selected (or a space is typed). If an auto suggested word is not selected,
+  the v-model will update with the current _displayed text_ of the input when the input is blurred.
+- When using IME composition (ie. Chinese, Japanese, etc), the `v-model` will not update until the
+  IME composition is completed.
 
 ### Range type input
 
@@ -155,7 +163,7 @@ In the example below, we double the number of steps by using step="0.5".
 convert the value to a native number by using `Number(value)`, `parseInt(value, 10)`,
 `parseFloat(value)`, or use the `number` prop.
 
-**Note:** Bootstrap v4.1 CSS does not include styling for range inputs inside input groups, nor
+**Note:** Bootstrap v4 CSS does not include styling for range inputs inside input groups, nor
 validation styling on range inputs. However, BootstrapVue includes custom styling to handle these
 situations until styling is included in Bootstrap v4.
 
@@ -354,7 +362,7 @@ Formatting does not occur if a `formatter` is not provided.
         id="input-formatter"
         v-model="text1"
         placeholder="Enter your name"
-        :formatter="format"
+        :formatter="formatter"
       ></b-form-input>
     </b-form-group>
     <p><b>Value:</b> {{ text1 }}</p>
@@ -370,7 +378,7 @@ Formatting does not occur if a `formatter` is not provided.
         v-model="text2"
         placeholder="Enter your name"
         lazy-formatter
-        :formatter="format"
+        :formatter="formatter"
       ></b-form-input>
     </b-form-group>
     <p class="mb-0"><b>Value:</b> {{ text2 }}</p>
@@ -386,7 +394,7 @@ Formatting does not occur if a `formatter` is not provided.
       }
     },
     methods: {
-      format(value, event) {
+      formatter(value) {
         return value.toLowerCase()
       }
     }
@@ -574,7 +582,7 @@ these methods and properties. Support will vary based on input type.
 
 ## Using HTML5 `<input>` as an alternative
 
-If you just need a simple input with basic bootstrap styling, you can simply use the following:
+If you just need a simple input with basic Bootstrap styling, you can simply use the following:
 
 ```html
 <template>

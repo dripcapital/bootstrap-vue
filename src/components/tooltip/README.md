@@ -46,55 +46,58 @@ Twelve options are available for positioning: `top`, `topleft`, `topright`, `rig
 The default position is `top`. Positioning is relative to the trigger element.
 
 <div class="bd-example bd-example-tooltip-static">
-  <div class="tooltip bs-tooltip-top bs-tooltip-top-docs" role="tooltip">
+  <div class="tooltip b-tooltip bs-tooltip-top bs-tooltip-top-docs" role="tooltip">
     <div class="arrow" style="left: calc(50% - 6px)"></div>
     <div class="tooltip-inner">Tooltip on the top</div>
   </div>
-  <div class="tooltip bs-tooltip-top bs-tooltip-top-docs" role="tooltip">
-    <div class="arrow" style="right: 6px"></div>
+  <div class="tooltip b-tooltip bs-tooltip-top bs-tooltip-top-docs" role="tooltip">
+    <div class="arrow" style="right: 0px"></div>
     <div class="tooltip-inner">Tooltip on the topleft</div>
   </div>
-  <div class="tooltip bs-tooltip-top bs-tooltip-top-docs" role="tooltip">
-    <div class="arrow" style="left: 6px"></div>
+  <div class="tooltip b-tooltip bs-tooltip-top bs-tooltip-top-docs" role="tooltip">
+    <div class="arrow" style="left: 0px"></div>
     <div class="tooltip-inner">Tooltip on the topright</div>
   </div>
-  <div class="tooltip bs-tooltip-right bs-tooltip-right-docs" role="tooltip">
-    <div class="arrow" style="top: calc(50% - 5px)"></div>
+  <div class="tooltip b-tooltip bs-tooltip-right bs-tooltip-right-docs" role="tooltip">
+    <div class="arrow" style="top: 5px"></div>
     <div class="tooltip-inner">Tooltip on the right</div>
   </div>
-  <div class="tooltip bs-tooltip-right bs-tooltip-right-docs" role="tooltip">
-    <div class="arrow" style="bottom: 4px"></div>
+  <div class="tooltip b-tooltip bs-tooltip-right bs-tooltip-right-docs" role="tooltip">
+    <div class="arrow" style="bottom: 0px"></div>
     <div class="tooltip-inner">Tooltip on the righttop</div>
   </div>
-  <div class="tooltip bs-tooltip-right bs-tooltip-right-docs" role="tooltip">
-    <div class="arrow" style="top: 4px"></div>
+  <div class="tooltip b-tooltip bs-tooltip-right bs-tooltip-right-docs" role="tooltip">
+    <div class="arrow" style="top: 0px"></div>
     <div class="tooltip-inner">Tooltip on the rightbottom</div>
   </div>
-  <div class="tooltip bs-tooltip-bottom bs-tooltip-bottom-docs" role="tooltip">
+  <div class="tooltip b-tooltip bs-tooltip-bottom bs-tooltip-bottom-docs" role="tooltip">
     <div class="arrow" style="left: calc(50% - 6px)"></div>
     <div class="tooltip-inner">Tooltip on the bottom</div>
   </div>
-  <div class="tooltip bs-tooltip-bottom bs-tooltip-bottom-docs" role="tooltip">
-    <div class="arrow" style="right: 6px"></div>
+  <div class="tooltip b-tooltip bs-tooltip-bottom bs-tooltip-bottom-docs" role="tooltip">
+    <div class="arrow" style="right: 0px"></div>
     <div class="tooltip-inner">Tooltip on the bottomleft</div>
   </div>
-  <div class="tooltip bs-tooltip-bottom bs-tooltip-bottom-docs" role="tooltip">
-    <div class="arrow" style="left: 6px"></div>
+  <div class="tooltip b-tooltip bs-tooltip-bottom bs-tooltip-bottom-docs" role="tooltip">
+    <div class="arrow" style="left: 0px"></div>
     <div class="tooltip-inner">Tooltip on the bottomright</div>
   </div>
-  <div class="tooltip bs-tooltip-left bs-tooltip-left-docs" role="tooltip">
-    <div class="arrow" style="top: calc(50% - 5px)"></div>
+  <div class="tooltip b-tooltip bs-tooltip-left bs-tooltip-left-docs" role="tooltip">
+    <div class="arrow" style="top: 5px"></div>
     <div class="tooltip-inner">Tooltip on the left</div>
   </div>
-  <div class="tooltip bs-tooltip-left bs-tooltip-left-docs" role="tooltip">
-    <div class="arrow" style="bottom: 4px"></div>
+  <div class="tooltip b-tooltip bs-tooltip-left bs-tooltip-left-docs" role="tooltip">
+    <div class="arrow" style="bottom: 0px"></div>
     <div class="tooltip-inner">Tooltip on the lefttop</div>
   </div>
-  <div class="tooltip bs-tooltip-left bs-tooltip-left-docs" role="tooltip">
-    <div class="arrow" style="top: 4px"></div>
+  <div class="tooltip b-tooltip bs-tooltip-left bs-tooltip-left-docs" role="tooltip">
+    <div class="arrow" style="top: 0px"></div>
     <div class="tooltip-inner">Tooltip on the leftbottom</div>
   </div>
 </div>
+
+Refer to the [Tooltip directive](/docs/directives/tooltip/#positioning) documentaion for live
+examples of positioning.
 
 ## Triggers
 
@@ -105,6 +108,32 @@ only be opened or closed [programmatically](#programmatically-disabling-tooltip)
 If a tooltip has more than one trigger, then all triggers must be cleared before the tooltip will
 close. I.e. if a tooltip has the trigger `focus click`, and it was opened by `focus`, and the user
 then clicks the trigger element, they must click it again **and** move focus to close the tooltip.
+
+### Caveats with `focus` trigger on `<button>` elements
+
+For proper cross-browser and cross-platform behavior when using only the `focus` trigger, you must
+use an element that renders the `<a>` tag, not the `<button>` tag, and you also must include a
+`tabindex="0"` attribute.
+
+The following will generate an `<a>` that looks like a button:
+
+```html
+<b-button
+  href="#"
+  tabindex="0"
+  v-b-tooltip.focus
+  title="Tooltip title"
+>
+  Link button with tooltip directive
+</b-button>
+
+<b-button id="link-button" href="#" tabindex="0">
+  Link button with tooltip component
+</b-button>
+<b-tooltip target="link-button" title="Tooltip title" triggers="focus">
+  Tooltip title
+</b-tooltip>
+```
 
 ### Making tooltips work for keyboard and assistive technology users
 
@@ -432,7 +461,7 @@ To close a **specific tooltip**, pass the trigger element's `id`, or the `id` of
 was provided via the `id` prop), as the argument:
 
 ```js
-this.$root.$emit('bv::show::tooltip', 'my-trigger-button-id')
+this.$root.$emit('bv::hide::tooltip', 'my-trigger-button-id')
 ```
 
 To open a **specific tooltip**, pass the trigger element's `id`, or the `id` of the tooltip (if one
@@ -497,5 +526,15 @@ export default {
 
 Refer to the [Events](/docs/components/tooltip#component-reference) section of documentation for the
 full list of events.
+
+## Accessibility
+
+The trigger element, when the tooltip is showing, will have the attribute `aria-describedby` set
+with the auto generated ID of the tooltip.
+
+**Note:** The animation effect of this component is dependent on the `prefers-reduced-motion` media
+query. See the
+[reduced motion section of our accessibility documentation](/docs/reference/accessibility) for
+additional details.
 
 <!-- Component reference added automatically from component package.json -->

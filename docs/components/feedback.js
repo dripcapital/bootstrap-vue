@@ -1,5 +1,6 @@
+// @vue/component
 export default {
-  name: 'BDVFeedback',
+  name: 'BVFeedback',
   data() {
     return {
       baseUrl: 'https://github.com/bootstrap-vue/bootstrap-vue'
@@ -12,8 +13,8 @@ export default {
       return slug || name === 'docs' || name === 'docs-icons'
     },
     reportIssueUrl() {
-      // Add appreciate query params for proper issue title
-      return `${this.baseUrl}/issues/new?title=Docs`
+      // Select issue template
+      return `${this.baseUrl}/issues/new?template=DOCS_ISSUE_TEMPLATE.md`
     },
     editPageUrl() {
       const name = this.$route.name
@@ -28,14 +29,14 @@ export default {
       } else if (name === 'docs-directives-slug') {
         path = `src/directives/${slug}/README.md`
       } else if (name === 'docs-reference-slug') {
-        path = `docs/markdown/reference/${slug}/README.md`
-      } else if (name === 'docs-misc-slug') {
         if (slug === 'changelog') {
           path = 'CHANGELOG.md'
         } else if (slug === 'contributing') {
           path = 'CONTRIBUTING.md'
         } else if (slug === 'settings') {
-          path = 'docs/markdown/misc/settings/README.md'
+          path = 'docs/markdown/reference/settings/README.md'
+        } else {
+          path = `docs/markdown/reference/${slug}/README.md`
         }
       }
       return `${this.baseUrl}/tree/dev/${path}`

@@ -9,6 +9,45 @@
       "fade"
     ]
   },
+  "b-aspect": {
+    "description": "The `<b-aspect>` component can be used to maintain a minimum responsive aspect ratio for content.",
+    "attributes": [
+      "aspect",
+      "tag"
+    ]
+  },
+  "b-avatar": {
+    "description": "Avatars are typically used to display a user profile as a picture, an icon, or short text.",
+    "attributes": [
+      "src",
+      "text",
+      "icon",
+      "alt",
+      "variant",
+      "size",
+      "square",
+      "rounded",
+      "button",
+      "button-type",
+      "badge",
+      "badge-variant",
+      "badge-top",
+      "badge-left",
+      "badge-offset",
+      "href",
+      "to",
+      "append",
+      "replace",
+      "disabled",
+      "rel",
+      "target",
+      "active-class",
+      "exact",
+      "exact-active-class",
+      "no-prefetch",
+      "aria-label"
+    ]
+  },
   "b-badge": {
     "description": "Small and adaptive tag for adding context to just about any content.",
     "attributes": [
@@ -161,6 +200,49 @@
     "attributes": [
       "justify",
       "key-nav"
+    ]
+  },
+  "b-calendar": {
+    "description": "BootstrapVue custom calendar widget for selecting dates and controlling other components, fully WAI-ARIA accessible (a11y) and supports internationalization (i18n)",
+    "attributes": [
+      "id",
+      "value",
+      "value-as-date",
+      "initial-date",
+      "disabled",
+      "readonly",
+      "min",
+      "max",
+      "date-disabled-fn",
+      "start-weekday",
+      "locale",
+      "direction",
+      "selected-variant",
+      "today-variant",
+      "no-highlight-today",
+      "date-info-fn",
+      "width",
+      "block",
+      "hide-header",
+      "show-decade-nav",
+      "hidden",
+      "aria-controls",
+      "role-description",
+      "label-prev-decade",
+      "label-prev-year",
+      "label-prev-month",
+      "label-current-month",
+      "label-next-month",
+      "label-next-year",
+      "label-next-decade",
+      "label-today",
+      "label-selected",
+      "label-no-date-selected",
+      "label-calendar",
+      "label-nav",
+      "label-help",
+      "date-format-options",
+      "weekday-header-format"
     ]
   },
   "b-card": {
@@ -375,22 +457,22 @@
     "attributes": [
       "id",
       "disabled",
-      "text",
-      "html",
       "dropup",
       "dropright",
       "dropleft",
       "right",
       "offset",
       "no-flip",
-      "lazy",
       "popper-opts",
-      "toggle-text",
+      "boundary",
+      "text",
+      "html",
       "size",
       "variant",
       "block",
       "menu-class",
       "toggle-tag",
+      "toggle-text",
       "toggle-class",
       "no-caret",
       "split",
@@ -399,8 +481,8 @@
       "split-variant",
       "split-class",
       "split-button-type",
-      "role",
-      "boundary"
+      "lazy",
+      "role"
     ]
   },
   "b-dd": {
@@ -408,22 +490,22 @@
     "attributes": [
       "id",
       "disabled",
-      "text",
-      "html",
       "dropup",
       "dropright",
       "dropleft",
       "right",
       "offset",
       "no-flip",
-      "lazy",
       "popper-opts",
-      "toggle-text",
+      "boundary",
+      "text",
+      "html",
       "size",
       "variant",
       "block",
       "menu-class",
       "toggle-tag",
+      "toggle-text",
       "toggle-class",
       "no-caret",
       "split",
@@ -432,8 +514,8 @@
       "split-variant",
       "split-class",
       "split-button-type",
-      "role",
-      "boundary"
+      "lazy",
+      "role"
     ]
   },
   "b-dropdown-item": {
@@ -453,6 +535,7 @@
       "exact-active-class",
       "router-tag",
       "no-prefetch",
+      "link-class",
       "variant"
     ]
   },
@@ -473,6 +556,7 @@
       "exact-active-class",
       "router-tag",
       "no-prefetch",
+      "link-class",
       "variant"
     ]
   },
@@ -481,6 +565,7 @@
     "attributes": [
       "active",
       "active-class",
+      "button-class",
       "disabled",
       "variant"
     ]
@@ -490,6 +575,7 @@
     "attributes": [
       "active",
       "active-class",
+      "button-class",
       "disabled",
       "variant"
     ]
@@ -499,6 +585,7 @@
     "attributes": [
       "active",
       "active-class",
+      "button-class",
       "disabled",
       "variant"
     ]
@@ -508,6 +595,7 @@
     "attributes": [
       "active",
       "active-class",
+      "button-class",
       "disabled",
       "variant"
     ]
@@ -820,6 +908,142 @@
       "switch"
     ]
   },
+  "b-form-datepicker": {
+    "description": "BootstrapVue custom date picker input form control, which provides full WAI-ARIA accessibility (a11y) and supports internationalization (i18n)",
+    "attributes": [
+      "id",
+      "value",
+      "value-as-date",
+      "reset-value",
+      "initial-date",
+      "placeholder",
+      "size",
+      "min",
+      "max",
+      "disabled",
+      "readonly",
+      "required",
+      "name",
+      "form",
+      "state",
+      "date-disabled-fn",
+      "no-close-on-select",
+      "hide-header",
+      "show-decade-nav",
+      "locale",
+      "start-weekday",
+      "direction",
+      "button-only",
+      "button-variant",
+      "calendar-width",
+      "selected-variant",
+      "today-variant",
+      "no-highlight-today",
+      "today-button",
+      "label-today-button",
+      "today-button-variant",
+      "reset-button",
+      "label-reset-button",
+      "reset-button-variant",
+      "close-button",
+      "label-close-button",
+      "close-button-variant",
+      "date-info-fn",
+      "label-prev-decade",
+      "label-prev-year",
+      "label-prev-month",
+      "label-current-month",
+      "label-next-month",
+      "label-next-year",
+      "label-next-decade",
+      "label-today",
+      "label-selected",
+      "label-no-date-selected",
+      "label-calendar",
+      "label-nav",
+      "label-help",
+      "date-format-options",
+      "weekday-header-format",
+      "dark",
+      "menu-class",
+      "dropup",
+      "dropright",
+      "dropleft",
+      "right",
+      "offset",
+      "no-flip",
+      "popper-opts",
+      "boundary"
+    ]
+  },
+  "b-datepicker": {
+    "description": "BootstrapVue custom date picker input form control, which provides full WAI-ARIA accessibility (a11y) and supports internationalization (i18n)\n\n*Alias for BFormDatepicker*",
+    "attributes": [
+      "id",
+      "value",
+      "value-as-date",
+      "reset-value",
+      "initial-date",
+      "placeholder",
+      "size",
+      "min",
+      "max",
+      "disabled",
+      "readonly",
+      "required",
+      "name",
+      "form",
+      "state",
+      "date-disabled-fn",
+      "no-close-on-select",
+      "hide-header",
+      "show-decade-nav",
+      "locale",
+      "start-weekday",
+      "direction",
+      "button-only",
+      "button-variant",
+      "calendar-width",
+      "selected-variant",
+      "today-variant",
+      "no-highlight-today",
+      "today-button",
+      "label-today-button",
+      "today-button-variant",
+      "reset-button",
+      "label-reset-button",
+      "reset-button-variant",
+      "close-button",
+      "label-close-button",
+      "close-button-variant",
+      "date-info-fn",
+      "label-prev-decade",
+      "label-prev-year",
+      "label-prev-month",
+      "label-current-month",
+      "label-next-month",
+      "label-next-year",
+      "label-next-decade",
+      "label-today",
+      "label-selected",
+      "label-no-date-selected",
+      "label-calendar",
+      "label-nav",
+      "label-help",
+      "date-format-options",
+      "weekday-header-format",
+      "dark",
+      "menu-class",
+      "dropup",
+      "dropright",
+      "dropleft",
+      "right",
+      "offset",
+      "no-flip",
+      "popper-opts",
+      "boundary"
+    ]
+  },
   "b-form-file": {
     "description": "Customized, cross-browser consistent, file input control that supports single file, multiple files, and directory upload.",
     "attributes": [
@@ -1051,6 +1275,58 @@
       "state"
     ]
   },
+  "b-form-rating": {
+    "description": "BootstrapVue custom star rating form control for ratings entry or aggregated display",
+    "attributes": [
+      "id",
+      "value",
+      "stars",
+      "variant",
+      "color",
+      "show-value",
+      "show-value-max",
+      "disabled",
+      "readonly",
+      "size",
+      "name",
+      "form",
+      "no-border",
+      "inline",
+      "precision",
+      "icon-empty",
+      "icon-half",
+      "icon-full",
+      "icon-clear",
+      "locale",
+      "show-clear"
+    ]
+  },
+  "b-rating": {
+    "description": "BootstrapVue custom star rating form control for ratings entry or aggregated display\n\n*Alias for BFormRating*",
+    "attributes": [
+      "id",
+      "value",
+      "stars",
+      "variant",
+      "color",
+      "show-value",
+      "show-value-max",
+      "disabled",
+      "readonly",
+      "size",
+      "name",
+      "form",
+      "no-border",
+      "inline",
+      "precision",
+      "icon-empty",
+      "icon-half",
+      "icon-full",
+      "icon-clear",
+      "locale",
+      "show-clear"
+    ]
+  },
   "b-form-select": {
     "description": "Custom <select> component using cross-browser custom styles. Optionally generate <option> entries based on an array, array of objects.",
     "attributes": [
@@ -1137,6 +1413,68 @@
       "label"
     ]
   },
+  "b-form-spinbutton": {
+    "description": "BootstrapVue custom numerical spinbutton form input component, featuring WAI-ARIA accessibility (a11y) and internationalization (i18n)",
+    "attributes": [
+      "id",
+      "value",
+      "min",
+      "max",
+      "step",
+      "wrap",
+      "formatter-fn",
+      "size",
+      "placeholder",
+      "disabled",
+      "readonly",
+      "required",
+      "name",
+      "form",
+      "state",
+      "inline",
+      "vertical",
+      "aria-label",
+      "aria-controls",
+      "label-decrement",
+      "label-increment",
+      "locale",
+      "repeat-delay",
+      "repeat-interval",
+      "repeat-threshold",
+      "repeat-step-multiplier"
+    ]
+  },
+  "b-spinbutton": {
+    "description": "BootstrapVue custom numerical spinbutton form input component, featuring WAI-ARIA accessibility (a11y) and internationalization (i18n)\n\n*Alias for BFormSpinbutton*",
+    "attributes": [
+      "id",
+      "value",
+      "min",
+      "max",
+      "step",
+      "wrap",
+      "formatter-fn",
+      "size",
+      "placeholder",
+      "disabled",
+      "readonly",
+      "required",
+      "name",
+      "form",
+      "state",
+      "inline",
+      "vertical",
+      "aria-label",
+      "aria-controls",
+      "label-decrement",
+      "label-increment",
+      "locale",
+      "repeat-delay",
+      "repeat-interval",
+      "repeat-threshold",
+      "repeat-step-multiplier"
+    ]
+  },
   "b-form-tags": {
     "description": "Lightweight custom tagged input form control, with options for customized interface rendering, duplicate tag detection and optional tag validation",
     "attributes": [
@@ -1158,6 +1496,7 @@
       "tag-class",
       "tag-pills",
       "tag-remove-label",
+      "tag-removed-label",
       "tag-validator",
       "duplicate-tag-text",
       "invalid-tag-text",
@@ -1190,6 +1529,7 @@
       "tag-class",
       "tag-pills",
       "tag-remove-label",
+      "tag-removed-label",
       "tag-validator",
       "duplicate-tag-text",
       "invalid-tag-text",
@@ -1283,6 +1623,110 @@
       "wrap",
       "no-resize",
       "no-auto-shrink"
+    ]
+  },
+  "b-form-timepicker": {
+    "description": "BootstrapVue custom time picker input form control, which provides full WAI-ARIA accessibility (a11y) and supports internationalization (i18n)",
+    "attributes": [
+      "id",
+      "value",
+      "reset-value",
+      "placeholder",
+      "size",
+      "disabled",
+      "readonly",
+      "required",
+      "name",
+      "form",
+      "state",
+      "hour12",
+      "locale",
+      "show-seconds",
+      "hide-header",
+      "seconds-step",
+      "minutes-step",
+      "button-only",
+      "button-variant",
+      "now-button",
+      "label-now-button",
+      "now-button-variant",
+      "reset-button",
+      "label-reset-button",
+      "reset-button-variant",
+      "no-close-button",
+      "label-close-button",
+      "close-button-variant",
+      "label-selected",
+      "label-no-time-selected",
+      "label-hours",
+      "label-minutes",
+      "label-seconds",
+      "label-ampm",
+      "label-am",
+      "label-pm",
+      "label-increment",
+      "label-decrement",
+      "menu-class",
+      "dropup",
+      "dropright",
+      "dropleft",
+      "right",
+      "offset",
+      "no-flip",
+      "popper-opts",
+      "boundary"
+    ]
+  },
+  "b-timepicker": {
+    "description": "BootstrapVue custom time picker input form control, which provides full WAI-ARIA accessibility (a11y) and supports internationalization (i18n)\n\n*Alias for BFormTimepicker*",
+    "attributes": [
+      "id",
+      "value",
+      "reset-value",
+      "placeholder",
+      "size",
+      "disabled",
+      "readonly",
+      "required",
+      "name",
+      "form",
+      "state",
+      "hour12",
+      "locale",
+      "show-seconds",
+      "hide-header",
+      "seconds-step",
+      "minutes-step",
+      "button-only",
+      "button-variant",
+      "now-button",
+      "label-now-button",
+      "now-button-variant",
+      "reset-button",
+      "label-reset-button",
+      "reset-button-variant",
+      "no-close-button",
+      "label-close-button",
+      "close-button-variant",
+      "label-selected",
+      "label-no-time-selected",
+      "label-hours",
+      "label-minutes",
+      "label-seconds",
+      "label-ampm",
+      "label-am",
+      "label-pm",
+      "label-increment",
+      "label-decrement",
+      "menu-class",
+      "dropup",
+      "dropright",
+      "dropleft",
+      "right",
+      "offset",
+      "no-flip",
+      "popper-opts",
+      "boundary"
     ]
   },
   "b-img": {
@@ -1528,6 +1972,7 @@
       "no-close-on-backdrop",
       "no-close-on-esc",
       "no-enforce-focus",
+      "ignore-enforce-focus-selector",
       "title",
       "title-html",
       "title-tag",
@@ -1625,20 +2070,21 @@
     "attributes": [
       "id",
       "disabled",
-      "text",
-      "html",
       "dropup",
       "dropright",
       "dropleft",
       "right",
       "offset",
       "no-flip",
-      "lazy",
       "popper-opts",
+      "boundary",
+      "text",
+      "html",
       "menu-class",
       "toggle-class",
       "no-caret",
-      "role"
+      "role",
+      "lazy"
     ]
   },
   "b-nav-item-dd": {
@@ -1646,20 +2092,21 @@
     "attributes": [
       "id",
       "disabled",
-      "text",
-      "html",
       "dropup",
       "dropright",
       "dropleft",
       "right",
       "offset",
       "no-flip",
-      "lazy",
       "popper-opts",
+      "boundary",
+      "text",
+      "html",
       "menu-class",
       "toggle-class",
       "no-caret",
-      "role"
+      "role",
+      "lazy"
     ]
   },
   "b-nav-dropdown": {
@@ -1667,20 +2114,21 @@
     "attributes": [
       "id",
       "disabled",
-      "text",
-      "html",
       "dropup",
       "dropright",
       "dropleft",
       "right",
       "offset",
       "no-flip",
-      "lazy",
       "popper-opts",
+      "boundary",
+      "text",
+      "html",
       "menu-class",
       "toggle-class",
       "no-caret",
-      "role"
+      "role",
+      "lazy"
     ]
   },
   "b-nav-dd": {
@@ -1688,20 +2136,21 @@
     "attributes": [
       "id",
       "disabled",
-      "text",
-      "html",
       "dropup",
       "dropright",
       "dropleft",
       "right",
       "offset",
       "no-flip",
-      "lazy",
       "popper-opts",
+      "boundary",
+      "text",
+      "html",
       "menu-class",
       "toggle-class",
       "no-caret",
-      "role"
+      "role",
+      "lazy"
     ]
   },
   "b-navbar": {
@@ -1758,6 +2207,27 @@
     "attributes": [
       "label",
       "target"
+    ]
+  },
+  "b-overlay": {
+    "description": "The b-overlay component is used to visually obscure a particular element or component and its content. It signals to the user of a state change within the element or component and can be used for creating loaders, warnings/alerts and more.",
+    "attributes": [
+      "show",
+      "variant",
+      "bg-color",
+      "opacity",
+      "blur",
+      "rounded",
+      "no-center",
+      "no-fade",
+      "spinner-type",
+      "spinner-variant",
+      "spinner-small",
+      "overlay-tag",
+      "wrap-tag",
+      "no-wrap",
+      "fixed",
+      "z-index"
     ]
   },
   "b-pagination": {
@@ -1888,6 +2358,36 @@
       "animated",
       "show-progress",
       "show-value"
+    ]
+  },
+  "b-sidebar": {
+    "description": "The `<b-sidebar>` component creates a fixed viewport, left or right, sliding popout drawer.",
+    "attributes": [
+      "id",
+      "title",
+      "right",
+      "bg-variant",
+      "text-variant",
+      "shadow",
+      "width",
+      "z-index",
+      "aria-label",
+      "aria-labelledby",
+      "close-label",
+      "tag",
+      "sidebar-class",
+      "header-class",
+      "body-class",
+      "footer-class",
+      "backdrop",
+      "no-slide",
+      "no-header",
+      "no-header-close",
+      "no-close-on-esc",
+      "no-close-on-backdrop",
+      "no-close-on-route-change",
+      "lazy",
+      "visible"
     ]
   },
   "b-spinner": {
@@ -2121,9 +2621,37 @@
       "title",
       "title-item-class",
       "title-link-class",
+      "title-link-attributes",
       "disabled",
       "no-body",
       "lazy"
+    ]
+  },
+  "b-time": {
+    "description": "A custom time input widget that can be used to control other components",
+    "attributes": [
+      "id",
+      "value",
+      "show-seconds",
+      "hour12",
+      "locale",
+      "aria-labelledby",
+      "seconds-step",
+      "minutes-step",
+      "disabled",
+      "readonly",
+      "hide-header",
+      "label-no-time-selected",
+      "label-selected",
+      "label-hours",
+      "label-minutes",
+      "label-seconds",
+      "label-ampm",
+      "label-am",
+      "label-pm",
+      "label-increment",
+      "label-decrement",
+      "hidden"
     ]
   },
   "b-toast": {
@@ -2193,6 +2721,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2206,7 +2735,8 @@
       "flip-h",
       "flip-v",
       "shift-h",
-      "shift-v"
+      "shift-v",
+      "animation"
     ]
   },
   "b-icon-blank": {
@@ -2220,6 +2750,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2234,6 +2765,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2248,10 +2780,11 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
-  "b-icon-alert-circle": {
+  "b-icon-alt": {
     "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
     "attributes": [
       "variant",
@@ -2262,10 +2795,11 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
-  "b-icon-alert-circle-fill": {
+  "b-icon-app": {
     "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
     "attributes": [
       "variant",
@@ -2276,10 +2810,11 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
-  "b-icon-alert-octagon": {
+  "b-icon-app-indicator": {
     "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
     "attributes": [
       "variant",
@@ -2290,76 +2825,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
-      "stacked"
-    ]
-  },
-  "b-icon-alert-octagon-fill": {
-    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
-    "attributes": [
-      "variant",
-      "font-scale",
-      "scale",
-      "rotate",
-      "flip-h",
-      "flip-v",
-      "shift-h",
-      "shift-v",
-      "stacked"
-    ]
-  },
-  "b-icon-alert-square": {
-    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
-    "attributes": [
-      "variant",
-      "font-scale",
-      "scale",
-      "rotate",
-      "flip-h",
-      "flip-v",
-      "shift-h",
-      "shift-v",
-      "stacked"
-    ]
-  },
-  "b-icon-alert-square-fill": {
-    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
-    "attributes": [
-      "variant",
-      "font-scale",
-      "scale",
-      "rotate",
-      "flip-h",
-      "flip-v",
-      "shift-h",
-      "shift-v",
-      "stacked"
-    ]
-  },
-  "b-icon-alert-triangle": {
-    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
-    "attributes": [
-      "variant",
-      "font-scale",
-      "scale",
-      "rotate",
-      "flip-h",
-      "flip-v",
-      "shift-h",
-      "shift-v",
-      "stacked"
-    ]
-  },
-  "b-icon-alert-triangle-fill": {
-    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
-    "attributes": [
-      "variant",
-      "font-scale",
-      "scale",
-      "rotate",
-      "flip-h",
-      "flip-v",
-      "shift-h",
-      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2374,6 +2840,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2388,10 +2855,11 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
-  "b-icon-arrow-bar-bottom": {
+  "b-icon-arrow90deg-down": {
     "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
     "attributes": [
       "variant",
@@ -2402,6 +2870,67 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-arrow90deg-left": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-arrow90deg-right": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-arrow90deg-up": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-arrow-bar-down": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2416,6 +2945,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2430,6 +2960,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2444,6 +2975,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2458,6 +2990,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2472,6 +3005,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2486,6 +3020,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2500,6 +3035,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2514,6 +3050,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2528,6 +3065,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2542,6 +3080,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2556,6 +3095,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2570,6 +3110,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2584,6 +3125,37 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-arrow-return-left": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-arrow-return-right": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2598,6 +3170,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2612,6 +3185,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2626,6 +3200,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2640,6 +3215,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2654,6 +3230,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2668,6 +3245,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2682,6 +3260,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2696,6 +3275,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2710,6 +3290,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2724,6 +3305,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2738,6 +3320,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2752,6 +3335,52 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-arrows-move": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-aspect-ratio": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-aspect-ratio-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2766,6 +3395,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2780,6 +3410,22 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-award-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2794,6 +3440,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2808,6 +3455,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2822,6 +3470,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2836,6 +3485,37 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-bag": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-bag-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2850,6 +3530,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2864,6 +3545,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2878,6 +3560,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2892,6 +3575,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2906,6 +3590,22 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-battery-half": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2920,6 +3620,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2934,6 +3635,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2948,6 +3650,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2962,6 +3665,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -2976,10 +3680,11 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
-  "b-icon-book-half-fill": {
+  "b-icon-book-half": {
     "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
     "attributes": [
       "variant",
@@ -2990,6 +3695,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3004,6 +3710,37 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-bookmark-check": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-bookmark-dash": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3018,6 +3755,52 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-bookmark-plus": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-bookmarks": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-bookmarks-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3032,6 +3815,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3046,6 +3830,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3060,10 +3845,11 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
-  "b-icon-box-arrow-bottom-left": {
+  "b-icon-bounding-box": {
     "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
     "attributes": [
       "variant",
@@ -3074,10 +3860,11 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
-  "b-icon-box-arrow-bottom-right": {
+  "b-icon-bounding-box-circles": {
     "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
     "attributes": [
       "variant",
@@ -3088,6 +3875,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3102,6 +3890,157 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-box-arrow-down-left": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-box-arrow-down-right": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-box-arrow-in-down": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-box-arrow-in-down-left": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-box-arrow-in-down-right": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-box-arrow-in-left": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-box-arrow-in-right": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-box-arrow-in-up": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-box-arrow-in-up-left": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-box-arrow-in-up-right": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3116,6 +4055,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3130,6 +4070,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3144,6 +4085,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3158,6 +4100,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3172,6 +4115,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3186,10 +4130,11 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
-  "b-icon-brightness-fill-high": {
+  "b-icon-briefcase": {
     "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
     "attributes": [
       "variant",
@@ -3200,10 +4145,11 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
-  "b-icon-brightness-fill-low": {
+  "b-icon-briefcase-fill": {
     "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
     "attributes": [
       "variant",
@@ -3214,6 +4160,67 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-brightness-alt-high": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-brightness-alt-high-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-brightness-alt-low": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-brightness-alt-low-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3228,6 +4235,22 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-brightness-high-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3242,6 +4265,22 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-brightness-low-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3256,6 +4295,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3270,6 +4310,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3284,6 +4325,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3298,6 +4340,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3312,6 +4355,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3326,6 +4370,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3340,6 +4385,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3354,6 +4400,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3368,6 +4415,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3382,6 +4430,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3396,6 +4445,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3410,6 +4460,202 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-card-checklist": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-card-heading": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-card-image": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-card-list": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-card-text": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-caret-down": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-caret-down-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-caret-left": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-caret-left-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-caret-right": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-caret-right-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-caret-up": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-caret-up-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3424,6 +4670,37 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-chat-dots": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-chat-dots-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3438,6 +4715,127 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-chat-quote": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-chat-quote-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-chat-square": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-chat-square-dots": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-chat-square-dots-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-chat-square-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-chat-square-quote": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-chat-square-quote-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3452,6 +4850,22 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-check-all": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3466,6 +4880,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3480,6 +4895,97 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-chevron-bar-contract": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-chevron-bar-down": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-chevron-bar-expand": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-chevron-bar-left": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-chevron-bar-right": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-chevron-bar-up": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3494,6 +5000,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3508,6 +5015,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3522,6 +5030,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3536,6 +5045,82 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-chevron-contract": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-chevron-double-down": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-chevron-double-left": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-chevron-double-right": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-chevron-double-up": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3550,6 +5135,22 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-chevron-expand": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3564,6 +5165,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3578,6 +5180,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3592,6 +5195,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3606,6 +5210,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3620,6 +5225,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3634,10 +5240,11 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
-  "b-icon-circle-slash": {
+  "b-icon-circle-square": {
     "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
     "attributes": [
       "variant",
@@ -3648,6 +5255,37 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-clipboard": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-clipboard-data": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3662,6 +5300,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3676,6 +5315,22 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-clock-history": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3690,6 +5345,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3704,6 +5360,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3718,6 +5375,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3732,6 +5390,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3746,6 +5405,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3760,6 +5420,67 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-collection": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-collection-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-collection-play": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-collection-play-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3774,10 +5495,11 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
-  "b-icon-columns-gutters": {
+  "b-icon-columns-gap": {
     "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
     "attributes": [
       "variant",
@@ -3788,6 +5510,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3802,6 +5525,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3816,6 +5540,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3830,6 +5555,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3844,6 +5570,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3858,6 +5585,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3872,6 +5600,22 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-crop": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3886,6 +5630,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3900,6 +5645,22 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-cursor-text": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3914,6 +5675,67 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-dash-circle": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-dash-circle-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-dash-square": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-dash-square-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3928,6 +5750,22 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-diamond-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3942,6 +5780,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3956,6 +5795,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -3970,118 +5810,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
-      "stacked"
-    ]
-  },
-  "b-icon-document": {
-    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
-    "attributes": [
-      "variant",
-      "font-scale",
-      "scale",
-      "rotate",
-      "flip-h",
-      "flip-v",
-      "shift-h",
-      "shift-v",
-      "stacked"
-    ]
-  },
-  "b-icon-document-code": {
-    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
-    "attributes": [
-      "variant",
-      "font-scale",
-      "scale",
-      "rotate",
-      "flip-h",
-      "flip-v",
-      "shift-h",
-      "shift-v",
-      "stacked"
-    ]
-  },
-  "b-icon-document-diff": {
-    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
-    "attributes": [
-      "variant",
-      "font-scale",
-      "scale",
-      "rotate",
-      "flip-h",
-      "flip-v",
-      "shift-h",
-      "shift-v",
-      "stacked"
-    ]
-  },
-  "b-icon-document-richtext": {
-    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
-    "attributes": [
-      "variant",
-      "font-scale",
-      "scale",
-      "rotate",
-      "flip-h",
-      "flip-v",
-      "shift-h",
-      "shift-v",
-      "stacked"
-    ]
-  },
-  "b-icon-document-spreadsheet": {
-    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
-    "attributes": [
-      "variant",
-      "font-scale",
-      "scale",
-      "rotate",
-      "flip-h",
-      "flip-v",
-      "shift-h",
-      "shift-v",
-      "stacked"
-    ]
-  },
-  "b-icon-document-text": {
-    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
-    "attributes": [
-      "variant",
-      "font-scale",
-      "scale",
-      "rotate",
-      "flip-h",
-      "flip-v",
-      "shift-h",
-      "shift-v",
-      "stacked"
-    ]
-  },
-  "b-icon-documents": {
-    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
-    "attributes": [
-      "variant",
-      "font-scale",
-      "scale",
-      "rotate",
-      "flip-h",
-      "flip-v",
-      "shift-h",
-      "shift-v",
-      "stacked"
-    ]
-  },
-  "b-icon-documents-alt": {
-    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
-    "attributes": [
-      "variant",
-      "font-scale",
-      "scale",
-      "rotate",
-      "flip-h",
-      "flip-v",
-      "shift-h",
-      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4096,6 +5825,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4110,6 +5840,82 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-droplet": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-droplet-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-droplet-half": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-egg": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-egg-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4124,6 +5930,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4138,6 +5945,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4152,6 +5960,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4166,6 +5975,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4180,6 +5990,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4194,6 +6005,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4208,6 +6020,187 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-exclamation": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-exclamation-circle": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-exclamation-circle-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-exclamation-diamond": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-exclamation-diamond-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-exclamation-octagon": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-exclamation-octagon-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-exclamation-square": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-exclamation-square-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-exclamation-triangle": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-exclamation-triangle-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-exclude": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4222,6 +6215,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4236,6 +6230,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4250,6 +6245,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4264,6 +6260,472 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-file": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-file-arrow-down": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-file-arrow-up": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-file-break": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-file-check": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-file-code": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-file-diff": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-file-earmark": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-file-earmark-arrow-down": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-file-earmark-arrow-up": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-file-earmark-break": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-file-earmark-check": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-file-earmark-code": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-file-earmark-diff": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-file-earmark-minus": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-file-earmark-plus": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-file-earmark-ruled": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-file-earmark-spreadsheet": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-file-earmark-text": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-file-earmark-zip": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-file-minus": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-file-plus": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-file-post": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-file-richtext": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-file-ruled": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-file-spreadsheet": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-file-text": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-file-zip": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-files": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-files-alt": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-film": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4278,6 +6740,37 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-filter-left": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-filter-right": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4292,6 +6785,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4306,6 +6800,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4320,6 +6815,22 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-folder-check": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4334,6 +6845,37 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-folder-minus": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-folder-plus": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4348,6 +6890,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4362,6 +6905,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4376,6 +6920,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4390,6 +6935,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4404,6 +6950,67 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-fullscreen": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-fullscreen-exit": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-funnel": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-funnel-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4418,6 +7025,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4432,6 +7040,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4446,6 +7055,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4460,6 +7070,22 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-gem": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4474,6 +7100,52 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-geo-alt": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-gift": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-gift-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4488,6 +7160,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4502,6 +7175,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4516,6 +7190,127 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-grid1x2": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-grid1x2-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-grid3x2": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-grid3x2-gap": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-grid3x2-gap-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-grid3x3": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-grid3x3-gap": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-grid3x3-gap-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4530,6 +7325,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4544,6 +7340,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4558,6 +7355,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4572,6 +7370,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4586,6 +7385,22 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-heart-half": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4600,6 +7415,37 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-house-door": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-house-door-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4614,6 +7460,22 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-hr": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4628,6 +7490,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4642,6 +7505,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4656,6 +7520,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4670,6 +7535,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4684,6 +7550,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4698,6 +7565,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4712,6 +7580,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4726,6 +7595,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4740,10 +7610,11 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
-  "b-icon-info-fill": {
+  "b-icon-info-circle": {
     "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
     "attributes": [
       "variant",
@@ -4754,6 +7625,22 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-info-circle-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4768,6 +7655,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4782,6 +7670,22 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-intersect": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4796,6 +7700,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4810,6 +7715,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4824,6 +7730,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4838,6 +7745,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4852,6 +7760,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4866,6 +7775,52 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-layers": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-layers-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-layers-half": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4880,6 +7835,37 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-layout-sidebar-inset": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-layout-sidebar-inset-reverse": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4894,6 +7880,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4908,6 +7895,172 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-layout-text-sidebar": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-layout-text-sidebar-reverse": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-layout-text-window": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-layout-text-window-reverse": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-layout-three-columns": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-layout-wtf": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-life-preserver": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-lightning": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-lightning-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-link": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-link45deg": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4922,6 +8075,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4936,6 +8090,22 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-list-nested": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4950,6 +8120,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4964,6 +8135,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4978,6 +8150,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -4992,6 +8165,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5006,6 +8180,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5020,6 +8195,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5034,6 +8210,52 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-mic-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-mic-mute": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-mic-mute-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5048,6 +8270,52 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-music-note": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-music-note-beamed": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-music-note-list": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5062,6 +8330,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5076,6 +8345,67 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-newspaper": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-octagon": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-octagon-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-octagon-half": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5090,6 +8420,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5104,6 +8435,22 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-paperclip": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5118,6 +8465,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5132,6 +8480,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5146,6 +8495,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5160,6 +8510,67 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-pencil-square": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-pentagon": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-pentagon-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-pentagon-half": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5174,6 +8585,22 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-people-circle": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5188,6 +8615,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5202,6 +8630,82 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-person-bounding-box": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-person-check": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-person-check-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-person-dash": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-person-dash-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5216,6 +8720,67 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-person-lines-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-person-plus": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-person-plus-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-person-square": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5230,6 +8795,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5244,6 +8810,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5258,6 +8825,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5272,6 +8840,37 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-pip": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-pip-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5286,6 +8885,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5300,6 +8900,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5314,6 +8915,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5328,6 +8930,67 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-plus-circle": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-plus-circle-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-plus-square": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-plus-square-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5342,6 +9005,37 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-puzzle": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-puzzle-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5356,10 +9050,11 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
-  "b-icon-question-fill": {
+  "b-icon-question-circle": {
     "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
     "attributes": [
       "variant",
@@ -5370,6 +9065,82 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-question-circle-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-question-diamond": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-question-diamond-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-question-octagon": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-question-octagon-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5384,6 +9155,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5398,6 +9170,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5412,6 +9185,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5426,6 +9200,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5440,6 +9215,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5454,6 +9230,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5468,6 +9245,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5482,6 +9260,22 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-server": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5496,6 +9290,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5510,6 +9305,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5524,6 +9320,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5538,6 +9335,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5552,6 +9350,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5566,6 +9365,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5580,6 +9380,22 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-shuffle": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5594,6 +9410,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5608,6 +9425,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5622,6 +9440,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5636,6 +9455,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5650,6 +9470,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5664,6 +9485,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5678,6 +9500,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5692,6 +9515,112 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-slash": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-slash-circle": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-slash-circle-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-slash-square": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-slash-square-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-sliders": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-soundwave": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5706,6 +9635,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5720,6 +9650,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5734,6 +9665,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5748,6 +9680,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5762,6 +9695,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5776,6 +9710,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5790,6 +9725,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5804,6 +9740,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5818,6 +9755,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5832,6 +9770,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5846,6 +9785,22 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-subtract": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5860,6 +9815,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5874,6 +9830,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5888,6 +9845,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5902,6 +9860,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5916,6 +9875,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5930,6 +9890,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5944,6 +9905,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5958,6 +9920,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5972,6 +9935,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -5986,6 +9950,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6000,6 +9965,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6014,6 +9980,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6028,6 +9995,37 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-textarea": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-textarea-t": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6042,6 +10040,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6056,6 +10055,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6070,6 +10070,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6084,6 +10085,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6098,6 +10100,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6112,6 +10115,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6126,6 +10130,37 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-trash2": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-trash2-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6140,6 +10175,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6154,6 +10190,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6168,6 +10205,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6182,6 +10220,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6196,6 +10235,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6210,6 +10250,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6224,6 +10265,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6238,6 +10280,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6252,6 +10295,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6266,6 +10310,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6280,6 +10325,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6294,6 +10340,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6308,6 +10355,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6322,6 +10370,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6336,6 +10385,22 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-union": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6350,6 +10415,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6364,6 +10430,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6378,6 +10445,37 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-view-list": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-view-stacked": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6392,6 +10490,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6406,6 +10505,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6420,6 +10520,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6434,6 +10535,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6448,6 +10550,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6462,6 +10565,22 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-vr": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6476,6 +10595,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6490,6 +10610,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6504,6 +10625,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6518,6 +10640,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6532,6 +10655,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6546,6 +10670,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6560,6 +10685,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6574,6 +10700,37 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-x-diamond": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
+      "stacked"
+    ]
+  },
+  "b-icon-x-diamond-fill": {
+    "description": "Bootstrap Icons are designed to work with Bootstrap components, from form controls to navigation. Bootstrap Icons are SVGs, so they scale quickly and easily and can be styled with CSS.",
+    "attributes": [
+      "variant",
+      "font-scale",
+      "scale",
+      "rotate",
+      "flip-h",
+      "flip-v",
+      "shift-h",
+      "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6588,6 +10745,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6602,6 +10760,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6616,6 +10775,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   },
@@ -6630,6 +10790,7 @@
       "flip-v",
       "shift-h",
       "shift-v",
+      "animation",
       "stacked"
     ]
   }
