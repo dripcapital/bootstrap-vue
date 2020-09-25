@@ -15,3 +15,9 @@ $theme-colors: (
   "warning": $warning,
   "info": $info
 );
+
+@for $i from 2 through 10 {
+  .font-#{$i*5} {
+    font-size: $i * 5px;
+  }
+}
