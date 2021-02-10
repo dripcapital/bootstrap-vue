@@ -1,19 +1,19 @@
 const fs = require('fs')
 const path = require('path')
 const marked = require('marked')
-const hljs = require('highlight.js/lib/highlight.js')
+const hljs = require('highlight.js/lib/core')
 const { BASE_URL, GA_TRACKING_ID, TWITTER_HANDLE } = require('./constants')
 
 // Import only the languages we need from "highlight.js"
-hljs.registerLanguage('javascript', require('highlight.js/lib/languages/javascript'))
-hljs.registerLanguage('typescript', require('highlight.js/lib/languages/typescript'))
-hljs.registerLanguage('json', require('highlight.js/lib/languages/json'))
-hljs.registerLanguage('xml', require('highlight.js/lib/languages/xml')) // Includes HTML
-hljs.registerLanguage('css', require('highlight.js/lib/languages/css'))
-hljs.registerLanguage('scss', require('highlight.js/lib/languages/scss'))
 hljs.registerLanguage('bash', require('highlight.js/lib/languages/bash')) // Includes sh
-hljs.registerLanguage('shell', require('highlight.js/lib/languages/shell'))
+hljs.registerLanguage('css', require('highlight.js/lib/languages/css'))
+hljs.registerLanguage('javascript', require('highlight.js/lib/languages/javascript'))
+hljs.registerLanguage('json', require('highlight.js/lib/languages/json'))
 hljs.registerLanguage('plaintext', require('highlight.js/lib/languages/plaintext'))
+hljs.registerLanguage('scss', require('highlight.js/lib/languages/scss'))
+hljs.registerLanguage('shell', require('highlight.js/lib/languages/shell'))
+hljs.registerLanguage('typescript', require('highlight.js/lib/languages/typescript'))
+hljs.registerLanguage('xml', require('highlight.js/lib/languages/xml')) // Includes HTML
 
 // --- Constants ---
 
@@ -163,7 +163,7 @@ module.exports = {
     // https://zeit.co/docs/v2/build-step#system-environment-variables
     // - `true` if on Zeit Now (dev or PR)
     VERCEL_NOW: process.env.VERCEL_GITHUB_DEPLOYMENT,
-    // - The branch name used for the deploy (i.e. `dev`, `master`, `patch-1`, etc)
+    // - The branch name used for the deploy (i.e. `dev`, `master`, `patch-1`, etc.)
     VERCEL_BRANCH: process.env.VERCEL_GITHUB_COMMIT_REF,
     // - The Commit SHA hash
     VERCEL_COMMIT_SHA: process.env.VERCEL_GITHUB_COMMIT_SHA,
@@ -238,7 +238,10 @@ module.exports = {
         'b-carousel-slide': 'img-src',
         'b-embed': 'src'
       }
-    }
+    },
+
+    // Transpile dependencies for legacy browser support (i.e. IE 11)
+    transpile: [({ isLegacy }) => isLegacy && 'highlight.js']
   },
 
   loading: {

@@ -74,21 +74,60 @@
   </div>
 </template>
 
+<script>
+import { iconNames } from '~/../src/icons'
+
+const icons = iconNames
+  .filter(name => name !== 'BIcon')
+  .sort()
+  .map(fullName => {
+    return {
+      component: fullName,
+      name: fullName
+        .replace(/^BIcon/, '')
+        .replace(/\B([A-Z])/g, '-$1')
+        .toLowerCase()
+    }
+  })
+
+export default {
+  name: 'BVIconsTable',
+  data() {
+    return {
+      iconFilter: '',
+      totalIcons: icons.length
+    }
+  },
+  computed: {
+    filteredIcons() {
+      const terms = this.iconFilter
+        .trim()
+        .toLowerCase()
+        .split(/\s+/)
+      if (terms.length === 0) {
+        return icons.slice()
+      }
+      return icons.filter(icon => terms.every(term => icon.name.indexOf(term) !== -1))
+    }
+  }
+}
+</script>
+
 <style lang="scss" scoped>
 .bv-icons-table {
   position: relative;
 }
 
-#bv-icons-table-result /deep/ .bi {
+#bv-icons-table-result >>> .bi {
   font-size: 1.5rem;
 }
 
-.form-group /deep/ .form-text {
+.form-group >>> .form-text {
   text-align: right;
 }
 
 // Icon zoom on hover
-.flip-icon-list-icon /deep/ .card {
+.flip-icon-list-icon >>> .card {
   .bi {
     transition: transform 0.15s;
   }
@@ -136,42 +175,3 @@
   }
 }
 </style>
-
-<script>
-import { iconNames } from '~/../src/icons'
-
-const icons = iconNames
-  .filter(name => name !== 'BIcon')
-  .sort()
-  .map(fullName => {
-    return {
-      component: fullName,
-      name: fullName
-        .replace(/^BIcon/, '')
-        .replace(/\B([A-Z])/g, '-$1')
-        .toLowerCase()
-    }
-  })
-
-export default {
-  name: 'BVIconsTable',
-  data() {
-    return {
-      iconFilter: '',
-      totalIcons: icons.length
-    }
-  },
-  computed: {
-    filteredIcons() {
-      const terms = this.iconFilter
-        .trim()
-        .toLowerCase()
-        .split(/\s+/)
-      if (terms.length === 0) {
-        return icons.slice()
-      }
-      return icons.filter(icon => terms.every(term => icon.name.indexOf(term) !== -1))
-    }
-  }
-}
-</script>

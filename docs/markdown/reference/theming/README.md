@@ -3,11 +3,11 @@
 > Theming is accomplished by Sass variables, Sass maps, and custom CSS. There's no dedicated theme
 > stylesheet; instead, you can enable the built-in theme to add gradients, shadows, and more.
 
-While BootstrapVue uses Bootstrap's CSS, certain features of BootstrapVue uses custom CSS (i.e.
-stacked tables, etc). Our custom CSS relies on variables defined the Bootstrap v4.x SCSS. The
+While BootstrapVue uses Bootstrap's CSS, certain features of BootstrapVue use custom CSS (i.e.
+stacked tables, etc.). Our custom CSS relies on variables defined the Bootstrap v4.x SCSS. The
 `bootstrap-vue/dist/bootstrap-vue.css` is compiled using the default Bootstrap v4.x variables. By
 using the BootstrapVue source SCSS, you can have your variable overrides (such as breakpoints, theme
-colors, etc) adjust the custom BootstrapVue css generation.
+colors, etc.) adjust the custom BootstrapVue css generation.
 
 For premium dashboards and themes, please refer to the [`Themes section`](/themes) of the
 documentation.
@@ -44,7 +44,7 @@ $body-color: #111;
 
 ## Default theme colors
 
-The default them colors defined in the Bootstrap v4.4 SCSS are as follows:
+The default theme colors defined in the Bootstrap v4.4 SCSS are as follows:
 
 <div class="row">
   <div class="col-md-4">
@@ -73,9 +73,9 @@ The default them colors defined in the Bootstrap v4.4 SCSS are as follows:
   </div>
 </div>
 
-Various components will use variations (intensities) of these default theme colors.
+BootstrapVue components use variations (intensities) of these default theme colors.
 
-You can alter the theme colors, and create additional theme colors, as needed via SASS variables and
+You can alter these theme colors and create additional theme colors as needed via SASS variables and
 maps. Refer to the [Bootstrap theming](https://getbootstrap.com/docs/4.5/getting-started/theming/)
 docs for more details. All theme colors automatically become available as
 [color variants](/docs/reference/color-variants) to all BootstrapVue components.
@@ -149,7 +149,7 @@ your project, which you can include in your main app `app.vue` file:
 
 The `custom-vars.scss` file, which needs to be loaded before Bootstrap's SCSS and BootstrapVue's
 SCSS, will include your Bootstrap v4 variable overrides (i.e. colors, shadows, font sizes,
-breakpoints, etc).
+breakpoints, etc.).
 
 **Via app main entry point:**
 
@@ -195,10 +195,10 @@ import 'custom.scss'
 
 You can find all of the possible variables in `node_modules/bootstrap/scss/_variables.scss`.
 
-Do not forget to include `node-sass` and `sass-loader` to use `scss` in Vue:
+Do not forget to include `sass` and `sass-loader` to use `scss` in Vue:
 
 ```sh
-npm install --save-dev node-sass sass-loader
+npm install --save-dev sass sass-loader
 ```
 
 **Note:** You may need to adjust the SCSS import paths based on your build environment.

@@ -66,85 +66,6 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
-.contributor {
-  width: 55px;
-
-  .contributor-thumbnail {
-    width: 100%;
-    height: 55px;
-  }
-
-  a:hover .contributor-thumbnail {
-    background-color: #6c757d40;
-  }
-
-  .contributor-name {
-    font-size: 80%;
-    font-weight: 400;
-  }
-
-  .backers & {
-    width: 70px;
-
-    .contributor-name {
-      font-size: 60%;
-    }
-
-    .contributor-thumbnail {
-      height: 70px;
-    }
-  }
-
-  .bronze-sponsors & {
-    width: 90px;
-
-    .contributor-thumbnail {
-      height: 90px;
-    }
-  }
-
-  .silver-sponsors & {
-    width: 100px;
-
-    .contributor-name {
-      font-size: 90%;
-      font-weight: bold;
-    }
-
-    .contributor-thumbnail {
-      height: 100px;
-    }
-  }
-
-  .gold-sponsors & {
-    width: 120px;
-
-    .contributor-name {
-      font-size: 90%;
-      font-weight: bold;
-    }
-
-    .contributor-thumbnail {
-      height: 120px;
-    }
-  }
-
-  .platinum-sponsors & {
-    width: 140px;
-
-    .contributor-name {
-      font-size: 100%;
-      font-weight: bold;
-    }
-
-    .contributor-thumbnail {
-      height: 140px;
-    }
-  }
-}
-</style>
-
 <script>
 import BVContributorsContainer from '~/components/contributors-container'
 
@@ -208,7 +129,7 @@ export default {
           cb(this.processOcNodes(response.nodes || []), null)
         } else {
           // We just return an empty node list rather than spew an error
-          // eslint-disable-next-line standard/no-callback-literal
+          // eslint-disable-next-line node/no-callback-literal
           cb([], xhr.statusText)
         }
       }
@@ -229,7 +150,7 @@ export default {
         const fallbackUrl = slug ? `https://opencollective.com/${slug}` : null
         // Return the normalized result
         return {
-          slug: slug,
+          slug,
           name: entry.fromAccount.name,
           // type: 'ORGANIZATION', 'INDIVIDUAL'
           type: entry.fromAccount.type,
@@ -245,10 +166,10 @@ export default {
           status: entry.status,
           // For recurring donations, this is the installment amount
           // For one time donations, this is the donation amount (most recent)
-          amount: amount,
+          amount,
           // For recurring donations, this is the total amount donated
           // For users that donate multiple times, this will be the total of all one time donations
-          totalAmount: totalAmount,
+          totalAmount,
           // For recurring donations, this is how often the donation is received
           frequency: entry.frequency,
           // We now have sponsor tiers, but some appear as
@@ -330,3 +251,82 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.contributor {
+  width: 55px;
+
+  .contributor-thumbnail {
+    width: 100%;
+    height: 55px;
+  }
+
+  a:hover .contributor-thumbnail {
+    background-color: #6c757d40;
+  }
+
+  .contributor-name {
+    font-size: 80%;
+    font-weight: 400;
+  }
+
+  .backers & {
+    width: 70px;
+
+    .contributor-name {
+      font-size: 60%;
+    }
+
+    .contributor-thumbnail {
+      height: 70px;
+    }
+  }
+
+  .bronze-sponsors & {
+    width: 90px;
+
+    .contributor-thumbnail {
+      height: 90px;
+    }
+  }
+
+  .silver-sponsors & {
+    width: 100px;
+
+    .contributor-name {
+      font-size: 90%;
+      font-weight: bold;
+    }
+
+    .contributor-thumbnail {
+      height: 100px;
+    }
+  }
+
+  .gold-sponsors & {
+    width: 120px;
+
+    .contributor-name {
+      font-size: 90%;
+      font-weight: bold;
+    }
+
+    .contributor-thumbnail {
+      height: 120px;
+    }
+  }
+
+  .platinum-sponsors & {
+    width: 140px;
+
+    .contributor-name {
+      font-size: 100%;
+      font-weight: bold;
+    }
+
+    .contributor-thumbnail {
+      height: 140px;
+    }
+  }
+}
+</style>

@@ -8,7 +8,6 @@ import {
   bootstrapVersion,
   bootstrapVersionMajor,
   bootstrapVersionMinor,
-  defaultConfig,
   nuxtVersion,
   nuxtVersionMajor,
   nuxtVersionMinor,
@@ -31,7 +30,6 @@ const { titleLead = '', body = '', baseTOC = {} } = readmeData
 // @vue/component
 export default {
   name: 'BDVDocs',
-  layout: 'docs',
   components: {
     CarbonAd,
     Main,
@@ -39,13 +37,13 @@ export default {
     Section
   },
   mixins: [docsMixin],
+  layout: 'docs',
   data() {
     return {
       bootstrapVersion,
       bootstrapVersionMinor,
       bootstrapVersionMajor,
       bootstrapIconsCount,
-      defaultConfig,
       nuxtVersion,
       nuxtVersionMinor,
       nuxtVersionMajor,

@@ -17,14 +17,14 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [12]
+        node: [14]
 
     steps:
       - name: Clone repository
         uses: actions/checkout@v2
 
       - name: Set Node.js version
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2.1.4
         with:
           node-version: ${{ matrix.node }}
 
@@ -33,7 +33,7 @@ jobs:
         run: echo "::set-output name=dir::$(yarn cache dir)"
 
       - name: Cache node_modules
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.4
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ matrix.os }}-node-v${{ matrix.node }}-yarn-${{ hashFiles('**/yarn.lock') }}
@@ -54,14 +54,14 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [12]
+        node: [14]
 
     steps:
       - name: Clone repository
         uses: actions/checkout@v2
 
       - name: Set Node.js version
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2.1.4
         with:
           node-version: ${{ matrix.node }}
 
@@ -70,7 +70,7 @@ jobs:
         run: echo "::set-output name=dir::$(yarn cache dir)"
 
       - name: Cache node_modules
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.4
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ matrix.os }}-node-v${{ matrix.node }}-yarn-${{ hashFiles('**/yarn.lock') }}
@@ -91,14 +91,14 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [10, 12]
+        node: [10, 12, 14]
 
     steps:
       - name: Clone repository
         uses: actions/checkout@v2
 
       - name: Set Node.js version
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2.1.4
         with:
           node-version: ${{ matrix.node }}
 
@@ -107,7 +107,7 @@ jobs:
         run: echo "::set-output name=dir::$(yarn cache dir)"
 
       - name: Cache node_modules
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.4
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ matrix.os }}-node-v${{ matrix.node }}-yarn-${{ hashFiles('**/yarn.lock') }}
@@ -124,7 +124,7 @@ jobs:
 
       - name: CodeCov
         uses: codecov/codecov-action@v1
-        if: matrix.node == '12'
+        if: matrix.node == '14'
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           flags: unittests

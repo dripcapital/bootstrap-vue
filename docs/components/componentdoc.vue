@@ -85,6 +85,11 @@
       <anchored-heading :id="`comp-ref-${componentName}-props`" level="4" class="mb-3">
         Properties
       </anchored-heading>
+
+      <p>
+        All property default values are <b-link href="/docs/reference/settings">globally configurable</b-link>.
+      </p>
+
       <b-table
         :items="propsItems"
         :fields="propsFields"
@@ -95,23 +100,22 @@
         bordered
         striped
       >
-        <template v-slot:cell(prop)="{ value, item }">
+        <template #cell(prop)="{ value, item }">
           <code class="text-nowrap notranslate" translate="no">{{ value }}</code><br>
           <b-badge v-if="item.required" variant="info">Required</b-badge>
-          <b-badge v-if="item.settings" variant="dark" href="/docs/reference/settings" title="Configurable in settings">Settings</b-badge>
           <b-badge v-if="item.version" variant="secondary">v{{ item.version }}+</b-badge>
           <b-badge v-if="item.isVModel" variant="primary">v-model</b-badge>
           <b-badge v-if="item.xss" variant="warning">Use with caution</b-badge>
           <b-badge v-if="item.deprecated" variant="danger">Deprecated</b-badge>
           <b-badge v-else-if="item.deprecation" variant="warning">Deprecation</b-badge>
         </template>
-        <template v-slot:cell(type)="{ value }">
+        <template #cell(type)="{ value }">
           <span v-html="value"></span>
         </template>
-        <template v-slot:cell(defaultValue)="{ value }">
+        <template #cell(defaultValue)="{ value }">
           <code v-if="value" class="word-wrap-normal notranslate" translate="no">{{ value }}</code>
         </template>
-        <template v-slot:row-details="{ item }">
+        <template #row-details="{ item }">
           <p v-if="typeof item.deprecated === 'string'" class="mb-1 small">
             {{ item.deprecated }}
           </p>
@@ -158,10 +162,10 @@
         bordered
         striped
       >
-        <template v-slot:cell(prop)="{ value }">
+        <template #cell(prop)="{ value }">
           <code class="notranslate" translate="no">{{ kebabCase(value) }}</code>
         </template>
-        <template v-slot:cell(event)="{ value }">
+        <template #cell(event)="{ value }">
           <code class="notranslate" translate="no">{{ value }}</code>
         </template>
       </b-table-lite>
@@ -181,11 +185,11 @@
         bordered
         striped
       >
-        <template v-slot:cell(name)="{ value, item }">
+        <template #cell(name)="{ value, item }">
           <code class="text-nowrap notranslate" translate="no">{{ value }}</code>
           <b-badge v-if="item.version" variant="secondary">v{{ item.version }}+</b-badge>
         </template>
-        <template v-slot:cell(scope)="{ value, detailsShowing, toggleDetails }">
+        <template #cell(scope)="{ value, detailsShowing, toggleDetails }">
           <b-button
             v-if="value"
             variant="outline-info"
@@ -197,7 +201,7 @@
           </b-button>
           <span v-else>No</span>
         </template>
-        <template v-slot:row-details="{ item }">
+        <template #row-details="{ item }">
           <b-table-lite
             :items="item.scope"
             :fields="[{ key: 'prop', label: 'Property' }, 'type', 'description']"
@@ -207,7 +211,7 @@
             caption-top
             small
           >
-            <template v-slot:thead-top>
+            <template #thead-top>
               <b-tr>
                 <b-th colspan="3" class="text-center">
                   <code class="text-nowrap notranslate" translate="no">{{ item.name }}</code>
@@ -215,11 +219,11 @@
                 </b-th>
               </b-tr>
             </template>
-            <template v-slot:cell(prop)="{ value, item }">
+            <template #cell(prop)="{ value, item: cellItem }">
               <code class="text-nowrap notranslate" translate="no">{{ value }}</code>
-              <b-badge v-if="item.version" variant="secondary">v{{ item.version }}+</b-badge>
+              <b-badge v-if="cellItem.version" variant="secondary">v{{ cellItem.version }}+</b-badge>
             </template>
-            <template v-slot:cell(type)="{ value }">
+            <template #cell(type)="{ value }">
               <code class="text-nowrap notranslate" translate="no">{{ value || 'Any' }}</code>
             </template>
           </b-table-lite>
@@ -240,11 +244,11 @@
         bordered
         striped
       >
-        <template v-slot:cell(event)="{ value, item }">
+        <template #cell(event)="{ value, item }">
           <code class="notranslate" translate="no">{{ value }}</code>
           <b-badge v-if="item.version" variant="secondary">v{{ item.version }}+</b-badge>
         </template>
-        <template v-slot:cell(args)="{ value, item }">
+        <template #cell(args)="{ value, item }">
           <ol v-if="value && value.length > 0" class="list-unstyled mb-0">
             <li v-for="(arg, idx) in value" :key="`event-${item.event}-${arg.arg || idx}`">
               <template v-if="arg.arg">
@@ -274,11 +278,11 @@
         bordered
         striped
       >
-        <template v-slot:cell(event)="{ value, item }">
+        <template #cell(event)="{ value, item }">
           <code class="text-nowrap notranslate" translate="no">{{ value }}</code>
           <b-badge v-if="item.version" variant="secondary">v{{ item.version }}+</b-badge>
         </template>
-        <template v-slot:cell(args)="{ value, item }">
+        <template #cell(args)="{ value, item }">
           <p
             v-for="arg in value"
             :key="`event-${item.event}-${arg.arg ? arg.arg : 'none'}`"
@@ -295,35 +299,13 @@
   </section>
 </template>
 
-<style scoped>
-h3::before {
-  display: block;
-  height: 1.25rem;
-  margin-top: -1.25rem;
-  content: '';
-}
-
-code.bigger {
-  font-size: 105%;
-}
-
-ul.component-ref-mini-toc:empty {
-  display: none;
-}
-
-/deep/ .word-wrap-normal {
-  white-space: normal !important;
-  word-break: normal !important;
-  overflow-wrap: normal !important;
-}
-</style>
-
 <script>
 import Vue from 'vue'
-// Fallback descriptions for common props (mainly router-link props)
 import commonProps from '../common-props.json'
-import { kebabCase } from '../utils'
+import { getComponentName, getCleanComponentName, kebabCase } from '../utils'
 import AnchoredHeading from './anchored-heading'
+
+const SORT_THRESHOLD = 10
 
 export default {
   name: 'BVComponentdoc',
@@ -413,34 +395,36 @@ export default {
       }, {})
     },
     propsFields() {
-      const sortable = this.propsItems.length >= 10
+      const sortable = this.propsItems.length >= SORT_THRESHOLD
       const hasDescriptions = this.propsItems.some(p => p.description)
       return [
         { key: 'prop', label: 'Property', sortable },
-        { key: 'type', label: 'Type' },
+        { key: 'type', label: 'Type', sortable },
         { key: 'defaultValue', label: 'Default' },
         ...(hasDescriptions ? [{ key: 'description', label: 'Description' }] : [])
       ]
     },
     eventsFields() {
+      const sortable = this.events.length >= SORT_THRESHOLD
       return [
-        { key: 'event', label: 'Event' },
+        { key: 'event', label: 'Event', sortable },
         { key: 'args', label: 'Arguments' },
         { key: 'description', label: 'Description' }
       ]
     },
     rootEventListenersFields() {
+      const sortable = this.rootEventListeners.length >= SORT_THRESHOLD
       return [
-        { key: 'event', label: 'Event' },
+        { key: 'event', label: 'Event', sortable },
         { key: 'args', label: 'Arguments' },
         { key: 'description', label: 'Description' }
       ]
     },
     slotsFields() {
-      const sortable = this.slotsItems.length >= 10
+      const sortable = this.slots.length >= SORT_THRESHOLD
       const hasScopedSlots = this.slots.some(s => s.scope)
       return [
-        { key: 'name', label: 'Slot Name', sortable },
+        { key: 'name', label: 'Name', sortable },
         ...(hasScopedSlots ? [{ key: 'scope', label: 'Scoped' }] : []),
         { key: 'description', label: 'Description' }
       ]
@@ -449,68 +433,63 @@ export default {
       const props = this.componentProps
       const propsMetaObj = this.componentPropsMetaObj
 
-      return Object.keys(props).map(prop => {
-        const p = props[prop]
-        const meta = propsMetaObj[prop] || {}
+      return Object.keys(props)
+        .sort()
+        .map(prop => {
+          const p = props[prop]
+          const meta = {
+            // Fallback descriptions for common props
+            ...(commonProps[prop] || {}),
+            ...(propsMetaObj[prop] || {})
+          }
 
-        // Describe type
-        let type = p.type
-        let types = []
-        if (Array.isArray(type)) {
-          types = type.map(type => type.name)
-        } else {
-          types = type && type.name ? [type.name] : ['Any']
-        }
-        type = types
-          .map(type => `<code class="notranslate" translate="no">${type}</code>`)
-          .join(' or ')
+          // Describe type
+          let type = p.type
+          let types = []
+          if (Array.isArray(type)) {
+            types = type.map(type => type.name)
+          } else {
+            types = type && type.name ? [type.name] : ['Any']
+          }
+          type = types
+            .map(type => `<code class="notranslate" translate="no">${type}</code>`)
+            .join(' or ')
 
-        // Default value
-        let defaultValue = p.default
-        if (defaultValue instanceof Function && !Array.isArray(defaultValue)) {
-          defaultValue = defaultValue()
-        }
-        defaultValue =
-          typeof defaultValue === 'undefined'
-            ? ''
-            : String(JSON.stringify(defaultValue, undefined, 1)).replace(/"/g, "'")
+          // Default value
+          let defaultValue = p.default
+          if (defaultValue instanceof Function && !Array.isArray(defaultValue)) {
+            defaultValue = defaultValue()
+          }
+          defaultValue =
+            typeof defaultValue === 'undefined'
+              ? ''
+              : String(JSON.stringify(defaultValue, undefined, 1)).replace(/"/g, "'")
 
-        const fallbackMeta = commonProps[prop] || {}
-        const description =
-          typeof meta.description === 'undefined' ? fallbackMeta.description : meta.description
-        // TODO:
-        //   Can we auto-detect this by doing a lookup in the
-        //   default settings or determine if the prop default
-        //   value came from the settings?
-        const settings = meta.settings || false
-        const version = typeof meta.version === 'undefined' ? fallbackMeta.version : meta.version
-
-        return {
-          prop: kebabCase(prop),
-          type,
-          defaultValue,
-          required: p.required || false,
-          description: description || '',
-          settings,
-          version,
-          xss: /[a-z]Html$/.test(prop),
-          isVModel: this.componentVModel && this.componentVModel.prop === prop,
-          deprecated: p.deprecated || false,
-          deprecation: p.deprecation || false,
-          _showDetails: typeof p.deprecated === 'string' || typeof p.deprecation === 'string'
-        }
-      })
+          return {
+            prop: kebabCase(prop),
+            type,
+            defaultValue,
+            required: p.required || false,
+            description: meta.description || '',
+            version: meta.version || '',
+            xss: meta.xss || false,
+            isVModel: this.componentVModel && this.componentVModel.prop === prop,
+            deprecated: p.deprecated || false,
+            deprecation: p.deprecation || false,
+            _showDetails: typeof p.deprecated === 'string' || typeof p.deprecation === 'string'
+          }
+        })
     },
     slotsItems() {
       // We use object spread here so that `_showDetails` doesn't
       // mutate the original array objects
-      return this.slots ? this.slots.map(s => ({ ...s })) : []
+      return this.slots ? this.slots.map(slot => ({ ...slot })) : []
     },
     componentName() {
-      return kebabCase(this.component).replace('{', '-{')
+      return getComponentName(this.component)
     },
     componentNameClean() {
-      return this.componentName.replace('{', '').replace('}', '')
+      return getCleanComponentName(this.component)
     },
     tag() {
       return `<${this.componentName}>`
@@ -532,3 +511,26 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+h3::before {
+  display: block;
+  height: 1.25rem;
+  margin-top: -1.25rem;
+  content: '';
+}
+
+code.bigger {
+  font-size: 105%;
+}
+
+ul.component-ref-mini-toc:empty {
+  display: none;
+}
+
+>>> .word-wrap-normal {
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+</style>

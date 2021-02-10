@@ -1,6 +1,5 @@
 import { importAll, parseVersion, parseFullVersion } from '~/utils'
 import { version, dependencies, devDependencies, description } from '~/../package.json'
-import DEFAULT_CONFIG from '~/../src/utils/config-defaults'
 
 const componentsContext = require.context('~/../src/components/', true, /package.json/)
 export const components = importAll(componentsContext)
@@ -10,7 +9,7 @@ export const directives = importAll(directivesContext)
 
 const iconsContext = require.context('~/../src/icons', false, /package.json/)
 const icons = importAll(iconsContext) || {}
-// Since there are over 300 icons, we only return `BIcon` and `BIconstack` component, plus
+// Since there a lot of icons, we only return `BIcon` and `BIconstack` component, plus
 // one extra example icon component which we modify the icon name to be `BIcon{IconName}`
 // We sort the array to ensure `BIcon` appears first
 icons[''].components = icons[''].components
@@ -32,7 +31,7 @@ export const reference = importAll(referenceContext)
 
 export const nav = [
   {
-    title: 'Getting started',
+    title: 'Getting Started',
     base: '',
     exact: true
   },
@@ -74,7 +73,7 @@ export const bootstrapVersionMajor = bootstrapVersion.replace(majorRE, '$1')
 export const bootstrapIconsVersion = parseFullVersion(devDependencies['bootstrap-icons'])
 export const bootstrapIconsVersionMinor = bootstrapIconsVersion.replace(minorRE, '$1')
 export const bootstrapIconsVersionMajor = bootstrapIconsVersion.replace(majorRE, '$1')
-export const bootstrapIconsCount = 1000
+export const bootstrapIconsCount = 1200
 
 export const popperVersion = parseVersion(dependencies['popper.js'])
 export const popperVersionMinor = popperVersion.replace(minorRE, '$1')
@@ -92,7 +91,6 @@ export const vueVersion = parseVersion(devDependencies.vue)
 export const vueVersionMinor = vueVersion.replace(minorRE, '$1')
 export const vueVersionMajor = vueVersion.replace(majorRE, '$1')
 
-export const defaultConfig = DEFAULT_CONFIG
 export const bvDescription = description
 
 export { version }

@@ -1,7 +1,6 @@
-import hljs from '~/utils/hljs'
 import MainDocs from '~/components/main-docs'
 import docsMixin from '~/plugins/docs-mixin'
-import { reference as referenceMeta, defaultConfig } from '~/content'
+import { reference as referenceMeta } from '~/content'
 
 const getReadmeData = name => {
   try {
@@ -11,13 +10,11 @@ const getReadmeData = name => {
   }
 }
 
-const replacer = (key, value) => (typeof value === 'undefined' ? null : value)
-
 // @vue/component
 export default {
   name: 'BDVReference',
-  layout: 'docs',
   mixins: [docsMixin],
+  layout: 'docs',
   validate({ params }) {
     return Boolean(referenceMeta[params.slug])
   },
@@ -25,11 +22,8 @@ export default {
     const name = params.slug
     const meta = referenceMeta[name]
     const readmeData = (await getReadmeData(name)).default
-    let { titleLead = '', body = '', baseTOC = {}, loadError = false } = readmeData
-    body = body.replace(
-      '{{ defaultConfig }}',
-      hljs.highlight('json', JSON.stringify(defaultConfig || {}, replacer, 2)).value
-    )
+    const { titleLead = '', body = '', baseTOC = {}, loadError = false } = readmeData
+
     return { meta, titleLead, body, baseTOC, loadError }
   },
   render(h) {

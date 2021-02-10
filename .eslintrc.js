@@ -22,7 +22,9 @@ module.exports = {
         ignoreRestSiblings: false
       }
     ],
+    'object-shorthand': ['error', 'properties'],
     'spaced-comment': 'off', // needed to ignore `/*#__PURE__*/` comments
+    'vue/custom-event-name-casing': 'off',
     'vue/html-self-closing': [
       'error',
       {
@@ -34,9 +36,8 @@ module.exports = {
       }
     ],
     'vue/max-attributes-per-line': ['error', { singleline: 4 }],
-    'vue/no-template-shadow': 'off',
-    'vue/no-use-v-if-with-v-for': 'off',
     'vue/no-v-html': 'off',
+    'vue/one-component-per-file': 'off',
     'vue/require-default-prop': 'off',
     'vue/require-prop-types': 'off',
     'vue/singleline-html-element-content-newline': 'off'

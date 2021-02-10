@@ -12,7 +12,7 @@
           <h5 class="bd-text-purple-bright mb-1">Documentation</h5>
           <ul class="list-unstyled ml-3">
             <li><b-link to="/" exact>Home</b-link></li>
-            <li><b-link to="/docs" exact>Getting started</b-link></li>
+            <li><b-link to="/docs" exact>Getting Started</b-link></li>
             <li><b-link to="/docs/components" exact>Components</b-link></li>
             <li><b-link to="/docs/directives" exact>Directives</b-link></li>
             <li><b-link to="/docs/icons" exact>Icons</b-link></li>
@@ -73,22 +73,6 @@
   </footer>
 </template>
 
-<style scoped>
-.bv-logo {
-  margin-top: -2rem;
-}
-
-.docs-border {
-  border-top: 3px solid #dee2e6;
-}
-
-@media (min-width: 1200px) {
-  .bd-footer > .container {
-    max-width: 960px;
-  }
-}
-</style>
-
 <script>
 import { version } from '~/content'
 import BvLogo from '~/components/bv-logo'
@@ -115,3 +99,19 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.bv-logo {
+  margin-top: -2rem;
+}
+
+.docs-border {
+  border-top: 3px solid #dee2e6;
+}
+
+@media (min-width: 1200px) {
+  .bd-footer > .container {
+    max-width: 960px;
+  }
+}
+</style>
