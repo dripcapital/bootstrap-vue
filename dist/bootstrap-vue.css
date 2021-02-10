@@ -1,14 +1,50 @@
 /*!
  * BootstrapVue Custom CSS (https://bootstrap-vue.org)
  */
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600");
+@import url("https://fonts.googleapis.com/css?family=Lato");
+.font-10 {
+  font-size: 10px;
+}
+
+.font-15 {
+  font-size: 15px;
+}
+
+.font-20 {
+  font-size: 20px;
+}
+
+.font-25 {
+  font-size: 25px;
+}
+
+.font-30 {
+  font-size: 30px;
+}
+
+.font-35 {
+  font-size: 35px;
+}
+
+.font-40 {
+  font-size: 40px;
+}
+
+.font-45 {
+  font-size: 45px;
+}
+
+.font-50 {
+  font-size: 50px;
+}
+
 /*!
  * Bootstrap v4.5.0 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600");
-@import url("https://fonts.googleapis.com/css?family=Lato");
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -10113,7 +10149,7 @@ a.text-alert:hover, a.text-alert:focus {
   text-align: center;
   overflow: visible;
   position: relative;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .b-avatar:focus {
@@ -11018,6 +11054,14 @@ label {
   pointer-events: none;
 }
 
+.b-form-tags .b-form-tags-list {
+  margin-top: -0.25rem;
+}
+
+.b-form-tags .b-form-tags-list .b-form-tag {
+  margin-top: 0.25rem;
+}
+
 .b-form-tags.focus {
   color: #495057;
   background-color: #fff;
@@ -11044,6 +11088,7 @@ label {
   font-size: 75%;
   font-weight: normal;
   line-height: 1.5;
+  margin-right: 0.25rem;
 }
 
 .b-form-tag.disabled {
@@ -11055,6 +11100,7 @@ label {
   font-size: 125%;
   line-height: 1;
   float: none;
+  margin-left: 0.25rem;
 }
 
 .form-control-sm .b-form-tag {
@@ -11580,7 +11626,6 @@ label {
   height: 100vh;
   width: 320px;
   max-width: 100% !important;
-  height: 100vh !important;
   margin: 0 !important;
   outline: 0;
   -webkit-transform: translateX(0);

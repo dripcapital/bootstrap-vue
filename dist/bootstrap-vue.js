@@ -1,5 +1,5 @@
 /*!
- * BootstrapVue 2.15.0
+ * BootstrapVue 2.16.0
  *
  * @link https://bootstrap-vue.org
  * @source https://github.com/bootstrap-vue/bootstrap-vue
@@ -11,10 +11,12 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('vue')) :
   typeof define === 'function' && define.amd ? define(['vue'], factory) :
-  (global = global || self, global.bootstrapVue = factory(global.Vue));
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.bootstrapVue = factory(global.Vue));
 }(this, (function (Vue) { 'use strict';
 
-  Vue = Vue && Object.prototype.hasOwnProperty.call(Vue, 'default') ? Vue['default'] : Vue;
+  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+  var Vue__default = /*#__PURE__*/_interopDefaultLegacy(Vue);
 
   function _typeof(obj) {
     "@babel/helpers - typeof";
@@ -1175,12 +1177,12 @@
 
   var setConfig = function setConfig() {
     var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-    var Vue$1 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Vue;
+    var Vue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Vue__default['default'];
     // Ensure we have a $bvConfig Object on the Vue prototype.
     // We set on Vue and OurVue just in case consumer has not set an alias of `vue`.
-    Vue$1.prototype[PROP_NAME] = Vue.prototype[PROP_NAME] = Vue$1.prototype[PROP_NAME] || Vue.prototype[PROP_NAME] || new BvConfig(); // Apply the config values
+    Vue.prototype[PROP_NAME] = Vue__default['default'].prototype[PROP_NAME] = Vue.prototype[PROP_NAME] || Vue__default['default'].prototype[PROP_NAME] || new BvConfig(); // Apply the config values
 
-    Vue$1.prototype[PROP_NAME].setConfig(config);
+    Vue.prototype[PROP_NAME].setConfig(config);
   }; // Method for resetting the user config. Exported for testing purposes only.
 
   /**
@@ -1191,9 +1193,9 @@
   var checkMultipleVue = function () {
     var checkMultipleVueWarned = false;
     var MULTIPLE_VUE_WARNING = ['Multiple instances of Vue detected!', 'You may need to set up an alias for Vue in your bundler config.', 'See: https://bootstrap-vue.org/docs#using-module-bundlers'].join('\n');
-    return function (Vue$1) {
+    return function (Vue) {
       /* istanbul ignore next */
-      if (!checkMultipleVueWarned && Vue !== Vue$1 && !isJSDOM) {
+      if (!checkMultipleVueWarned && Vue__default['default'] !== Vue && !isJSDOM) {
         warn(MULTIPLE_VUE_WARNING);
       }
 
@@ -1342,7 +1344,7 @@
   };
 
   var PROP_NAME$1 = '$bvConfig';
-  var VueProto = Vue.prototype; // --- Getter methods ---
+  var VueProto = Vue__default['default'].prototype; // --- Getter methods ---
 
   var getConfigValue = function getConfigValue(key) {
     return VueProto[PROP_NAME$1] ? VueProto[PROP_NAME$1].getConfigValue(key) : cloneDeep(getRaw(DEFAULTS, key));
@@ -1767,7 +1769,7 @@
   }); // @vue/component
 
 
-  var BVTransition = /*#__PURE__*/Vue.extend({
+  var BVTransition = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BVTransition',
     functional: true,
     props: {
@@ -1923,7 +1925,7 @@
     }
   }; // @vue/component
 
-  var BButtonClose = /*#__PURE__*/Vue.extend({
+  var BButtonClose = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$1,
     functional: true,
     props: props,
@@ -1996,7 +1998,7 @@
   }; // @vue/component
 
 
-  var BAlert = /*#__PURE__*/Vue.extend({
+  var BAlert = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$2,
     mixins: [normalizeSlotMixin],
     model: {
@@ -2168,7 +2170,7 @@
   var RX_ASPECT = /^\d+(\.\d*)?[/:]\d+(\.\d*)?$/;
   var RX_SEPARATOR = /[/:]/; // --- Main Component ---
 
-  var BAspect = /*#__PURE__*/Vue.extend({
+  var BAspect = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$3,
     mixins: [normalizeSlotMixin],
     props: {
@@ -2588,7 +2590,7 @@
   }); // --- Main component ---
   // @vue/component
 
-  var BLink = /*#__PURE__*/Vue.extend({
+  var BLink = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BLink',
     // Mixin order is important!
     mixins: [attrsMixin, listenersMixin, normalizeSlotMixin],
@@ -2850,7 +2852,7 @@
   // @vue/component
 
 
-  var BButton = /*#__PURE__*/Vue.extend({
+  var BButton = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$5,
     functional: true,
     props: props$2,
@@ -2960,7 +2962,7 @@
     height: '1em',
     focusable: 'false',
     role: 'img',
-    alt: 'icon'
+    'aria-label': 'icon'
   }; // Attributes that are nulled out when stacked
 
   var stackedAttrs = {
@@ -2968,11 +2970,11 @@
     height: null,
     focusable: null,
     role: null,
-    alt: null
+    'aria-label': null
   }; // Shared private base component to reduce bundle/runtime size
   // @vue/component
 
-  var BVIconBase = /*#__PURE__*/Vue.extend({
+  var BVIconBase = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BVIconBase',
     functional: true,
     props: _objectSpread2({
@@ -3066,11 +3068,12 @@
   var makeIcon = function makeIcon(name, content) {
     // For performance reason we pre-compute some values, so that
     // they are not computed on each render of the icon component
+    var kebabName = kebabCase(name);
     var iconName = "BIcon".concat(pascalCase(name));
-    var iconNameClass = "bi-".concat(kebabCase(name));
+    var iconNameClass = "bi-".concat(kebabName);
     var svgContent = trim(content || ''); // Return the icon component definition
 
-    return /*#__PURE__*/Vue.extend({
+    return /*#__PURE__*/Vue__default['default'].extend({
       name: iconName,
       functional: true,
       props: _objectSpread2(_objectSpread2({}, commonIconProps), {}, {
@@ -3086,55 +3089,40 @@
           staticClass: iconNameClass,
           props: _objectSpread2(_objectSpread2({}, props), {}, {
             content: svgContent
-          })
+          }),
+          attrs: {
+            'aria-label': kebabName.replace(/-/g, ' ')
+          }
         }));
       }
     });
   };
 
   // --- BEGIN AUTO-GENERATED FILE ---
-
-  var BIconBlank = /*#__PURE__*/makeIcon('Blank', ''); // --- Bootstrap Icons ---
-
-  var BIconCalendar = /*#__PURE__*/makeIcon('Calendar', '<path fill-rule="evenodd" d="M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1zm1-3a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2z"/><path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5zm9 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5z"/>'); // eslint-disable-next-line
-
-  var BIconCalendarFill = /*#__PURE__*/makeIcon('CalendarFill', '<path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5zm9 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5z"/><path d="M2 1a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2H2zm14 4H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5z"/>'); // eslint-disable-next-line
-
-  var BIconChevronBarLeft = /*#__PURE__*/makeIcon('ChevronBarLeft', '<path fill-rule="evenodd" d="M11.854 3.646a.5.5 0 0 1 0 .708L8.207 8l3.647 3.646a.5.5 0 0 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 0 1 .708 0zM4.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 1 0v-13a.5.5 0 0 0-.5-.5z"/>'); // eslint-disable-next-line
-
-  var BIconChevronDoubleLeft = /*#__PURE__*/makeIcon('ChevronDoubleLeft', '<path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/><path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>'); // eslint-disable-next-line
-
-  var BIconChevronDown = /*#__PURE__*/makeIcon('ChevronDown', '<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>'); // eslint-disable-next-line
-
-  var BIconChevronLeft = /*#__PURE__*/makeIcon('ChevronLeft', '<path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>'); // eslint-disable-next-line
-
-  var BIconChevronUp = /*#__PURE__*/makeIcon('ChevronUp', '<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>'); // eslint-disable-next-line
-
-  var BIconCircleFill = /*#__PURE__*/makeIcon('CircleFill', '<circle cx="8" cy="8" r="8"/>'); // eslint-disable-next-line
-
-  var BIconClock = /*#__PURE__*/makeIcon('Clock', '<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/><path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>'); // eslint-disable-next-line
-
-  var BIconClockFill = /*#__PURE__*/makeIcon('ClockFill', '<path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>'); // eslint-disable-next-line
-
-  var BIconDash = /*#__PURE__*/makeIcon('Dash', '<path fill-rule="evenodd" d="M3.5 8a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.5-.5z"/>'); // eslint-disable-next-line
-
-  var BIconPersonFill = /*#__PURE__*/makeIcon('PersonFill', '<path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>'); // eslint-disable-next-line
-
-  var BIconPlus = /*#__PURE__*/makeIcon('Plus', '<path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/><path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>'); // eslint-disable-next-line
-
-  var BIconStar = /*#__PURE__*/makeIcon('Star', '<path fill-rule="evenodd" d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>'); // eslint-disable-next-line
-
-  var BIconStarFill = /*#__PURE__*/makeIcon('StarFill', '<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>'); // eslint-disable-next-line
-
-  var BIconStarHalf = /*#__PURE__*/makeIcon('StarHalf', '<path fill-rule="evenodd" d="M5.354 5.119L7.538.792A.516.516 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.537.537 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.519.519 0 0 1-.146.05c-.341.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.171-.403.59.59 0 0 1 .084-.302.513.513 0 0 1 .37-.245l4.898-.696zM8 12.027c.08 0 .16.018.232.056l3.686 1.894-.694-3.957a.564.564 0 0 1 .163-.505l2.906-2.77-4.052-.576a.525.525 0 0 1-.393-.288L8.002 2.223 8 2.226v9.8z"/>'); // eslint-disable-next-line
-
-  var BIconX = /*#__PURE__*/makeIcon('X', '<path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/><path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>'); // eslint-disable-next-line
-   // --- END AUTO-GENERATED FILE ---
+  var BIconBlank=/*#__PURE__*/makeIcon('Blank','');// --- Bootstrap Icons ---
+  var BIconCalendar=/*#__PURE__*/makeIcon('Calendar','<path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>');// eslint-disable-next-line
+  var BIconCalendarFill=/*#__PURE__*/makeIcon('CalendarFill','<path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5h16V4H0V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5z"/>');// eslint-disable-next-line
+  var BIconChevronBarLeft=/*#__PURE__*/makeIcon('ChevronBarLeft','<path fill-rule="evenodd" d="M11.854 3.646a.5.5 0 0 1 0 .708L8.207 8l3.647 3.646a.5.5 0 0 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 0 1 .708 0zM4.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 1 0v-13a.5.5 0 0 0-.5-.5z"/>');// eslint-disable-next-line
+  var BIconChevronDoubleLeft=/*#__PURE__*/makeIcon('ChevronDoubleLeft','<path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/><path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>');// eslint-disable-next-line
+  var BIconChevronDown=/*#__PURE__*/makeIcon('ChevronDown','<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>');// eslint-disable-next-line
+  var BIconChevronLeft=/*#__PURE__*/makeIcon('ChevronLeft','<path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>');// eslint-disable-next-line
+  var BIconChevronUp=/*#__PURE__*/makeIcon('ChevronUp','<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>');// eslint-disable-next-line
+  var BIconCircleFill=/*#__PURE__*/makeIcon('CircleFill','<circle cx="8" cy="8" r="8"/>');// eslint-disable-next-line
+  var BIconClock=/*#__PURE__*/makeIcon('Clock','<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/><path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>');// eslint-disable-next-line
+  var BIconClockFill=/*#__PURE__*/makeIcon('ClockFill','<path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>');// eslint-disable-next-line
+  var BIconDash=/*#__PURE__*/makeIcon('Dash','<path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>');// eslint-disable-next-line
+  var BIconPersonFill=/*#__PURE__*/makeIcon('PersonFill','<path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>');// eslint-disable-next-line
+  var BIconPlus=/*#__PURE__*/makeIcon('Plus','<path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>');// eslint-disable-next-line
+  var BIconStar=/*#__PURE__*/makeIcon('Star','<path fill-rule="evenodd" d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>');// eslint-disable-next-line
+  var BIconStarFill=/*#__PURE__*/makeIcon('StarFill','<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>');// eslint-disable-next-line
+  var BIconStarHalf=/*#__PURE__*/makeIcon('StarHalf','<path fill-rule="evenodd" d="M5.354 5.119L7.538.792A.516.516 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.537.537 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.519.519 0 0 1-.146.05c-.341.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.171-.403.59.59 0 0 1 .084-.302.513.513 0 0 1 .37-.245l4.898-.696zM8 12.027c.08 0 .16.018.232.056l3.686 1.894-.694-3.957a.564.564 0 0 1 .163-.505l2.906-2.77-4.052-.576a.525.525 0 0 1-.393-.288L8.002 2.223 8 2.226v9.8z"/>');// eslint-disable-next-line
+  var BIconX=/*#__PURE__*/makeIcon('X','<path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>');// eslint-disable-next-line
+  // --- END AUTO-GENERATED FILE ---
 
   var RX_ICON_PREFIX = /^BIcon/; // Helper BIcon component
   // Requires the requested icon component to be installed
 
-  var BIcon = /*#__PURE__*/Vue.extend({
+  var BIcon = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BIcon',
     functional: true,
     props: _objectSpread2(_objectSpread2({
@@ -3264,7 +3252,7 @@
   }; // --- Main component ---
   // @vue/component
 
-  var BAvatar = /*#__PURE__*/Vue.extend({
+  var BAvatar = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$6,
     mixins: [normalizeSlotMixin],
     inject: {
@@ -3361,7 +3349,7 @@
           badgeStyle = this.badgeStyle;
       var link = !button && isLink(this);
       var tag = button ? BButton : link ? BLink : 'span';
-      var alt = this.alt || null;
+      var alt = this.alt;
       var ariaLabel = this.ariaLabel || null;
       var $content = null;
 
@@ -3450,7 +3438,7 @@
   var NAME$7 = 'BAvatarGroup'; // --- Main component ---
   // @vue/component
 
-  var BAvatarGroup = /*#__PURE__*/Vue.extend({
+  var BAvatarGroup = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$7,
     mixins: [normalizeSlotMixin],
     provide: function provide() {
@@ -3548,7 +3536,7 @@
   }, linkProps$2); // --- Main component ---
   // @vue/component
 
-  var BBadge = /*#__PURE__*/Vue.extend({
+  var BBadge = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$8,
     functional: true,
     props: props$4,
@@ -3608,7 +3596,7 @@
   }, omit(props$1, ['event', 'routerTag'])); // --- Main component ---
   // @vue/component
 
-  var BBreadcrumbLink = /*#__PURE__*/Vue.extend({
+  var BBreadcrumbLink = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BBreadcrumbLink',
     functional: true,
     props: props$5,
@@ -3633,7 +3621,7 @@
     }
   });
 
-  var BBreadcrumbItem = /*#__PURE__*/Vue.extend({
+  var BBreadcrumbItem = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BBreadcrumbItem',
     functional: true,
     props: props$5,
@@ -3659,7 +3647,7 @@
     }
   }; // @vue/component
 
-  var BBreadcrumb = /*#__PURE__*/Vue.extend({
+  var BBreadcrumb = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BBreadcrumb',
     functional: true,
     props: props$6,
@@ -3743,7 +3731,7 @@
     }
   }; // @vue/component
 
-  var BButtonGroup = /*#__PURE__*/Vue.extend({
+  var BButtonGroup = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$9,
     functional: true,
     props: props$7,
@@ -3772,7 +3760,7 @@
 
   var ITEM_SELECTOR = ['.btn:not(.disabled):not([disabled]):not(.dropdown-item)', '.form-control:not(.disabled):not([disabled])', 'select:not(.disabled):not([disabled])', 'input[type="checkbox"]:not(.disabled)', 'input[type="radio"]:not(.disabled)'].join(','); // @vue/component
 
-  var BButtonToolbar = /*#__PURE__*/Vue.extend({
+  var BButtonToolbar = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BButtonToolbar',
     mixins: [normalizeSlotMixin],
     props: {
@@ -4177,7 +4165,7 @@
   var STR_NARROW = 'narrow'; // --- BCalendar component ---
   // @vue/component
 
-  var BCalendar = Vue.extend({
+  var BCalendar = Vue__default['default'].extend({
     name: NAME$a,
     // Mixin order is important!
     mixins: [attrsMixin, idMixin, normalizeSlotMixin],
@@ -5318,7 +5306,7 @@
     }
   }; // @vue/component
 
-  var BCardTitle = /*#__PURE__*/Vue.extend({
+  var BCardTitle = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BCardTitle',
     functional: true,
     props: props$8,
@@ -5350,7 +5338,7 @@
     }
   }; // @vue/component
 
-  var BCardSubTitle = /*#__PURE__*/Vue.extend({
+  var BCardSubTitle = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$b,
     functional: true,
     props: props$9,
@@ -5377,7 +5365,7 @@
     }
   }); // @vue/component
 
-  var BCardBody = /*#__PURE__*/Vue.extend({
+  var BCardBody = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BCardBody',
     functional: true,
     props: props$a,
@@ -5429,7 +5417,7 @@
   }); // --- Main component ---
   // @vue/component
 
-  var BCardHeader = /*#__PURE__*/Vue.extend({
+  var BCardHeader = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BCardHeader',
     functional: true,
     props: props$b,
@@ -5466,7 +5454,7 @@
   }); // --- Main component ---
   // @vue/component
 
-  var BCardFooter = /*#__PURE__*/Vue.extend({
+  var BCardFooter = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BCardFooter',
     functional: true,
     props: props$c,
@@ -5493,8 +5481,8 @@
       required: true
     },
     alt: {
-      type: String // default: null
-
+      type: String,
+      default: null
     },
     top: {
       type: Boolean,
@@ -5532,7 +5520,7 @@
     }
   }; // @vue/component
 
-  var BCardImg = /*#__PURE__*/Vue.extend({
+  var BCardImg = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BCardImg',
     functional: true,
     props: props$d,
@@ -5555,7 +5543,7 @@
         class: [baseClass],
         attrs: {
           src: props.src || null,
-          alt: props.alt || null,
+          alt: props.alt,
           height: props.height || null,
           width: props.width || null
         }
@@ -5576,7 +5564,7 @@
     }
   }); // @vue/component
 
-  var BCard = /*#__PURE__*/Vue.extend({
+  var BCard = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BCard',
     functional: true,
     props: props$e,
@@ -5842,8 +5830,8 @@
 
     },
     alt: {
-      type: String // default: null
-
+      type: String,
+      default: null
     },
     width: {
       type: [Number, String] // default: null
@@ -5913,7 +5901,7 @@
   }; // @vue/component
 
 
-  var BImg = /*#__PURE__*/Vue.extend({
+  var BImg = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$c,
     functional: true,
     props: props$f,
@@ -5961,7 +5949,7 @@
       return h('img', a(data, {
         attrs: {
           src: src,
-          alt: props.alt || null,
+          alt: props.alt,
           width: width ? toString$1(width) : null,
           height: height ? toString$1(height) : null,
           srcset: srcset || null,
@@ -6066,7 +6054,7 @@
     }
   }; // @vue/component
 
-  var BImgLazy = /*#__PURE__*/Vue.extend({
+  var BImgLazy = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$d,
     directives: {
       bVisible: VBVisible
@@ -6210,7 +6198,7 @@
     }
   }); // @vue/component
 
-  var BCardImgLazy = /*#__PURE__*/Vue.extend({
+  var BCardImgLazy = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BCardImgLazy',
     functional: true,
     props: props$h,
@@ -6250,7 +6238,7 @@
     }
   }; // @vue/component
 
-  var BCardText = /*#__PURE__*/Vue.extend({
+  var BCardText = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BCardText',
     functional: true,
     props: props$i,
@@ -6279,7 +6267,7 @@
     }
   }; // @vue/component
 
-  var BCardGroup = /*#__PURE__*/Vue.extend({
+  var BCardGroup = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BCardGroup',
     functional: true,
     props: props$j,
@@ -6470,7 +6458,7 @@
   }; // @vue/component
 
 
-  var BCarousel = /*#__PURE__*/Vue.extend({
+  var BCarousel = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$e,
     mixins: [idMixin, normalizeSlotMixin],
     provide: function provide() {
@@ -6815,7 +6803,7 @@
               var events = _this2.transitionEndEvent.split(/\s+/);
 
               events.forEach(function (evt) {
-                return eventOff(currentSlide, evt, onceTransEnd, EVENT_OPTIONS_NO_CAPTURE);
+                return eventOff(nextSlide, evt, onceTransEnd, EVENT_OPTIONS_NO_CAPTURE);
               });
             }
 
@@ -6845,7 +6833,7 @@
           if (this.transitionEndEvent) {
             var events = this.transitionEndEvent.split(/\s+/);
             events.forEach(function (event) {
-              return eventOn(currentSlide, event, onceTransEnd, EVENT_OPTIONS_NO_CAPTURE);
+              return eventOn(nextSlide, event, onceTransEnd, EVENT_OPTIONS_NO_CAPTURE);
             });
           } // Fallback to setTimeout()
 
@@ -7208,7 +7196,7 @@
   }); // --- Main component ---
   // @vue/component
 
-  var BCarouselSlide = /*#__PURE__*/Vue.extend({
+  var BCarouselSlide = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BCarouselSlide',
     mixins: [idMixin, normalizeSlotMixin],
     inject: {
@@ -7348,7 +7336,7 @@
     afterLeave: onAfterLeave
   }; // @vue/component
 
-  var BVCollapse = /*#__PURE__*/Vue.extend({
+  var BVCollapse = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BVCollapse',
     functional: true,
     props: {
@@ -7681,7 +7669,7 @@
   var EVENT_ACCORDION = 'bv::collapse::accordion'; // --- Main component ---
   // @vue/component
 
-  var BCollapse = /*#__PURE__*/Vue.extend({
+  var BCollapse = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BCollapse',
     mixins: [idMixin, listenOnRootMixin, normalizeSlotMixin],
     model: {
@@ -11303,7 +11291,7 @@
   }; // --- Main component ---
   // @vue/component
 
-  var BDropdown = /*#__PURE__*/Vue.extend({
+  var BDropdown = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$f,
     mixins: [idMixin, dropdownMixin, normalizeSlotMixin],
     props: props$l,
@@ -11442,7 +11430,7 @@
 
   var props$m = omit(props$1, ['event', 'routerTag']); // @vue/component
 
-  var BDropdownItem = /*#__PURE__*/Vue.extend({
+  var BDropdownItem = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BDropdownItem',
     mixins: [attrsMixin, normalizeSlotMixin],
     inheritAttrs: false,
@@ -11525,7 +11513,7 @@
     }
   }; // @vue/component
 
-  var BDropdownItemButton = /*#__PURE__*/Vue.extend({
+  var BDropdownItemButton = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BDropdownItemButton',
     mixins: [attrsMixin, normalizeSlotMixin],
     inheritAttrs: false,
@@ -11589,7 +11577,7 @@
     }
   }; // @vue/component
 
-  var BDropdownHeader = /*#__PURE__*/Vue.extend({
+  var BDropdownHeader = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BDropdownHeader',
     functional: true,
     props: props$o,
@@ -11622,7 +11610,7 @@
     }
   }; // @vue/component
 
-  var BDropdownDivider = /*#__PURE__*/Vue.extend({
+  var BDropdownDivider = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BDropdownDivider',
     functional: true,
     props: props$p,
@@ -11665,7 +11653,7 @@
     }
   }; // @vue/component
 
-  var BForm = /*#__PURE__*/Vue.extend({
+  var BForm = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BForm',
     functional: true,
     props: props$q,
@@ -11686,7 +11674,7 @@
     }
   });
 
-  var BDropdownForm = /*#__PURE__*/Vue.extend({
+  var BDropdownForm = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BDropdownForm',
     functional: true,
     props: _objectSpread2(_objectSpread2({}, props$q), {}, {
@@ -11728,7 +11716,7 @@
     }
   });
 
-  var BDropdownText = /*#__PURE__*/Vue.extend({
+  var BDropdownText = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BDropdownText',
     functional: true,
     props: {
@@ -11788,7 +11776,7 @@
     }
   }; // @vue/component
 
-  var BDropdownGroup = /*#__PURE__*/Vue.extend({
+  var BDropdownGroup = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BDropdownGroup',
     functional: true,
     props: props$r,
@@ -11873,7 +11861,7 @@
     }
   }; // @vue/component
 
-  var BEmbed = /*#__PURE__*/Vue.extend({
+  var BEmbed = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BEmbed',
     functional: true,
     props: props$s,
@@ -11978,7 +11966,7 @@
     }
   };
 
-  var BFormDatalist = /*#__PURE__*/Vue.extend({
+  var BFormDatalist = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BFormDatalist',
     mixins: [formOptionsMixin, normalizeSlotMixin],
     props: {
@@ -12032,7 +12020,7 @@
     }
   }; // @vue/component
 
-  var BFormText = /*#__PURE__*/Vue.extend({
+  var BFormText = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$g,
     functional: true,
     props: props$t,
@@ -12083,7 +12071,7 @@
     }
   }; // @vue/component
 
-  var BFormInvalidFeedback = /*#__PURE__*/Vue.extend({
+  var BFormInvalidFeedback = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BFormInvalidFeedback',
     functional: true,
     props: props$u,
@@ -12140,7 +12128,7 @@
     }
   }; // @vue/component
 
-  var BFormValidFeedback = /*#__PURE__*/Vue.extend({
+  var BFormValidFeedback = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BFormValidFeedback',
     functional: true,
     props: props$v,
@@ -12172,7 +12160,7 @@
     }
   }; // @vue/component
 
-  var BFormRow = /*#__PURE__*/Vue.extend({
+  var BFormRow = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BFormRow',
     functional: true,
     props: props$w,
@@ -12572,7 +12560,7 @@
     }
   };
 
-  var BFormCheckbox = /*#__PURE__*/Vue.extend({
+  var BFormCheckbox = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BFormCheckbox',
     mixins: [formRadioCheckMixin, // Includes shared render function
     idMixin, formMixin, formSizeMixin, formStateMixin],
@@ -12691,7 +12679,7 @@
     }
   });
 
-  var BFormRadio = /*#__PURE__*/Vue.extend({
+  var BFormRadio = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BFormRadio',
     mixins: [idMixin, formRadioCheckMixin, // Includes shared render function
     formMixin, formSizeMixin, formStateMixin],
@@ -12859,7 +12847,7 @@
     }
   }; // @vue/component
 
-  var BFormCheckboxGroup = /*#__PURE__*/Vue.extend({
+  var BFormCheckboxGroup = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BFormCheckboxGroup',
     mixins: [idMixin, formMixin, formRadioCheckGroupMixin, // Includes render function
     formOptionsMixin, formSizeMixin, formStateMixin],
@@ -12947,7 +12935,7 @@
 
   var dropdownProps = commonProps; // @vue/component
 
-  var BVFormBtnLabelControl = /*#__PURE__*/Vue.extend({
+  var BVFormBtnLabelControl = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BVFormBtnLabelControl',
     directives: {
       BHover: VBHover
@@ -13524,7 +13512,7 @@
   }; // --- BFormDate component ---
   // @vue/component
 
-  var BFormDatepicker = /*#__PURE__*/Vue.extend({
+  var BFormDatepicker = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$h,
     // The mixins order determines the order of appearance in the props reference section
     mixins: [idMixin, propsMixin],
@@ -13851,7 +13839,7 @@
   }; // @vue/component
 
 
-  var BFormFile = /*#__PURE__*/Vue.extend({
+  var BFormFile = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$i,
     mixins: [attrsMixin, idMixin, formMixin, formStateMixin, formCustomMixin, normalizeSlotMixin],
     inheritAttrs: false,
@@ -14206,6 +14194,61 @@
       BFile: BFormFile
     }
   });
+
+  var escapeChar = function escapeChar(value) {
+    return '\\' + value;
+  }; // The `cssEscape()` util is based on this `CSS.escape()` polyfill:
+  // https://github.com/mathiasbynens/CSS.escape
+
+
+  var cssEscape = function cssEscape(value) {
+    value = toString$1(value);
+    var length = value.length;
+    var firstCharCode = value.charCodeAt(0);
+    return value.split('').reduce(function (result, char, index) {
+      var charCode = value.charCodeAt(index); // If the character is NULL (U+0000), use (U+FFFD) as replacement
+
+      if (charCode === 0x0000) {
+        return result + "\uFFFD";
+      } // If the character ...
+
+
+      if ( // ... is U+007F OR
+      charCode === 0x007f || // ... is in the range [\1-\1F] (U+0001 to U+001F) OR ...
+      charCode >= 0x0001 && charCode <= 0x001f || // ... is the first character and is in the range [0-9] (U+0030 to U+0039) OR ...
+      index === 0 && charCode >= 0x0030 && charCode <= 0x0039 || // ... is the second character and is in the range [0-9] (U+0030 to U+0039)
+      // and the first character is a `-` (U+002D) ...
+      index === 1 && charCode >= 0x0030 && charCode <= 0x0039 && firstCharCode === 0x002d) {
+        // ... https://drafts.csswg.org/cssom/#escape-a-character-as-code-point
+        return result + escapeChar("".concat(charCode.toString(16), " "));
+      } // If the character ...
+
+
+      if ( // ... is the first character AND ...
+      index === 0 && // ... is a `-` (U+002D) AND ...
+      charCode === 0x002d && // ... there is no second character ...
+      length === 1) {
+        // ... use the escaped character
+        return result + escapeChar(char);
+      } // If the character ...
+
+
+      if ( // ... is greater than or equal to U+0080 OR ...
+      charCode >= 0x0080 || // ... is `-` (U+002D) OR ...
+      charCode === 0x002d || // ... is `_` (U+005F) OR ...
+      charCode === 0x005f || // ... is in the range [0-9] (U+0030 to U+0039) OR ...
+      charCode >= 0x0030 && charCode <= 0x0039 || // ... is in the range [A-Z] (U+0041 to U+005A) OR ...
+      charCode >= 0x0041 && charCode <= 0x005a || // ... is in the range [a-z] (U+0061 to U+007A) ...
+      charCode >= 0x0061 && charCode <= 0x007a) {
+        // ... use the character itself
+        return result + char;
+      } // Otherwise use the escaped character
+      // See: https://drafts.csswg.org/cssom/#escape-a-character
+
+
+      return result + escapeChar(char);
+    }, '');
+  };
 
   var RX_COL_CLASS = /^col-/; // Generates a prop object with a type of `[Boolean, String, Number]`
 
@@ -14711,7 +14754,8 @@
         // Optionally accepts a string of IDs to remove as the second parameter.
         // Preserves any aria-describedby value(s) user may have on input.
         if (this.labelFor && isBrowser) {
-          var input = select("#".concat(this.labelFor), this.$refs.content);
+          // We need to escape `labelFor` since it can be user-provided
+          var input = select("#".concat(cssEscape(this.labelFor)), this.$refs.content);
 
           if (input) {
             var adb = 'aria-describedby';
@@ -15193,7 +15237,7 @@
 
   var TYPES = ['text', 'password', 'email', 'number', 'url', 'tel', 'search', 'range', 'color', 'date', 'time', 'datetime', 'datetime-local', 'month', 'week']; // @vue/component
 
-  var BFormInput = /*#__PURE__*/Vue.extend({
+  var BFormInput = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BFormInput',
     // Mixin order is important!
     mixins: [listenersMixin, idMixin, formMixin, formSizeMixin, formStateMixin, formTextMixin, formSelectionMixin, formValidityMixin],
@@ -15345,7 +15389,7 @@
     }
   }; // @vue/component
 
-  var BFormRadioGroup = /*#__PURE__*/Vue.extend({
+  var BFormRadioGroup = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BFormRadioGroup',
     mixins: [idMixin, formMixin, formRadioCheckGroupMixin, // Includes render function
     formOptionsMixin, formSizeMixin, formStateMixin],
@@ -15385,7 +15429,7 @@
       DOWN$1 = KEY_CODES.DOWN; // --- Private helper component ---
   // @vue/component
 
-  var BVFormRatingStar = Vue.extend({
+  var BVFormRatingStar = Vue__default['default'].extend({
     name: 'BVFormRatingStar',
     mixins: [normalizeSlotMixin],
     props: {
@@ -15474,7 +15518,7 @@
   // @vue/component
 
 
-  var BFormRating = /*#__PURE__*/Vue.extend({
+  var BFormRating = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$k,
     components: {
       BIconStar: BIconStar,
@@ -15897,7 +15941,7 @@
     }
   }; // @vue/component
 
-  var BFormSelectOption = /*#__PURE__*/Vue.extend({
+  var BFormSelectOption = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$l,
     functional: true,
     props: props$z,
@@ -15918,7 +15962,7 @@
     }
   });
 
-  var BFormSelectOptionGroup = /*#__PURE__*/Vue.extend({
+  var BFormSelectOptionGroup = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BFormSelectOptionGroup',
     mixins: [normalizeSlotMixin, formOptionsMixin],
     props: {
@@ -15950,7 +15994,7 @@
     }
   });
 
-  var BFormSelect = /*#__PURE__*/Vue.extend({
+  var BFormSelect = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BFormSelect',
     mixins: [idMixin, normalizeSlotMixin, formMixin, formSizeMixin, formStateMixin, formCustomMixin, optionsMixin],
     model: {
@@ -16112,7 +16156,7 @@
   var DEFAULT_REPEAT_MULTIPLIER = 4; // --- BFormSpinbutton ---
   // @vue/component
 
-  var BFormSpinbutton = /*#__PURE__*/Vue.extend({
+  var BFormSpinbutton = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$m,
     // Mixin order is important!
     mixins: [attrsMixin, idMixin, normalizeSlotMixin],
@@ -16707,7 +16751,7 @@
   });
 
   var NAME$n = 'BFormTag';
-  var BFormTag = /*#__PURE__*/Vue.extend({
+  var BFormTag = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$n,
     mixins: [idMixin, normalizeSlotMixin],
     props: {
@@ -16757,7 +16801,7 @@
 
       if (!this.disabled) {
         $remove = h(BButtonClose, {
-          staticClass: 'b-form-tag-remove ml-1',
+          staticClass: 'b-form-tag-remove',
           props: {
             ariaLabel: this.removeLabel
           },
@@ -16839,7 +16883,7 @@
   }; // @vue/component
 
 
-  var BFormTags = /*#__PURE__*/Vue.extend({
+  var BFormTags = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$o,
     mixins: [idMixin, normalizeSlotMixin],
     model: {
@@ -16983,6 +17027,14 @@
         type: Boolean,
         default: false
       },
+      ignoreInputFocusSelector: {
+        // Disable the input focus behavior when clicking
+        // on element matching the selector (or selectors)
+        type: [Array, String],
+        default: function _default() {
+          return ['.b-form-tag', 'button', 'input', 'select'];
+        }
+      },
       value: {
         // The v-model prop
         type: Array,
@@ -17046,6 +17098,10 @@
         // We append a space if the first separator is not a space
         var joiner = this.computedSeparator.charAt(0);
         return joiner !== ' ' ? "".concat(joiner, " ") : joiner;
+      },
+      computeIgnoreInputFocusSelector: function computeIgnoreInputFocusSelector() {
+        // Normalize to an single selector with selectors separated by `,`
+        return concat(this.ignoreInputFocusSelector).filter(identity).join(',').trim();
       },
       disableAddButton: function disableAddButton() {
         var _this = this;
@@ -17241,7 +17297,10 @@
       onClick: function onClick(evt) {
         var _this3 = this;
 
-        if (!this.disabled && isEvent(evt) && evt.target === evt.currentTarget) {
+        var ignoreFocusSelector = this.computeIgnoreInputFocusSelector;
+        var target = evt.target;
+
+        if (!this.disabled && !isActiveElement(target) && (!ignoreFocusSelector || !closest(ignoreFocusSelector, target, true))) {
           this.$nextTick(function () {
             _this3.focus();
           });
@@ -17325,7 +17384,8 @@
       },
       getInput: function getInput() {
         // Returns the input element reference (or null if not found)
-        return select("#".concat(this.computedInputId), this.$el);
+        // We need to escape `computedInputId` since it can be user-provided
+        return select("#".concat(cssEscape(this.computedInputId)), this.$el);
       },
       // Default User Interface render
       defaultRender: function defaultRender(_ref) {
@@ -17355,7 +17415,6 @@
           tag = toString$1(tag);
           return h(BFormTag, {
             key: "li-tag__".concat(tag),
-            staticClass: 'mt-1 mr-1',
             class: tagClass,
             props: {
               // `BFormTag` will auto generate an ID
@@ -17435,7 +17494,7 @@
         var tagListId = this.safeId('__TAG__LIST__');
         var $field = h('li', {
           key: '__li-input__',
-          staticClass: 'flex-grow-1 mt-1',
+          staticClass: 'flex-grow-1',
           attrs: {
             role: 'none',
             'aria-live': 'off',
@@ -17450,12 +17509,11 @@
 
         var $ul = h('ul', {
           key: '_tags_list_',
-          staticClass: 'list-unstyled mt-n1 mb-0 d-flex flex-wrap align-items-center',
+          staticClass: 'b-form-tags-list list-unstyled mb-0 d-flex flex-wrap align-items-center',
           attrs: {
             id: tagListId
           }
-        }, // `concat()` is faster than array spread when args are known to be arrays
-        concat($tags, $field)); // Assemble the feedback
+        }, [$tags, $field]); // Assemble the feedback
 
         var $feedback = h();
 
@@ -17601,11 +17659,11 @@
           'aria-describedby': this.safeId('_selected_')
         },
         on: {
+          click: this.onClick,
           focusin: this.onFocusin,
-          focusout: this.onFocusout,
-          click: this.onClick
+          focusout: this.onFocusout
         }
-      }, concat($output, $removed, $content, $hidden));
+      }, [$output, $removed, $content, $hidden]);
     }
   });
 
@@ -17618,7 +17676,7 @@
     }
   });
 
-  var BFormTextarea = /*#__PURE__*/Vue.extend({
+  var BFormTextarea = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BFormTextarea',
     directives: {
       'b-visible': VBVisible
@@ -17878,7 +17936,7 @@
   }; // @vue/component
 
 
-  var BTime = /*#__PURE__*/Vue.extend({
+  var BTime = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$p,
     mixins: [idMixin, normalizeSlotMixin],
     model: {
@@ -18705,7 +18763,7 @@
   }; // --- BFormDate component ---
   // @vue/component
 
-  var BFormTimepicker = /*#__PURE__*/Vue.extend({
+  var BFormTimepicker = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$q,
     // The mixins order determines the order of appearance in the props reference section
     mixins: [idMixin, propsMixin$1],
@@ -18989,7 +19047,7 @@
     }
   }; // @vue/component
 
-  var BInputGroupText = /*#__PURE__*/Vue.extend({
+  var BInputGroupText = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BInputGroupText',
     functional: true,
     props: props$A,
@@ -19018,7 +19076,7 @@
     }
   }; // @vue/component
 
-  var BInputGroupAddon = /*#__PURE__*/Vue.extend({
+  var BInputGroupAddon = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BInputGroupAddon',
     functional: true,
     props: _objectSpread2(_objectSpread2({}, commonProps$1), {}, {
@@ -19043,7 +19101,7 @@
     }
   });
 
-  var BInputGroupAppend = /*#__PURE__*/Vue.extend({
+  var BInputGroupAppend = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BInputGroupAppend',
     functional: true,
     props: commonProps$1,
@@ -19060,7 +19118,7 @@
     }
   });
 
-  var BInputGroupPrepend = /*#__PURE__*/Vue.extend({
+  var BInputGroupPrepend = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BInputGroupPrepend',
     functional: true,
     props: commonProps$1,
@@ -19108,7 +19166,7 @@
   }; // --- Main component ---
   // @vue/component
 
-  var BInputGroup = /*#__PURE__*/Vue.extend({
+  var BInputGroup = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$r,
     functional: true,
     props: props$B,
@@ -19176,7 +19234,7 @@
     }
   }; // @vue/component
 
-  var BContainer = /*#__PURE__*/Vue.extend({
+  var BContainer = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BContainer',
     functional: true,
     props: props$C,
@@ -19257,7 +19315,7 @@
   }; // --- Main component ---
   // @vue/component
 
-  var BJumbotron = /*#__PURE__*/Vue.extend({
+  var BJumbotron = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$s,
     functional: true,
     props: props$D,
@@ -19464,7 +19522,7 @@
     }
   }; // @vue/component
 
-  var BListGroup = /*#__PURE__*/Vue.extend({
+  var BListGroup = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BListGroup',
     functional: true,
     props: props$E,
@@ -19513,7 +19571,7 @@
   }, linkProps$3); // --- Main component ---
   // @vue/component
 
-  var BListGroupItem = /*#__PURE__*/Vue.extend({
+  var BListGroupItem = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$t,
     functional: true,
     props: props$F,
@@ -19570,7 +19628,7 @@
     }
   }; // @vue/component
 
-  var BMediaBody = /*#__PURE__*/Vue.extend({
+  var BMediaBody = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BMediaBody',
     functional: true,
     props: props$G,
@@ -19595,7 +19653,7 @@
     }
   }; // @vue/component
 
-  var BMediaAside = /*#__PURE__*/Vue.extend({
+  var BMediaAside = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BMediaAside',
     functional: true,
     props: props$H,
@@ -19632,7 +19690,7 @@
     }
   }; // @vue/component
 
-  var BMedia = /*#__PURE__*/Vue.extend({
+  var BMedia = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BMedia',
     functional: true,
     props: props$I,
@@ -19698,7 +19756,7 @@
   // Supports only a single root element
   // @vue/component
 
-  var BTransporterTargetSingle = /*#__PURE__*/Vue.extend({
+  var BTransporterTargetSingle = /*#__PURE__*/Vue__default['default'].extend({
     // As an abstract component, it doesn't appear in the $parent chain of
     // components, which means the next parent of any component rendered inside
     // of this one will be the parent from which is was portal'd
@@ -19735,7 +19793,7 @@
   }); // This component has no root element, so only a single VNode is allowed
   // @vue/component
 
-  var BTransporterSingle = /*#__PURE__*/Vue.extend({
+  var BTransporterSingle = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BTransporterSingle',
     mixins: [normalizeSlotMixin],
     props: {
@@ -19994,7 +20052,7 @@
     NAVBAR_TOGGLER: '.navbar-toggler'
   }; // @vue/component
 
-  var ModalManager = /*#__PURE__*/Vue.extend({
+  var ModalManager = /*#__PURE__*/Vue__default['default'].extend({
     data: function data() {
       return {
         modals: [],
@@ -20503,7 +20561,7 @@
     }
   }; // @vue/component
 
-  var BModal = /*#__PURE__*/Vue.extend({
+  var BModal = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$u,
     mixins: [attrsMixin, idMixin, listenOnDocumentMixin, listenOnRootMixin, listenOnWindowMixin, normalizeSlotMixin, scopedStyleAttrsMixin],
     inheritAttrs: false,
@@ -21781,7 +21839,7 @@
   }; // @vue/component
 
 
-  var BNav = /*#__PURE__*/Vue.extend({
+  var BNav = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BNav',
     functional: true,
     props: props$K,
@@ -21809,7 +21867,7 @@
   var props$L = omit(props$1, ['event', 'routerTag']); // --- Main component ---
   // @vue/component
 
-  var BNavItem = /*#__PURE__*/Vue.extend({
+  var BNavItem = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BNavItem',
     functional: true,
     props: _objectSpread2(_objectSpread2({}, props$L), {}, {
@@ -21843,7 +21901,7 @@
 
   var props$M = {}; // @vue/component
 
-  var BNavText = /*#__PURE__*/Vue.extend({
+  var BNavText = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BNavText',
     functional: true,
     props: props$M,
@@ -21863,7 +21921,7 @@
     }
   }); // @vue/component
 
-  var BNavForm = /*#__PURE__*/Vue.extend({
+  var BNavForm = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BNavForm',
     functional: true,
     props: props$N,
@@ -21895,7 +21953,7 @@
   var props$O = pluckProps(['text', 'html', 'menuClass', 'toggleClass', 'noCaret', 'role', 'lazy'], props$l); // --- Main component ---
   // @vue/component
 
-  var BNavItemDropdown = /*#__PURE__*/Vue.extend({
+  var BNavItemDropdown = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BNavItemDropdown',
     mixins: [idMixin, dropdownMixin, normalizeSlotMixin],
     props: props$O,
@@ -22027,7 +22085,7 @@
   }; // --- Main component ---
   // @vue/component
 
-  var BNavbar = /*#__PURE__*/Vue.extend({
+  var BNavbar = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$v,
     mixins: [normalizeSlotMixin],
     props: props$P,
@@ -22076,7 +22134,7 @@
   }; // @vue/component
 
 
-  var BNavbarNav = /*#__PURE__*/Vue.extend({
+  var BNavbarNav = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BNavbarNav',
     functional: true,
     props: props$Q,
@@ -22107,7 +22165,7 @@
   }, linkProps$4); // --- Main component ---
   // @vue/component
 
-  var BNavbarBrand = /*#__PURE__*/Vue.extend({
+  var BNavbarBrand = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BNavbarBrand',
     functional: true,
     props: props$R,
@@ -22128,7 +22186,7 @@
   var CLASS_NAME$2 = 'navbar-toggler'; // --- Main component ---
   // @vue/component
 
-  var BNavbarToggle = /*#__PURE__*/Vue.extend({
+  var BNavbarToggle = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$w,
     directives: {
       BToggle: VBToggle
@@ -22218,7 +22276,7 @@
 
   var NAME$x = 'BSpinner'; // @vue/component
 
-  var BSpinner = /*#__PURE__*/Vue.extend({
+  var BSpinner = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$x,
     functional: true,
     props: {
@@ -22283,7 +22341,7 @@
     bottom: 0,
     right: 0
   };
-  var BOverlay = /*#__PURE__*/Vue.extend({
+  var BOverlay = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BOverlay',
     mixins: [normalizeSlotMixin],
     props: {
@@ -23193,7 +23251,7 @@
   // @vue/component
 
 
-  var BPagination = /*#__PURE__*/Vue.extend({
+  var BPagination = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$y,
     mixins: [paginationMixin],
     props: props$T,
@@ -23362,7 +23420,7 @@
   // The render function is brought in via the pagination mixin
   // @vue/component
 
-  var BPaginationNav = /*#__PURE__*/Vue.extend({
+  var BPaginationNav = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$z,
     mixins: [paginationMixin],
     props: props$U,
@@ -23655,7 +23713,7 @@
     LEFTBOTTOM: +1
   }; // @vue/component
 
-  var BVPopper = /*#__PURE__*/Vue.extend({
+  var BVPopper = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$A,
     props: {
       target: {
@@ -23879,7 +23937,7 @@
 
   var NAME$B = 'BVTooltipTemplate'; // @vue/component
 
-  var BVTooltipTemplate = /*#__PURE__*/Vue.extend({
+  var BVTooltipTemplate = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$B,
     extends: BVPopper,
     mixins: [scopedStyleAttrsMixin],
@@ -24044,7 +24102,7 @@
     html: false
   }; // @vue/component
 
-  var BVTooltip = /*#__PURE__*/Vue.extend({
+  var BVTooltip = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$C,
     props: {// None
     },
@@ -24935,7 +24993,7 @@
 
   var NAME$D = 'BTooltip'; // @vue/component
 
-  var BTooltip = /*#__PURE__*/Vue.extend({
+  var BTooltip = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$D,
     props: {
       title: {
@@ -25279,7 +25337,7 @@
 
   var NAME$E = 'BVPopoverTemplate'; // @vue/component
 
-  var BVPopoverTemplate = /*#__PURE__*/Vue.extend({
+  var BVPopoverTemplate = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$E,
     extends: BVTooltipTemplate,
     computed: {
@@ -25325,7 +25383,7 @@
   // Popover "Class" (Built as a renderless Vue instance)
   var NAME$F = 'BVPopover'; // @vue/component
 
-  var BVPopover = /*#__PURE__*/Vue.extend({
+  var BVPopover = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$F,
     extends: BVTooltip,
     computed: {
@@ -25343,7 +25401,7 @@
   });
 
   var NAME$G = 'BPopover';
-  var BPopover = /*#__PURE__*/Vue.extend({
+  var BPopover = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$G,
     extends: BTooltip,
     inheritAttrs: false,
@@ -25688,7 +25746,7 @@
   var NAME$H = 'BProgressBar'; // --- Main component ---
   // @vue/component
 
-  var BProgressBar = /*#__PURE__*/Vue.extend({
+  var BProgressBar = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$H,
     mixins: [normalizeSlotMixin],
     inject: {
@@ -25829,7 +25887,7 @@
 
   var NAME$I = 'BProgress'; // @vue/component
 
-  var BProgress = /*#__PURE__*/Vue.extend({
+  var BProgress = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$I,
     mixins: [normalizeSlotMixin],
     provide: function provide() {
@@ -26024,7 +26082,7 @@
   // @vue/component
 
 
-  var BSidebar = /*#__PURE__*/Vue.extend({
+  var BSidebar = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$J,
     // Mixin order is important!
     mixins: [attrsMixin, idMixin, listenOnRootMixin, normalizeSlotMixin],
@@ -26663,8 +26721,10 @@
         }
       },
       // Watch for changes on `computedItems` and update the `v-model`
-      computedItems: function computedItems(newVal) {
-        this.$emit('input', newVal);
+      computedItems: function computedItems(newVal, oldVal) {
+        if (!looseEqual(newVal, oldVal)) {
+          this.$emit('input', newVal);
+        }
       },
       // Watch for context changes
       context: function context(newVal, oldVal) {
@@ -27311,7 +27371,7 @@
             _this.localSortDesc = false;
           } else if (sortDirection === 'desc') {
             _this.localSortDesc = true;
-          }
+          } else ;
         };
 
         if (field.sortable) {
@@ -27560,7 +27620,7 @@
   //   to the child elements, so this can be converted to a functional component
   // @vue/component
 
-  var BThead = /*#__PURE__*/Vue.extend({
+  var BThead = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BThead',
     // Mixin order is important!
     mixins: [attrsMixin, listenersMixin, normalizeSlotMixin],
@@ -27647,7 +27707,7 @@
   //   to the child elements, so this can be converted to a functional component
   // @vue/component
 
-  var BTfoot = /*#__PURE__*/Vue.extend({
+  var BTfoot = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BTfoot',
     // Mixin order is important!
     mixins: [attrsMixin, listenersMixin, normalizeSlotMixin],
@@ -27733,7 +27793,7 @@
   //   to the child elements, so this can be converted to a functional component
   // @vue/component
 
-  var BTr = /*#__PURE__*/Vue.extend({
+  var BTr = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BTr',
     // Mixin order is important!
     mixins: [attrsMixin, listenersMixin, normalizeSlotMixin],
@@ -27871,7 +27931,7 @@
   //   to the child elements, so this can be converted to a functional component
   // @vue/component
 
-  var BTd = /*#__PURE__*/Vue.extend({
+  var BTd = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BTableCell',
     // Mixin order is important!
     mixins: [attrsMixin, listenersMixin, normalizeSlotMixin],
@@ -28015,7 +28075,7 @@
   //   to the child elements, so this can be converted to a functional component
   // @vue/component
 
-  var BTh = /*#__PURE__*/Vue.extend({
+  var BTh = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BTh',
     extends: BTd,
     computed: {
@@ -28289,7 +28349,7 @@
   //   to the child elements, so this can be converted to a functional component
   // @vue/component
 
-  var BTbody = /*#__PURE__*/Vue.extend({
+  var BTbody = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BTbody',
     // Mixin order is important!
     mixins: [attrsMixin, listenersMixin, normalizeSlotMixin],
@@ -29705,7 +29765,7 @@
 
   // @vue/component
 
-  var BTable = /*#__PURE__*/Vue.extend({
+  var BTable = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BTable',
     // Order of mixins is important!
     // They are merged from first to last, followed by this component
@@ -29718,7 +29778,7 @@
 
   // @vue/component
 
-  var BTableLite = /*#__PURE__*/Vue.extend({
+  var BTableLite = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BTableLite',
     // Order of mixins is important!
     // They are merged from first to last, followed by this component.
@@ -29731,7 +29791,7 @@
 
   // @vue/component
 
-  var BTableSimple = /*#__PURE__*/Vue.extend({
+  var BTableSimple = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BTableSimple',
     // Order of mixins is important!
     // They are merged from first to last, followed by this component.
@@ -29783,7 +29843,7 @@
   // @vue/component
 
 
-  var BTabButtonHelper = /*#__PURE__*/Vue.extend({
+  var BTabButtonHelper = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BTabButtonHelper',
     inject: {
       bvTabs: {
@@ -29922,7 +29982,7 @@
     }
   }); // @vue/component
 
-  var BTabs = /*#__PURE__*/Vue.extend({
+  var BTabs = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BTabs',
     mixins: [idMixin, normalizeSlotMixin],
     provide: function provide() {
@@ -30506,7 +30566,7 @@
     }
   });
 
-  var BTab = /*#__PURE__*/Vue.extend({
+  var BTab = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BTab',
     mixins: [idMixin, normalizeSlotMixin],
     inject: {
@@ -30776,7 +30836,7 @@
   var transports = {};
   var targets = {};
   var sources = {};
-  var Wormhole = Vue.extend({
+  var Wormhole = Vue__default['default'].extend({
     data: function data() {
       return {
         transports: transports,
@@ -30803,7 +30863,7 @@
         var keys = Object.keys(this.transports);
 
         if (keys.indexOf(to) === -1) {
-          Vue.set(this.transports, to, []);
+          Vue__default['default'].set(this.transports, to, []);
         }
 
         var currentIndex = this.$_getTransportIndex(newTransport); // Copying the array here so that the PortalTarget change event will actually contain two distinct arrays
@@ -30894,7 +30954,7 @@
   var wormhole = new Wormhole(transports);
 
   var _id = 1;
-  var Portal = Vue.extend({
+  var Portal = Vue__default['default'].extend({
     name: 'portal',
     props: {
       disabled: {
@@ -31009,7 +31069,7 @@
     }
   });
 
-  var PortalTarget = Vue.extend({
+  var PortalTarget = Vue__default['default'].extend({
     name: 'portalTarget',
     props: {
       multiple: {
@@ -31126,7 +31186,7 @@
   var _id$1 = 0;
   var portalProps = ['disabled', 'name', 'order', 'slim', 'slotProps', 'tag', 'to'];
   var targetProps = ['multiple', 'transition'];
-  var MountingPortal = Vue.extend({
+  var MountingPortal = Vue__default['default'].extend({
     name: 'MountingPortal',
     inheritAttrs: false,
     props: {
@@ -31318,7 +31378,7 @@
 
   }; // @vue/component
 
-  var DefaultTransition = /*#__PURE__*/Vue.extend({
+  var DefaultTransition = /*#__PURE__*/Vue__default['default'].extend({
     data: function data() {
       return {
         // Transition classes base name
@@ -31350,7 +31410,7 @@
     }
   }); // @vue/component
 
-  var BToaster = /*#__PURE__*/Vue.extend({
+  var BToaster = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$K,
     props: props$$,
     data: function data() {
@@ -31515,7 +31575,7 @@
     }
   }, linkProps$5); // @vue/component
 
-  var BToast = /*#__PURE__*/Vue.extend({
+  var BToast = /*#__PURE__*/Vue__default['default'].extend({
     name: NAME$L,
     mixins: [attrsMixin, idMixin, listenOnRootMixin, normalizeSlotMixin, scopedStyleAttrsMixin],
     inheritAttrs: false,
@@ -33052,7 +33112,7 @@
     }
   });
 
-  var BIconstack = /*#__PURE__*/Vue.extend({
+  var BIconstack = /*#__PURE__*/Vue__default['default'].extend({
     name: 'BIconstack',
     functional: true,
     props: _objectSpread2({}, commonIconProps),
